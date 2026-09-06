@@ -438,7 +438,7 @@
   .axis-card.chronic .axis-dot{ background:var(--cat-chronic); }
   .axis-head h3{ font-size:15px; font-weight:700; color:var(--ink); }
   .axis-intro{ font-size:13.5px; color:var(--ink-soft); margin:0 0 12px; line-height:1.7; }
-  .axis-steps{ margin:0 0 12px; padding-left:20px; display:flex; flex-direction:column; gap:11px; }
+  .axis-steps{ margin:0 0 12px; padding-left:20px; list-style:none; display:flex; flex-direction:column; gap:11px; }
   .axis-steps li{ font-size:14px; line-height:1.75; }
   .axis-steps li b{ display:block; color:var(--ink); font-weight:700; margin-bottom:3px; }
   .axis-steps li span{ color:var(--ink-soft); }
@@ -548,7 +548,7 @@
       title:"利尿薬抵抗性心不全", hint:"82歳女性・CKD合併・ループ利尿薬増量でも尿量が増えない",
       vignette:"82歳女性。慢性心不全とCKD(eGFR 28)を合併。今回の非代償化に対しフロセミド静注40mg×2/日で治療中だが、3日経過しても尿量が増えず体重も減少しない。血圧110/64mmHg、頸静脈怒張・両側下腿浮腫が持続。",
       labs:[ {k:"BNP",v:"1250",u:"pg/mL",abn:"high"}, {k:"Cr",v:"2.1",u:"mg/dL",abn:"high"}, {k:"Na",v:"133",u:"mEq/L",abn:"low"}, {k:"eGFR",v:"28",u:"mL/分/1.73m²",abn:"low"} ],
-      finding:"尿量800mL/日前後で増加なし。フロセミド静注量を増量しても反応不良(利尿薬抵抗性)。",
+      finding:"尿量800mL/日前後で増加なし。フロセミド静注量を増量しても反応不良(利尿薬抵抗性)。四肢は温かく、低灌流所見はない(wet & warmが持続)。",
       answer:{
         urgent:["血圧は保たれており緊急のショック対応は不要だが、<mark>体液貯留が持続し呼吸状態悪化のリスク</mark>があるため放置しない"],
         treat:["<mark>ループ利尿薬の単純な増量だけでなく、作用機序の異なる利尿薬の併用(ネフロン遠位のブロック)</mark>を検討する","<mark>サイアザイド系利尿薬の併用</mark>(sequential nephron blockade)や<mark>トルバプタン</mark>の追加を検討する"],
@@ -565,16 +565,16 @@
       title:"心房細動の急性増悪による心不全の非代償化", hint:"75歳男性・安定していたHFrEF・動悸を契機に急速に進行する呼吸困難",
       vignette:"75歳男性。安定していた慢性心不全(LVEF 35%)で通院中。2日前からの動悸を自覚し、その後急速に呼吸困難が進行して受診した。血圧104/68mmHg、脈拍156/分不整。",
       labs:[ {k:"心拍数",v:"156",u:"/分",abn:"high"}, {k:"SpO2",v:"92",u:"%",abn:"low"}, {k:"BNP",v:"1100",u:"pg/mL",abn:"high"}, {k:"Hb",v:"13.2",u:"g/dL",abn:"normal"} ],
-      finding:"心電図：心房細動、心拍数156/分。両側肺うっ血像あり。TSH正常、WBC/CRP正常(感染所見なし)。",
+      finding:"心電図：心房細動、心拍数156/分。両側肺うっ血像あり。四肢は温かく、末梢冷感や意識障害はない(低灌流所見なし)。TSH正常、WBC/CRP正常(感染所見なし)。",
       answer:{
-        urgent:["<mark>頻脈性心房細動による急性増悪</mark>であり、血行動態が不安定であれば緊急除細動も考慮する","本症例は血圧が保たれているため、まず薬物によるレートコントロールから開始できる"],
+        urgent:["<mark>頻脈性心房細動による急性増悪</mark>であり、血行動態が不安定であれば緊急除細動も考慮する","<mark>心拍数156/分という頻脈だけでショックと短絡的に判断せず、四肢冷感・意識・尿量で低灌流の有無を確認</mark>する。本症例は四肢温感があり低灌流所見を伴わないwet & warmで、血圧も保たれているため、まず薬物によるレートコントロールから開始できる"],
         treat:["<mark>心不全の治療(利尿薬など)だけでなく、増悪因子そのもの(頻脈性心房細動)への対応を同時に行う</mark>ことが本質的な治療になる","うっ血に対する利尿薬に加え、<mark>レートコントロール(ジゴキシン、少量のβ遮断薬など)</mark>を心機能を見ながら開始する"],
         stop:["<mark>血行動態が不安定な急性期に非ジヒドロピリジン系Ca拮抗薬(ベラパミル等)は陰性変力作用のため避ける</mark>","脱水を助長する要因があれば是正しつつ、抗凝固療法の適応(CHADS2/CHA2DS2-VAScスコア)を評価する"],
         rate:["心拍数・血圧・うっ血所見の推移を追い、<mark>洞調律化(除細動・抗不整脈薬)かレートコントロール継続か</mark>を再評価する","<mark>他の増悪因子(感染、貧血、腎機能悪化、NSAIDs、服薬中断)も網羅的に確認</mark>し、心房細動だけを原因と決めつけない"]
       },
       rx:["血行動態が保たれていればジゴキシン0.25mg静注、または少量のβ遮断薬(ビソプロロール等)からレートコントロールを開始する。急性期の高用量β遮断薬導入は陰性変力作用に注意","血行動態不安定(ショック・高度肺水腫)なら同期電気的除細動を優先する","抗凝固療法はCHADS2スコア等でリスク評価し、適応があればDOACを導入する","背景の心不全治療(利尿薬によるうっ血解除)は並行して継続する"],
       pitfall:"「心不全の治療だけ頑張って、心房細動はレートが落ち着くまで様子を見る」では、<mark>増悪因子そのものが是正されず心不全治療の効果も乏しい</mark>ままになりやすい。心不全治療と増悪因子治療は必ずセットで行う。",
-      pearl:["急性非代償性心不全を見たら<mark>ACS、頻脈・徐脈性不整脈、感染、高血圧、弁膜症、肺塞栓、腎機能悪化、貧血、服薬中断・塩分過多、NSAIDsなど</mark>の増悪因子を必ず探す(OPTIMIZE-HFやWET-HF2などのレジストリ研究でも繰り返し重視される視点)","増悪因子の治療を怠ると<mark>心不全治療だけを繰り返しても再増悪</mark>を招く","心房細動は心不全の増悪因子であると同時に心不全自体が心房細動を誘発することもあり、<mark>双方向の関係</mark>にある"],
+      pearl:["急性非代償性心不全を見たら<mark>ACS、頻脈・徐脈性不整脈、感染、高血圧、弁膜症、肺塞栓、腎機能悪化、貧血、服薬中断・塩分過多、NSAIDsなど</mark>の増悪因子を必ず探す(OPTIMIZE-HFやWET-HF2などのレジストリ研究でも繰り返し重視される視点)","増悪因子の治療を怠ると<mark>心不全治療だけを繰り返しても再増悪</mark>を招く","心房細動は心不全の増悪因子であると同時に心不全自体が心房細動を誘発することもあり、<mark>双方向の関係</mark>にある","<mark>頻脈=低灌流とは限らない</mark>。心拍数だけでなく四肢冷感・意識・尿量・乳酸を見て初めてwarm/coldを判定できる(症例1の心原性ショックのようなwet & coldとの違いに注目)"],
       refs:[ {author:"日本循環器学会.", title:"心不全の増悪因子と管理（Best Teacher Series）", source:"日本循環器学会 j-kyoken", url:"https://www.j-circ.or.jp/committees/j-kyoken/best-teacher-series/"}, {author:"Kitai T, Kohsaka S, et al.", title:"JCS/JHFS 2025 Guideline on Diagnosis and Treatment of Heart Failure", source:"Circulation Journal (J-STAGE)", year:"2025", url:"https://www.jstage.jst.go.jp/article/circj/advpub/0/advpub_CJ-25-0002/_html/-char/en"} ]
     },
     {
@@ -667,11 +667,11 @@
       cat:"acute", label:"急性心不全：病態評価と治療選択の軸",
       intro:"急性心不全は「うっ血の有無」「低灌流の有無」「血圧」の3つを組み合わせると治療方針を間違えにくい。",
       steps:[
-        {t:"①うっ血(wet/dry)と低灌流(warm/cold)を評価する", d:"頸静脈怒張・肺ラ音・浮腫の有無でうっ血を、四肢冷感・意識・尿量・乳酸で低灌流を判定する。両者は独立した軸であり、<mark>うっ血があっても低灌流がなければ強心薬は不要</mark>。"},
+        {t:"①うっ血(wet/dry)と低灌流(warm/cold)を評価する", d:"頸静脈怒張・肺ラ音・浮腫の有無でうっ血を、四肢冷感・意識・尿量・乳酸で低灌流を判定する。両者は独立した軸で、<mark>wet & warm(うっ血のみ)・wet & cold(うっ血+低灌流)・dry & warm(代償状態)・dry & cold(低灌流が主体でうっ血に乏しい、頻度は低いが見逃されやすい)</mark>の4パターンに分けて考える。うっ血があっても低灌流がなければ強心薬は不要。"},
         {t:"②酸素化を確認する", d:"<mark>酸素はルーチンではなくSpO2<90%またはPaO2<60mmHgが目安</mark>(Class I)。呼吸数>25/分・SpO2<90%が続く呼吸不全ではNPPVを早期に導入する(Class I・レベルA)。"},
         {t:"③血圧で治療の骨格を決める", d:"血圧が保たれ低灌流がなければ利尿薬(±血管拡張薬)、著明な高血圧を伴うwet & warmでは血管拡張薬+NPPV、低灌流・ショック(収縮期血圧<90mmHgなど)では強心薬・昇圧薬という骨格に沿って考える。"}
       ],
-      note:"血圧の低い患者にうっ血だけを見て血管拡張薬を使うと灌流を悪化させる。逆にショックのない患者へのルーチンの強心薬投与も避ける。",
+      note:"血圧の低い患者にうっ血だけを見て血管拡張薬を使うと灌流を悪化させる。逆にショックのない患者へのルーチンの強心薬投与も避ける。本アプリの症例は主にwet & warm(血圧の高低で治療が変わる)とwet & cold(心原性ショック)を扱うが、<mark>dry & cold(うっ血に乏しい低灌流)は肺うっ血の所見に乏しく頻脈や意識障害だけが手がかりになることがあり見逃しやすい</mark>。四肢冷感・乳酸は「肺の聴診で異常がないから大丈夫」で済ませず、必ず個別に確認する。",
       refs:["Nohria A, et al. J Am Coll Cardiol 2003","JCS/JHFS 2025 Guideline (Circ J)"]
     },
     {
@@ -680,11 +680,11 @@
       steps:[
         {t:"①症状・身体所見で疑う", d:"労作時呼吸困難、下腿浮腫、頸静脈怒張、ラ音などから疑う。"},
         {t:"②心電図・胸部X線を確認する", d:"心電図の異常(虚血性変化、不整脈、左室肥大等)や胸部X線の心拡大・肺うっ血像は診断の補助になる。いずれも異常がなければ心不全の可能性は下がるが、否定はできない。"},
-        {t:"③BNP/NT-proBNPで裏付ける", d:"年齢・腎機能・肥満の影響を考慮しつつ、上昇があれば心不全の可能性を高める。"},
+        {t:"③BNP/NT-proBNPで裏付ける", d:"<mark>BNP<100pg/mLまたはNT-proBNP<300pg/mLは心不全らしくない(ルールアウト)</mark>の目安。診断的なカットオフはBNPで概ね100〜400pg/mL(100未満は否定的、400超は肯定的、間はグレーゾーン)。NT-proBNPは腎排泄のため<mark>年齢層別のカットオフ(50歳未満>450、50〜75歳>900、75歳以上>1800pg/mL)</mark>を用いるのが標準的。腎機能低下はNT-proBNPをより高値に、肥満はBNP/NT-proBNPいずれも低値に見せる方向に働くため、値の解釈には年齢・腎機能・肥満を考慮する。"},
         {t:"④心エコーでEFと拡張能を評価し分類する", d:"HFrEF(LVEF≤40%)・HFmrEF(41〜49%)・HFpEF(≥50%)・HFimpEF(以前≤40%から10ポイント以上改善し40%超)に分類する(2021年の心不全の普遍的定義に基づく)。<mark>EFが保たれていても心不全は否定できない</mark>。"}
       ],
       note:"「EF60%だから心不全ではない」は誤り。拡張能障害主体のHFpEFはEFが保たれたまま生じる。",
-      refs:["JCS/JHFS 2025 Guideline (Circ J)","Bozkurt B, et al. J Card Fail 2021"]
+      refs:["JCS/JHFS 2025 Guideline (Circ J)","Bozkurt B, et al. J Card Fail 2021","Maisel A, et al. N Engl J Med 2002(BNPカットオフ)","Januzzi JL Jr, et al. J Am Coll Cardiol 2018(NT-proBNP年齢層別カットオフ、ICON-RELOADED)"]
     },
     {
       cat:"adjust", label:"慢性期治療と退院準備の軸",
@@ -826,7 +826,7 @@
     html += '  <div class="eyebrow">心不全 初動トレーニング</div>';
     html += '  <h1>心不全<br>トレーニング</h1>';
     html += '  <p>研修医が出会う心不全9症例。答えを見る前に、自分の言葉で4つの問いに答えてみましょう。</p>';
-    html += '  <div class="thesis">ゴールは診断名当てではなく、うっ血と低灌流を見分け、初動を間違えないことです。</div>';
+    html += '  <div class="thesis">ゴールは診断名当てではなく、病態(うっ血・低灌流など)を正しく見極め、初動を間違えないことです。</div>';
     html += '</div>';
 
     html += '<div class="progress-card">';
@@ -1004,7 +1004,7 @@
   function renderApproach(){
     var html = "";
     html += '<div class="approach-hero"><div class="eyebrow">心不全の初動まとめ</div><h1>初動を守る2つの武器</h1><p>心不全はEFも背景疾患も多様で、丸暗記では対応しきれない。<mark>①症例によらず必ず自問する4つの問い</mark>と、<mark>②病態を整理する3つの型(急性期・診断分類・慢性期)</mark>、この2つを持っておくと、初めて見る症例でも初動を組み立てられる。</p></div>';
-    html += '<div class="goal-note"><div class="gn-label">⚡ このアプリのゴール</div><div class="gn-body">「診断名を当てる」ことではありません。<mark>うっ血と低灌流を見分け、心不全治療と増悪因子治療の両方をセットで行い、初動(病態評価・治療選択・薬剤の見直し・モニタリング)を間違えない</mark>ことがゴールです。</div></div>';
+    html += '<div class="goal-note"><div class="gn-label">⚡ このアプリのゴール</div><div class="gn-body">「診断名を当てる」ことではありません。<mark>病態(うっ血・低灌流など)を正しく見極め、心不全治療と増悪因子治療の両方をセットで行い、初動(病態評価・治療選択・薬剤の見直し・モニタリング)を間違えない</mark>ことがゴールです。</div></div>';
 
     html += '<h2 class="axis-section-title">①症例によらず、まず自問する4つ</h2>';
     html += '<div class="flow">';
