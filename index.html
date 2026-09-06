@@ -615,7 +615,7 @@
       id:"hfref_four_pillars", num:8, cat:"chronic", tag:"慢性期HFrEF",
       title:"HFrEF慢性期管理：4本柱を自己判断で止めない", hint:"66歳男性・拡張型心筋症によるHFrEF・症状改善後にβ遮断薬中止を希望",
       vignette:"66歳男性。拡張型心筋症によるHFrEF(LVEF 28%→治療後38%)で通院中。ARNI・β遮断薬・MRA・SGLT2阻害薬の4剤を内服し症状は安定、浮腫もない。血圧が108/62mmHgとやや低めなのを気にして、患者本人から「調子がいいのでβ遮断薬をやめたい」と相談された。",
-      labs:[ {k:"LVEF",v:"38",u:"%",abn:"low"}, {k:"BNP",v:"85",u:"pg/mL",abn:"normal"}, {k:"K",v:"4.9",u:"mEq/L",abn:"normal"}, {k:"Cr",v:"1.2",u:"mg/dL",abn:"normal"} ],
+      labs:[ {k:"LVEF",v:"38",u:"%",abn:"low"}, {k:"NT-proBNP",v:"210",u:"pg/mL",abn:"normal"}, {k:"K",v:"4.9",u:"mEq/L",abn:"normal"}, {k:"Cr",v:"1.2",u:"mg/dL",abn:"normal"} ],
       finding:"身体所見に浮腫・頸静脈怒張なし。症状はNYHA I〜II相当まで改善。LVEFは10ポイント以上改善したが40%を超えていないため、分類上はまだHFrEF(HFimpEFの定義は「改善して40%超」)。",
       answer:{
         urgent:["緊急性はないが、<mark>症状が改善したことと、予後改善薬を中止してよいことは別問題</mark>である点を説明する必要がある"],
@@ -625,7 +625,7 @@
       },
       rx:["ARNI(サクビトリルバルサルタン)は忍容性があれば目標用量まで漸増する。<mark>ACE阻害薬/ARBからARNIへの切替はClass I・B-R</mark>である一方、<mark>入院中に未治療から新規導入するのはClass IIa・B-R</mark>と状況により推奨度が異なる点も押さえておく","β遮断薬はカルベジロールまたはビソプロロールを、<mark>忍容性を見ながら数週間〜数か月かけて目標用量まで漸増</mark>する。国内試験(J-CHF等)では欧米より低めの目標用量設定が用いられることが多く、少量でも効果が期待できる(MUCHA試験)。急に中止すると反跳性の頻脈・虚血のリスクがある","MRA(スピロノラクトンまたはエプレレノン)は<mark>K・腎機能をモニタリングしながら継続</mark>する(eGFR<30またはK≥5.0導入時は特に慎重、K5.5程度までは有効性が保たれるとの報告もある)","SGLT2阻害薬(ダパグリフロジンまたはエンパグリフロジン)はHFrEFに対してもClass Iで継続する"],
       pitfall:"「症状が良くなった」「血圧が下がってきた」を理由に<mark>予後改善薬(4本柱)を自己判断や安易な指示で中止・減量する</mark>のはよくある誤り。利尿薬(症状改善薬)と4本柱(予後改善薬)は<mark>役割が異なる</mark>ことを理解していないと起こりやすい。",
-      pearl:["HFrEFの4本柱(ARNI/ACEi/ARB・β遮断薬・MRA・SGLT2阻害薬)は<mark>症状の有無によらず生命予後を改善するために、目標用量まで導入・維持する</mark>のが原則(いずれもClass I・レベルA)","利尿薬は<mark>症状・うっ血の改善が主目的</mark>であり4本柱とは役割が異なる","無症状の軽度血圧低下だけを理由にGDMTを中止・減量しない。<mark>症状(めまい・失神)の有無</mark>で忍容性を判断する","LVEFが改善しても<mark>40%を超えるまではHFimpEFとは呼ばず、GDMTを継続する</mark>のが原則"],
+      pearl:["HFrEFの4本柱(ARNI/ACEi/ARB・β遮断薬・MRA・SGLT2阻害薬)は<mark>症状の有無によらず生命予後を改善するために、目標用量まで導入・維持する</mark>のが原則(いずれもClass I・レベルA)","利尿薬は<mark>症状・うっ血の改善が主目的</mark>であり4本柱とは役割が異なる","無症状の軽度血圧低下だけを理由にGDMTを中止・減量しない。<mark>症状(めまい・失神)の有無</mark>で忍容性を判断する","LVEFが改善しても<mark>40%を超えるまではHFimpEFとは呼ばず、GDMTを継続する</mark>のが原則","<mark>ARNI投与中はBNPがネプリライシン阻害により実際より高く出うるため経過観察にはNT-proBNPを用いる</mark>。本症例のように改善を評価する際、BNPで「下がらない」と誤解しないよう注意する"],
       refs:[ {author:"Kitai T, Kohsaka S, et al.", title:"JCS/JHFS 2025 Guideline on Diagnosis and Treatment of Heart Failure（HFrEFの薬物治療）", source:"Circulation Journal (J-STAGE)", year:"2025", url:"https://www.jstage.jst.go.jp/article/circj/advpub/0/advpub_CJ-25-0002/_html/-char/en"} ]
     },
     {
@@ -680,11 +680,11 @@
       steps:[
         {t:"①症状・身体所見で疑う", d:"労作時呼吸困難、下腿浮腫、頸静脈怒張、ラ音などから疑う。"},
         {t:"②心電図・胸部X線を確認する", d:"心電図の異常(虚血性変化、不整脈、左室肥大等)や胸部X線の心拡大・肺うっ血像は診断の補助になる。いずれも異常がなければ心不全の可能性は下がるが、否定はできない。"},
-        {t:"③BNP/NT-proBNPで裏付ける", d:"<mark>BNP<100pg/mLまたはNT-proBNP<300pg/mLは心不全らしくない(ルールアウト)</mark>の目安。診断的なカットオフはBNPで概ね100〜400pg/mL(100未満は否定的、400超は肯定的、間はグレーゾーン)。NT-proBNPは腎排泄のため<mark>年齢層別のカットオフ(50歳未満>450、50〜75歳>900、75歳以上>1800pg/mL)</mark>を用いるのが標準的。腎機能低下はNT-proBNPをより高値に、肥満はBNP/NT-proBNPいずれも低値に見せる方向に働くため、値の解釈には年齢・腎機能・肥満を考慮する。"},
+        {t:"③BNP/NT-proBNPで裏付ける", d:"<mark>BNP<100pg/mLまたはNT-proBNP<300pg/mLは心不全らしくない(ルールアウト)</mark>の目安。診断的なカットオフはBNPで概ね100〜400pg/mL(100未満は否定的、400超は肯定的、間はグレーゾーン)。NT-proBNPは腎排泄のため<mark>年齢層別のカットオフ(50歳未満>450、50〜75歳>900、75歳以上>1800pg/mL)</mark>を用いるのが標準的。腎機能低下はNT-proBNPをより高値に、肥満はBNP/NT-proBNPいずれも低値に見せる方向に働くため、値の解釈には年齢・腎機能・肥満を考慮する。<mark>ARNI(サクビトリルバルサルタン)投与中はネプリライシン阻害によりBNPの分解が妨げられ実際の病態以上に高値になりうるため測定に適さず、ネプリライシンで分解されないNT-proBNPを測定する</mark>(ARNI導入前にBNPで経過を追っていた場合は、導入を機にNT-proBNPへの切替を検討する)。"},
         {t:"④心エコーでEFと拡張能を評価し分類する", d:"HFrEF(LVEF≤40%)・HFmrEF(41〜49%)・HFpEF(≥50%)・HFimpEF(以前≤40%から10ポイント以上改善し40%超)に分類する(2021年の心不全の普遍的定義に基づく)。<mark>EFが保たれていても心不全は否定できない</mark>。"}
       ],
       note:"「EF60%だから心不全ではない」は誤り。拡張能障害主体のHFpEFはEFが保たれたまま生じる。",
-      refs:["JCS/JHFS 2025 Guideline (Circ J)","Bozkurt B, et al. J Card Fail 2021","Maisel A, et al. N Engl J Med 2002(BNPカットオフ)","Januzzi JL Jr, et al. J Am Coll Cardiol 2018(NT-proBNP年齢層別カットオフ、ICON-RELOADED)"]
+      refs:["JCS/JHFS 2025 Guideline (Circ J)","Bozkurt B, et al. J Card Fail 2021","Maisel A, et al. N Engl J Med 2002(BNPカットオフ)","Januzzi JL Jr, et al. J Am Coll Cardiol 2018(NT-proBNP年齢層別カットオフ、ICON-RELOADED)","Myhre PL, et al. J Am Coll Cardiol 2019(ARNI下でのBNP測定の限界、PARADIGM-HF)"]
     },
     {
       cat:"adjust", label:"慢性期治療と退院準備の軸",
