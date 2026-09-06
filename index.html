@@ -1,0 +1,1167 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none';">
+<title>心不全 初動トレーニング</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<style>
+  :root{
+    --bg:#F2F4FA;
+    --surface:#FFFFFF;
+    --surface-2:#E7EAF6;
+    --ink:#1C2340;
+    --ink-soft:#565D80;
+    --ink-faint:#5C6389;
+    --line:#DCE1F2;
+    --primary:#3B4EA8;
+    --primary-strong:#262F72;
+    --primary-tint:#E3E7F8;
+    --accent:#954A18;
+    --accent-tint:#FBE9DA;
+    --good:#2E7D4F;
+    --good-tint:#E4F3EA;
+    --warn:#954A18;
+    --warn-tint:#FBE9DA;
+    --mark:#8A5A12;
+    --mark-tint:#F3E7D3;
+    --bad:#B23A3A;
+    --bad-tint:#FBE7E5;
+    --cat-acute:#3B4EA8;
+    --cat-acute-tint:#E3E7F8;
+    --cat-adjust:#6B4FA0;
+    --cat-adjust-tint:#ECE6F7;
+    --cat-chronic:#A24B3E;
+    --cat-chronic-tint:#F7E7E3;
+    --lab-high:#B23A3A;
+    --lab-high-tint:#FBE7E5;
+    --lab-low:#2A5599;
+    --lab-low-tint:#E3EBF9;
+    --shadow: 0 1px 2px rgba(19,26,52,.06), 0 6px 20px rgba(19,26,52,.06);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#10142A;
+      --surface:#171C38;
+      --surface-2:#1E2444;
+      --ink:#E9ECFA;
+      --ink-soft:#A7AECB;
+      --ink-faint:#8089AE;
+      --line:#2B3260;
+      --primary:#8FA0FF;
+      --primary-strong:#C1CBFF;
+      --primary-tint:#232A54;
+      --accent:#E3A45D;
+      --accent-tint:#3A2A15;
+      --good:#6FC796;
+      --good-tint:#16301F;
+      --warn:#E3A45D;
+      --warn-tint:#3A2A15;
+      --mark:#D9A54B;
+      --mark-tint:#332510;
+      --bad:#E27C7C;
+      --bad-tint:#3A1B1B;
+      --cat-acute:#8FA0FF;
+      --cat-acute-tint:#232A54;
+      --cat-adjust:#B79FE0;
+      --cat-adjust-tint:#2C2440;
+      --cat-chronic:#E08B77;
+      --cat-chronic-tint:#3A241E;
+      --lab-high:#E27C7C;
+      --lab-high-tint:#3A1B1B;
+      --lab-low:#8FB4E8;
+      --lab-low-tint:#1D2C48;
+      --shadow: 0 1px 2px rgba(0,0,0,.35), 0 8px 24px rgba(0,0,0,.4);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#10142A;
+    --surface:#171C38;
+    --surface-2:#1E2444;
+    --ink:#E9ECFA;
+    --ink-soft:#A7AECB;
+    --ink-faint:#8089AE;
+    --line:#2B3260;
+    --primary:#8FA0FF;
+    --primary-strong:#C1CBFF;
+    --primary-tint:#232A54;
+    --accent:#E3A45D;
+    --accent-tint:#3A2A15;
+    --good:#6FC796;
+    --good-tint:#16301F;
+    --warn:#E3A45D;
+    --warn-tint:#3A2A15;
+    --mark:#D9A54B;
+    --mark-tint:#332510;
+    --bad:#E27C7C;
+    --bad-tint:#3A1B1B;
+    --cat-acute:#8FA0FF;
+    --cat-acute-tint:#232A54;
+    --cat-adjust:#B79FE0;
+    --cat-adjust-tint:#2C2440;
+    --cat-chronic:#E08B77;
+    --cat-chronic-tint:#3A241E;
+    --lab-high:#E27C7C;
+    --lab-high-tint:#3A1B1B;
+    --lab-low:#8FB4E8;
+    --lab-low-tint:#1D2C48;
+    --shadow: 0 1px 2px rgba(0,0,0,.35), 0 8px 24px rgba(0,0,0,.4);
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Noto Sans JP","Hiragino Sans","Yu Gothic",system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    line-height:1.65;
+  }
+  h1,h2,h3,.disp{
+    font-family:"Zen Kaku Gothic New","Noto Sans JP",system-ui,sans-serif;
+    text-wrap:balance;
+    margin:0;
+  }
+  .mono{ font-family:"JetBrains Mono","Noto Sans JP",monospace; font-variant-numeric:tabular-nums; }
+  #app{
+    max-width:520px;
+    margin:0 auto;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+  }
+  .topbar{
+    position:sticky; top:0; z-index:20;
+    background:var(--bg);
+    border-bottom:1px solid var(--line);
+    padding:14px 18px 12px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .topbar .back{
+    appearance:none; border:none; background:transparent; color:var(--primary);
+    font-size:15px; font-weight:700; cursor:pointer; padding:6px 8px 6px 0;
+    display:flex; align-items:center; gap:2px; min-height:44px;
+    font-family:inherit;
+  }
+  .topbar .title{
+    font-size:15px; font-weight:700; color:var(--ink-soft);
+    letter-spacing:.02em;
+    flex:1;
+    text-align:center;
+    margin-right:34px;
+  }
+  main{flex:1; padding:0 18px 48px;}
+
+  /* ---------- HOME ---------- */
+  .hero{ padding:28px 4px 18px; }
+  .hero .eyebrow{
+    font-size:12px; font-weight:700; letter-spacing:.14em; color:var(--primary);
+    text-transform:uppercase;
+  }
+  .hero h1{ font-size:26px; font-weight:900; color:var(--ink); margin-top:8px; line-height:1.4; }
+  .hero p{ color:var(--ink-soft); font-size:14px; margin-top:10px; max-width:44ch; }
+  .hero .thesis{
+    margin-top:14px; padding:13px 16px; border-radius:12px;
+    background:var(--primary-tint); color:var(--primary-strong);
+    font-size:13px; font-weight:700; line-height:1.7;
+  }
+
+  .progress-card{
+    background:var(--surface); border:1px solid var(--line); border-radius:16px;
+    padding:16px 18px; margin:16px 0 8px; box-shadow:var(--shadow);
+    display:flex; align-items:center; gap:16px;
+  }
+  .progress-ring{ position:relative; width:56px; height:56px; flex:none;}
+  .progress-ring svg{ transform:rotate(-90deg); }
+  .progress-ring .pct{
+    position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+    font-size:13px; font-weight:700; font-variant-numeric:tabular-nums; color:var(--primary-strong);
+  }
+  .progress-text{flex:1;}
+  .progress-text .num{font-size:13px; font-weight:700; color:var(--ink);}
+  .progress-text .sub{font-size:12.5px; color:var(--ink-faint); margin-top:2px;}
+  .review-pill-btn{
+    appearance:none; border:1px solid var(--warn); background:var(--warn-tint); color:var(--warn);
+    font-weight:700; font-size:12.5px; padding:10px 14px; min-height:44px;
+    display:inline-flex; align-items:center; border-radius:999px; cursor:pointer;
+    white-space:nowrap; font-family:inherit;
+  }
+  .summary-cta{
+    display:flex; align-items:center; justify-content:space-between; gap:10px;
+    background:var(--primary-tint); border:1px solid var(--primary); border-radius:16px;
+    padding:14px 18px; margin:10px 0 24px; cursor:pointer;
+    width:100%; text-align:left; font-family:inherit; appearance:none;
+  }
+  .summary-cta .t{display:block; font-size:14px; font-weight:700; color:var(--primary-strong);}
+  .summary-cta .s{display:block; font-size:12px; color:var(--ink-soft); margin-top:2px;}
+  .summary-cta .arrow{color:var(--primary-strong); font-size:18px; flex:none;}
+
+  .section-head{ display:flex; align-items:baseline; gap:8px; margin:26px 0 12px; }
+  .section-head .dot{width:9px;height:9px;border-radius:50%;flex:none;}
+  .section-head.acute .dot{background:var(--cat-acute);}
+  .section-head.adjust .dot{background:var(--cat-adjust);}
+  .section-head.chronic .dot{background:var(--cat-chronic);}
+  .section-head h2{font-size:15px; font-weight:700; color:var(--ink);}
+  .section-head .count{font-size:12px; color:var(--ink-faint); font-weight:400;}
+
+  .case-grid{ display:flex; flex-direction:column; gap:10px; }
+  .case-card{
+    display:flex; align-items:center; gap:14px;
+    background:var(--surface); border:1px solid var(--line); border-radius:14px;
+    padding:14px 14px; cursor:pointer; text-align:left; width:100%;
+    box-shadow:var(--shadow); font-family:inherit;
+    appearance:none;
+  }
+  .case-card:active{ transform:scale(.99); }
+  .ion-badge{
+    flex:none; width:38px; height:38px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-family:"Zen Kaku Gothic New",sans-serif; font-weight:900; font-size:13.5px;
+  }
+  .ion-badge.acute{ background:var(--cat-acute-tint); color:var(--cat-acute); }
+  .ion-badge.adjust{ background:var(--cat-adjust-tint); color:var(--cat-adjust); }
+  .ion-badge.chronic{ background:var(--cat-chronic-tint); color:var(--cat-chronic); }
+  .case-body{flex:1; min-width:0; display:flex; flex-direction:column; gap:3px;}
+  .case-body .hint{
+    font-size:14px; font-weight:600; color:var(--ink); line-height:1.4;
+    display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;
+  }
+  .status-chip{
+    flex:none; align-self:flex-start; font-size:11.5px; font-weight:700; padding:5px 10px; border-radius:999px;
+    white-space:nowrap;
+  }
+  .status-chip.none{ background:var(--surface-2); color:var(--ink-faint); }
+  .status-chip.good{ background:var(--good-tint); color:var(--good); }
+  .status-chip.partial{ background:var(--warn-tint); color:var(--warn); }
+  .status-chip.poor{ background:var(--bad-tint); color:var(--bad); }
+
+  .empty-review{ text-align:center; padding:40px 20px; color:var(--ink-faint); font-size:14px; }
+
+  /* ---------- CASE VIEW ---------- */
+  .case-hero{ padding:22px 0 4px; }
+  .case-hero .tag{ font-size:12px; font-weight:700; letter-spacing:.08em; }
+  .case-hero .tag.acute{ color:var(--cat-acute); } .case-hero .tag.adjust{ color:var(--cat-adjust); } .case-hero .tag.chronic{ color:var(--cat-chronic); }
+  .case-hero h1{ font-size:21px; font-weight:900; margin-top:8px; }
+
+  .vignette{
+    background:var(--surface); border:1px solid var(--line); border-radius:16px;
+    padding:18px 20px; margin-top:16px; box-shadow:var(--shadow); font-size:15.5px; color:var(--ink);
+  }
+  .lab-strip{ margin-top:12px; padding-top:12px; border-top:1px dashed var(--line); display:flex; flex-wrap:wrap; gap:7px; }
+  .lab-chip{
+    display:inline-flex; align-items:baseline; gap:5px; padding:5px 10px; border-radius:8px;
+    font-size:12.5px; font-weight:600;
+  }
+  .lab-chip .k{ color:inherit; opacity:.75; font-weight:700; }
+  .lab-chip .v{ font-family:"JetBrains Mono",monospace; font-weight:700; font-variant-numeric:tabular-nums; }
+  .lab-chip .u{ font-size:10.5px; opacity:.7; }
+  .lab-chip.high{ background:var(--lab-high-tint); color:var(--lab-high); }
+  .lab-chip.low{ background:var(--lab-low-tint); color:var(--lab-low); }
+  .lab-chip.normal{ background:var(--surface-2); color:var(--ink-soft); }
+  .finding-line{ margin-top:10px; font-size:12.5px; color:var(--ink-soft); }
+  .finding-line b{ color:var(--ink); font-weight:700; }
+
+  .selfcheck-card, .answer-report{
+    background:var(--surface); border:1px solid var(--line); border-radius:16px;
+    padding:4px 20px 6px; margin-top:20px; box-shadow:var(--shadow);
+  }
+  .sc-row{ padding:16px 0; border-bottom:1px dashed var(--line); }
+  .sc-row:last-child{ border-bottom:none; }
+  .sc-row label{ display:flex; align-items:baseline; gap:8px; font-size:13.5px; font-weight:700; color:var(--ink); margin-bottom:9px; }
+  .sc-row label .n{ color:var(--primary); flex:none; }
+  .sc-row textarea{
+    width:100%; min-height:54px; max-height:320px; overflow-y:auto; resize:vertical; border-radius:10px;
+    border:1px solid var(--line); background:var(--bg); color:var(--ink);
+    padding:10px 12px; font-family:inherit; font-size:14.5px; line-height:1.6;
+  }
+  .sc-row textarea:focus{ outline:2px solid var(--primary); outline-offset:1px; }
+  .sc-row textarea::placeholder{ color:var(--ink-faint); }
+
+  .ar-row{ padding:16px 0; border-bottom:1px dashed var(--line); }
+  .ar-row:last-child{ border-bottom:none; }
+  .ar-row h3{ display:flex; align-items:center; gap:9px; font-size:13.5px; font-weight:700; margin-bottom:9px; }
+  .ar-row .ico{
+    width:23px;height:23px;border-radius:7px;flex:none; display:flex;align-items:center;justify-content:center;
+    font-size:12px; font-weight:900; color:#fff;
+  }
+  .ico.urgent{ background:var(--bad); }
+  .ico.treat{ background:var(--primary-strong); }
+  .ico.stop{ background:var(--warn); }
+  .ico.rate{ background:var(--cat-adjust); }
+  .ar-row ul{ margin:0; padding-left:19px; font-size:15.5px; color:var(--ink); }
+  .ar-row li{ margin-bottom:6px; } .ar-row li:last-child{ margin-bottom:0; }
+
+  .reveal-btn{
+    width:100%; margin-top:22px; appearance:none; border:none; cursor:pointer;
+    background:var(--primary); color:#fff; font-weight:700; font-size:15px;
+    padding:15px; border-radius:14px; font-family:inherit;
+    box-shadow:0 4px 14px rgba(59,78,168,.28);
+  }
+  .reveal-btn:active{ transform:scale(.99); }
+
+  .answer-wrap{ margin-top:26px; }
+  .diagnosis-reveal{
+    background:var(--primary-tint); border:1.5px solid var(--primary); border-radius:16px;
+    padding:18px 20px; margin-bottom:16px; text-align:center;
+  }
+  .diagnosis-reveal .dr-eyebrow{ font-size:11px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--primary-strong); }
+  .diagnosis-reveal .dr-title{
+    font-family:"Zen Kaku Gothic New",sans-serif; font-size:20px; font-weight:900;
+    margin-top:6px; color:var(--ink);
+  }
+  .diagnosis-reveal .dr-sub{ font-size:12.5px; margin-top:6px; color:var(--ink-soft); }
+
+  .pitfall-block{
+    background:var(--warn-tint); border:2px solid var(--warn); border-radius:16px;
+    padding:18px 20px; margin-bottom:20px; box-shadow:0 4px 16px -6px rgba(149,74,24,.35);
+  }
+  .pitfall-block .pf-label{
+    display:flex; align-items:center; gap:8px;
+    font-size:12.5px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--warn);
+    margin-bottom:10px;
+  }
+  .pitfall-block .pf-mark{
+    width:26px;height:26px;border-radius:50%;background:var(--warn);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:900;flex:none;
+  }
+  .pitfall-block p{ margin:0; font-size:15px; color:var(--ink); line-height:1.75; }
+
+  .answer-wrap .divider{ display:flex; align-items:center; gap:10px; margin-bottom:16px; }
+  .answer-wrap .divider .line{ flex:1; height:1px; background:var(--line); }
+  .answer-wrap .divider span{ font-size:12px; font-weight:700; color:var(--ink-faint); letter-spacing:.08em;}
+
+  mark{
+    background:var(--mark-tint); color:var(--mark); padding:1px 5px; border-radius:5px;
+    font-weight:700; box-decoration-break:clone; -webkit-box-decoration-break:clone;
+  }
+
+  .rx-block{
+    background:var(--surface); border:1px solid var(--primary); border-radius:16px;
+    padding:16px 18px; margin-top:20px; box-shadow:var(--shadow);
+  }
+  .rx-label{
+    display:flex; align-items:center; gap:8px;
+    font-size:13px; font-weight:700; color:var(--primary-strong); margin-bottom:8px;
+  }
+  .rx-mark{
+    width:22px;height:22px;border-radius:7px;background:var(--primary);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;flex:none;
+    font-family:"Zen Kaku Gothic New",sans-serif;
+  }
+  .rx-caveat{ margin:0 0 10px; font-size:12px; color:var(--ink-faint); line-height:1.6; }
+  .rx-block ul{ margin:0; padding-left:18px; font-size:14.5px; color:var(--ink); line-height:1.7; }
+  .rx-block li{ margin-bottom:8px; } .rx-block li:last-child{ margin-bottom:0; }
+  .rx-block .mono{ font-size:.95em; }
+
+  .pearl-block{
+    background:var(--surface-2); border:1px solid var(--line); border-radius:16px;
+    padding:16px 18px; margin-top:20px;
+  }
+  .pearl-block .pb-label{ font-size:11.5px; font-weight:700; letter-spacing:.06em; color:var(--ink-faint); text-transform:uppercase; margin-bottom:8px; }
+  .pearl-block ul{ margin:0; padding-left:18px; font-size:14.5px; color:var(--ink-soft); line-height:1.6; }
+  .pearl-block li{ margin-bottom:6px; } .pearl-block li:last-child{ margin-bottom:0; }
+
+  .refs-block{ margin-top:16px; padding-top:14px; border-top:1px dashed var(--line); }
+  .refs-block h4{ font-size:12px; font-weight:700; color:var(--ink-faint); letter-spacing:.06em; margin-bottom:8px; }
+  .refs-block ol{ margin:0; padding-left:19px; font-size:12.5px; color:var(--ink-soft); line-height:1.6; }
+  .refs-block li{ margin-bottom:7px; } .refs-block li:last-child{ margin-bottom:0; }
+  .refs-block a{ color:var(--ink-soft); text-decoration:underline; text-underline-offset:2px; word-break:break-all; }
+  .refs-block a:hover{ color:var(--primary); }
+
+  .assess-block{ margin-top:26px; }
+  .assess-block .q{ font-size:14px; font-weight:700; margin-bottom:12px; text-align:center; }
+  .assess-row{ display:flex; gap:8px; }
+  .assess-btn{
+    flex:1; appearance:none; cursor:pointer; border-radius:12px; padding:13px 6px;
+    font-family:inherit; font-size:12.5px; font-weight:700; line-height:1.4;
+    border:1.5px solid var(--line); background:var(--surface); color:var(--ink-soft);
+  }
+  .assess-btn.good{ border-color:var(--good); }
+  .assess-btn.partial{ border-color:var(--warn); }
+  .assess-btn.poor{ border-color:var(--bad); }
+  .assess-btn.good.active{ background:var(--good); color:#fff; }
+  .assess-btn.partial.active{ background:var(--warn); color:#fff; }
+  .assess-btn.poor.active{ background:var(--bad); color:#fff; }
+  .save-warning{
+    margin-top:12px; padding:10px 14px; border-radius:10px;
+    background:var(--bad-tint); color:var(--bad); font-size:12.5px; font-weight:600; line-height:1.5;
+  }
+
+  .after-assess{ margin-top:22px; display:flex; flex-direction:column; gap:10px; animation:fadein .3s ease; }
+  @keyframes fadein{ from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);} }
+  .nav-btn{ appearance:none; border:none; cursor:pointer; border-radius:12px; padding:14px; font-family:inherit; font-size:14.5px; font-weight:700; text-align:center; }
+  .nav-btn.primary{ background:var(--primary); color:#fff; }
+  .nav-btn.ghost{ background:var(--surface-2); color:var(--ink-soft); border:1px solid var(--line); }
+
+  /* ---------- APPROACH (初動まとめ) VIEW ---------- */
+  .approach-hero{ padding:24px 0 6px; }
+  .approach-hero .eyebrow{ font-size:12px; font-weight:700; color:var(--primary); letter-spacing:.1em; text-transform:uppercase;}
+  .approach-hero h1{ font-size:22px; font-weight:900; margin-top:8px; }
+  .approach-hero p{ font-size:13.5px; color:var(--ink-soft); margin-top:8px; }
+
+  .goal-note{
+    margin-top:18px; padding:16px 18px; border-radius:14px;
+    background:var(--accent-tint); border:1.5px solid var(--accent);
+  }
+  .goal-note .gn-label{ font-size:12px; font-weight:700; letter-spacing:.06em; color:var(--accent); text-transform:uppercase; }
+  .goal-note .gn-body{ font-size:13.5px; color:var(--ink); margin-top:6px; line-height:1.7; }
+
+  .flow{ margin-top:22px; position:relative; }
+  .flow-step{ display:flex; gap:14px; position:relative; padding-bottom:22px; }
+  .flow-step:last-child{ padding-bottom:0; }
+  .flow-step .rail{ display:flex; flex-direction:column; align-items:center; flex:none; }
+  .flow-step .node{
+    width:32px; height:32px; border-radius:50%; background:var(--primary); color:#fff;
+    display:flex; align-items:center; justify-content:center; font-weight:900; font-size:13px;
+    font-family:"Zen Kaku Gothic New",sans-serif; flex:none; z-index:1;
+  }
+  .flow-step .stem{ width:2px; flex:1; background:var(--line); margin-top:2px; }
+  .flow-step .content{ flex:1; background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:14px 16px; box-shadow:var(--shadow); margin-top:1px;}
+  .flow-step .content h3{ font-size:14.5px; font-weight:700; }
+  .flow-step .content p{ font-size:13px; color:var(--ink-soft); margin-top:5px; }
+
+  .axis-section-title{ font-size:16px; font-weight:700; color:var(--ink); margin:32px 0 6px; }
+  .axis-section-note{ font-size:13px; color:var(--ink-soft); margin:0 0 16px; }
+
+  .axis-card{
+    background:var(--surface); border:1px solid var(--line); border-left:4px solid var(--primary);
+    border-radius:14px; padding:16px 18px; margin-bottom:14px; box-shadow:var(--shadow);
+  }
+  .axis-card.acute{ border-left-color:var(--cat-acute); }
+  .axis-card.adjust{ border-left-color:var(--cat-adjust); }
+  .axis-card.chronic{ border-left-color:var(--cat-chronic); }
+  .axis-head{ display:flex; align-items:center; gap:9px; margin-bottom:8px; }
+  .axis-dot{ width:9px; height:9px; border-radius:50%; flex:none; background:var(--primary); }
+  .axis-card.acute .axis-dot{ background:var(--cat-acute); }
+  .axis-card.adjust .axis-dot{ background:var(--cat-adjust); }
+  .axis-card.chronic .axis-dot{ background:var(--cat-chronic); }
+  .axis-head h3{ font-size:15px; font-weight:700; color:var(--ink); }
+  .axis-intro{ font-size:13.5px; color:var(--ink-soft); margin:0 0 12px; line-height:1.7; }
+  .axis-steps{ margin:0 0 12px; padding-left:20px; display:flex; flex-direction:column; gap:11px; }
+  .axis-steps li{ font-size:14px; line-height:1.75; }
+  .axis-steps li b{ display:block; color:var(--ink); font-weight:700; margin-bottom:3px; }
+  .axis-steps li span{ color:var(--ink-soft); }
+  .axis-note{
+    background:var(--surface-2); border-radius:10px; padding:11px 13px;
+    font-size:13.5px; color:var(--ink); line-height:1.65; margin-bottom:9px;
+  }
+  .axis-refs{ font-size:11px; color:var(--ink-faint); }
+
+  .approach-foot{
+    margin-top:26px; padding:16px 18px; background:var(--primary-tint); border-radius:14px;
+    font-size:13px; color:var(--primary-strong); text-align:center; font-weight:700;
+  }
+
+  .global-note{
+    margin-top:20px; padding:16px 18px; border-radius:14px;
+    background:var(--surface-2); border:1px solid var(--line);
+  }
+  .global-note .gl-label{ font-size:11.5px; font-weight:700; letter-spacing:.06em; color:var(--ink-faint); text-transform:uppercase; margin-bottom:6px; }
+  .global-note p{ font-size:13px; color:var(--ink-soft); line-height:1.75; margin:0; }
+
+  .disclaimer{ margin-top:30px; padding:14px 16px; font-size:11.5px; color:var(--ink-faint); line-height:1.7; border-top:1px solid var(--line); }
+
+  a{color:var(--primary);}
+  button:focus-visible, textarea:focus-visible, .case-card:focus-visible{ outline:2px solid var(--primary); outline-offset:2px; }
+
+  @media (max-width:380px){
+    .assess-btn{ font-size:11px; padding:12px 3px; }
+  }
+
+  @media (hover:hover){
+    .case-card:hover{ border-color:var(--primary); }
+    .summary-cta:hover{ background:var(--primary-tint); filter:brightness(0.97); }
+    .review-pill-btn:hover{ filter:brightness(0.95); }
+    .reveal-btn:hover{ filter:brightness(1.08); }
+    .assess-btn:hover{ border-color:var(--primary); }
+    .nav-btn.primary:hover{ filter:brightness(1.08); }
+    .nav-btn.ghost:hover{ border-color:var(--primary); }
+    .topbar .back:hover{ text-decoration:underline; }
+  }
+</style>
+</head>
+<body>
+
+<div id="app"></div>
+<script>
+(function(){
+  "use strict";
+
+  var CAT_LABEL = { acute:"急性心不全：病態別の初期対応", adjust:"利尿薬・増悪因子・心腎連関", chronic:"心不全の分類と慢性期治療" };
+  var CAT_BADGE = { acute:"急", adjust:"治", chronic:"慢" };
+
+  var CASES = [
+    {
+      id:"cardiogenic_shock", num:1, cat:"acute", tag:"急性期・緊急",
+      title:"心原性ショック（うっ血＋低灌流）", hint:"68歳男性・広範囲前壁中隔梗塞後・急速に進行する呼吸困難と四肢冷感",
+      vignette:"68歳男性。3日前に広範囲前壁中隔梗塞に対し緊急PCIを受けた。本日から呼吸困難が急速に進行し、四肢冷感・冷汗が出現、応答が鈍くなり搬送された。頸静脈怒張と両側の湿性ラ音を聴取し、四肢は湿潤冷感、尿量はこの3時間でごく少量。",
+      labs:[ {k:"収縮期血圧",v:"78",u:"mmHg",abn:"low"}, {k:"乳酸",v:"4.2",u:"mmol/L",abn:"high"}, {k:"BNP",v:"980",u:"pg/mL",abn:"high"}, {k:"Cr",v:"1.8",u:"mg/dL",abn:"high"} ],
+      finding:"心エコー：LVEF 25%、びまん性壁運動低下。尿量は30mL/時未満。",
+      answer:{
+        urgent:["<mark>収縮期血圧90mmHg未満（または平均動脈圧60mmHg未満、基礎値からの30mmHg以上の低下）に乏尿(尿量30mL/時未満)や乳酸2mmol/L超などの低灌流所見が伴えば心原性ショック</mark>と判断する","うっ血(頸静脈怒張・ラ音)と低灌流(冷感・乳酸上昇・乏尿)が<mark>同時に存在するwet & coldは最重症パターン</mark>と認識し、直ちにCCU/ICUレベルの対応につなげる"],
+        treat:["<mark>再梗塞・機械的合併症の検索と並行して、まず循環をどう支えるかを決める</mark>","<mark>低灌流が主体のため血管拡張薬や利尿薬単独ではなく、まず強心薬・昇圧薬</mark>で灌流を確保する。反応不良ならIABP/Impella等の機械的補助循環も早期に検討する"],
+        stop:["<mark>血圧の低い患者への硝酸薬や、後負荷・前負荷を下げる薬剤の新規投与・増量は中止</mark>する(後負荷軽減薬は血圧が保たれてから)","再梗塞・機械的合併症(乳頭筋断裂、心室中隔穿孔など)の検索を並行して行う"],
+        rate:["<mark>乳酸値・尿量・意識レベルで灌流の改善を追う</mark>","循環が安定したら早期にうっ血の評価に切り替え、利尿薬導入のタイミングを計る"]
+      },
+      rx:["<mark>ノルアドレナリン</mark>を0.05〜0.1γ(μg/kg/分)程度から開始し、平均動脈圧65mmHg以上を目標に漸増する。<mark>体液量を確保してもなお血圧が低い/ショックが続く場合の第一選択</mark>(JCS/JHFS 2025でIIa・B-R)","肺うっ血があり低心拍出・低灌流所見はあるが血圧の低下が著明でない場合は<mark>ドブタミン</mark>2〜5γから開始し、収縮力と心拍出量の改善を見ながら調整する(JCS/JHFS 2025でIIa・C-LD。頻脈・不整脈に注意)","薬物治療への反応が乏しい場合はIABP、Impella、V-A ECMOなど機械的循環補助を早期に循環器専門医・心臓外科と相談する","心筋梗塞後の心原性ショックでは緊急冠動脈造影・再血行再建の適応を並行して評価する"],
+      pitfall:"「肺にラ音があるから硝酸薬・利尿薬でうっ血を取る」という発想を血圧の低い本症例に適用すると、<mark>前負荷・血圧をさらに下げて灌流を悪化させ、ショックを増悪させる</mark>。うっ血があっても血圧が保たれていなければ血管拡張薬は使わない。",
+      pearl:["心不全の初期評価は<mark>うっ血(wet/dry)</mark>と<mark>低灌流(warm/cold)</mark>を分けて考える2軸が基本で、心不全は「EFが低い病気」ではなく症状・所見から評価する臨床症候群である","wet & coldは<mark>うっ血+低灌流が同時に存在する最重症パターン</mark>で、強心薬・昇圧薬とうっ血治療の両方が必要になりうるが、血圧が保たれるまでは前負荷を下げる治療を急がない","心原性ショックでは<mark>ノルアドレナリン</mark>、うっ血+低心拍出・低灌流(血圧はある程度保たれる場合)では<mark>ドブタミン</mark>など、病態に応じて薬剤を選択する","ショックのない患者へのルーチンの強心薬投与は避ける"],
+      refs:[ {author:"Kitai T, Kohsaka S, et al. (日本循環器学会/日本心不全学会 合同ガイドライン).", title:"2025年改訂版 心不全診療ガイドライン", source:"Circulation Journal 89(8):1278-1444 / j-circ.or.jp", year:"2025", url:"https://www.j-circ.or.jp/cms/wp-content/uploads/2025/03/JCS2025_Kato.pdf"}, {author:"Kitai T, Kohsaka S, et al.", title:"JCS/JHFS 2025 Guideline on Diagnosis and Treatment of Heart Failure", source:"Circulation Journal (J-STAGE)", year:"2025", url:"https://www.jstage.jst.go.jp/article/circj/advpub/0/advpub_CJ-25-0002/_html/-char/en"}, {author:"Nohria A, Tsang SW, Fang JC, et al.", title:"Clinical assessment identifies hemodynamic profiles that predict outcomes in patients admitted with heart failure", source:"Journal of the American College of Cardiology", year:"2003", url:"https://doi.org/10.1016/S0735-1097(03)00328-5"} ]
+    },
+    {
+      id:"hypertensive_pulmonary_edema", num:2, cat:"acute", tag:"急性期・緊急",
+      title:"高血圧性急性肺水腫（うっ血＋高血圧、低灌流なし）", hint:"72歳女性・降圧薬の自己中断・突然発症の起座呼吸とSpO2低下",
+      vignette:"72歳女性。高血圧の治療を自己中断していた。夕食後に突然の呼吸困難が出現し、座らないと息ができない状態(起座呼吸)で救急搬送された。呼吸数34/分。四肢は温かく、末梢冷感はない。",
+      labs:[ {k:"収縮期血圧",v:"218",u:"mmHg",abn:"high"}, {k:"SpO2",v:"84",u:"%",abn:"low"}, {k:"BNP",v:"620",u:"pg/mL",abn:"high"}, {k:"Cr",v:"1.0",u:"mg/dL",abn:"normal"} ],
+      finding:"身体所見：両側全肺野に湿性ラ音、起座呼吸、四肢温感(末梢冷感なし)。胸部X線:両側びまん性肺水腫像。心エコー:LVEF 55%、著明な左室肥大。",
+      answer:{
+        urgent:["<mark>SpO2 84%（<90%が酸素投与の目安）</mark>であり、まず酸素化を確保する","呼吸数25/分超・SpO2 90%未満の呼吸不全では<mark>酸素だけで不十分ならNPPVを速やかに導入する</mark>(挿管を要する呼吸不全への進行を防ぐ)"],
+        treat:["<mark>血圧が高く保たれ四肢が温かい(warm)、低灌流所見のないwet & warmでは、原因精査より先に後負荷軽減が治療の中心</mark>となる","硝酸薬などの<mark>血管拡張薬を静注</mark>し、NPPVを早期に併用する。本態は血管内容量の著増というより血圧上昇による急激な体液再分布であることが多く、利尿薬は補助的位置づけになる"],
+        stop:["<mark>血圧が高い患者にβ遮断薬を新規に急速増量しない</mark>(急性期は後負荷軽減を優先)","高血圧治療の自己中断が誘因であるため、内服アドヒアランスの再確認・簡素化を検討する"],
+        rate:["血圧・呼吸数・SpO2を<mark>数分〜十数分単位</mark>で追い、NPPVからの離脱・酸素漸減のタイミングを判断する","血圧が安定したら経口降圧薬への切り替えと退院後の服薬継続支援を計画する"]
+      },
+      rx:["硝酸イソソルビドまたはニトログリセリンを0.5〜1γ(μg/kg/分)程度から開始し、収縮期血圧を20〜30%程度低下、または症状改善を指標に漸増する。過度な血圧低下に注意","NPPV(CPAP 5〜10cmH2O、またはBiPAP)を、呼吸数>25/分・SpO2<90%が持続する時点で速やかに開始する(JCS/JHFS 2025でClass I・レベルA)","著明な体液過剰所見があれば少量のループ利尿薬(フロセミド静注)を併用するが、本症例のような急激な血圧上昇主体の肺水腫では血管拡張薬が治療の中心になる"],
+      pitfall:"「肺水腫だからまず利尿薬」を反射的に行うと、<mark>本態が血管内容量過多ではなく血圧上昇による急激な体液再分布</mark>である場合には効果が乏しく、後負荷軽減という本質的な治療が遅れる。酸素も漫然と高流量で行うのではなく、SpO2を見ながらNPPVへの切り替えを検討する。",
+      pearl:["高血圧性急性肺水腫は<mark>体液量そのものは大きく増えていないことが多く、血圧上昇による前負荷・後負荷の急激な変化</mark>が本態であることが多い","治療の中心は<mark>血管拡張薬+NPPV</mark>であり、利尿薬は補助的位置づけになることが多い","酸素はルーチンではなく<mark>SpO2<90%またはPaO2<60mmHgが目安</mark>(Class I)で開始し、呼吸数>25/分・SpO2<90%が続くならNPPVを早期に検討する(Class I・レベルA)","高血圧治療のアドヒアランス不良は急性心不全の代表的な増悪因子である"],
+      refs:[ {author:"Kitai T, Kohsaka S, et al.", title:"JCS/JHFS 2025 Guideline on Diagnosis and Treatment of Heart Failure（酸素療法・NPPVに関する推奨）", source:"Circulation Journal (J-STAGE)", year:"2025", url:"https://www.jstage.jst.go.jp/article/circj/advpub/0/advpub_CJ-25-0002/_html/-char/en"}, {author:"日本循環器学会/日本心不全学会.", title:"2025年改訂版 心不全診療ガイドライン", source:"j-circ.or.jp", year:"2025", url:"https://www.j-circ.or.jp/cms/wp-content/uploads/2025/03/JCS2025_Kato.pdf"} ]
+    },
+    {
+      id:"typical_congestion", num:3, cat:"acute", tag:"急性期",
+      title:"血圧の保たれた典型的な急性非代償性心不全", hint:"78歳男性・慢性HFrEF通院中・塩分過多と体重増加後の労作時呼吸困難",
+      vignette:"78歳男性。慢性心不全(LVEF 32%)で通院中。1週間前から親族の集まりで塩分の多い食事が続き、体重が4kg増加。労作時の呼吸困難と下腿浮腫が進行し外来受診した。血圧128/74mmHg、脈拍88/分、四肢は温かい。",
+      labs:[ {k:"BNP",v:"890",u:"pg/mL",abn:"high"}, {k:"Cr",v:"1.3",u:"mg/dL",abn:"high"}, {k:"Na",v:"138",u:"mEq/L",abn:"normal"}, {k:"K",v:"4.2",u:"mEq/L",abn:"normal"} ],
+      finding:"身体所見：頸静脈怒張、両側下腿浮腫++、軽度の肺ラ音、四肢温感。体重は普段のドライウェイトより+4kg。",
+      answer:{
+        urgent:["血圧は保たれ四肢も温かい<mark>wet & warm</mark>で、緊急のショック対応は不要だが、<mark>うっ血の重症度(体重増加・浮腫・頸静脈怒張)</mark>を評価する"],
+        treat:["<mark>体液貯留の明らかなwet & warmでは、ループ利尿薬の静注が治療の基本</mark>となる","入院の上でフロセミド静注を開始し、<mark>尿量・体重・症状・うっ血所見で反応を見ながら</mark>用量を調整する"],
+        stop:["<mark>塩分制限の徹底</mark>と、増悪因子(NSAIDs使用、内服アドヒアランス)を確認する","腎機能を見ながら、利尿薬以外のGDMT(β遮断薬など)は急性増悪期でも自己判断で中断させない"],
+        rate:["<mark>Na・K・Crを毎日フォロー</mark>し、尿量と体重減少(1日0.5〜1kg程度を目安)で反応性を評価する","うっ血が十分解除された後にGDMT(4本柱)の導入・増量を進め、退院に備える"]
+      },
+      rx:["フロセミド静注20〜40mgから開始(普段の内服ループ利尿薬の1〜2.5倍量が目安)、反応(尿量・体重)を見て増量・持続静注への切り替えを検討する","目標は数日でドライウェイトに近い体重まで除水すること。過度な急速除水は腎機能悪化・電解質異常を招くため、日々の反応を見ながら調整する","<mark>ループ利尿薬はうっ血の解除・症状改善・増悪予防が目的であり、生命予後を改善するというエビデンスは確立していない</mark>(JCS/JHFS 2025)。うっ血が改善したらできるだけ早期にβ遮断薬・ARNI/ACE阻害薬・MRA・SGLT2阻害薬などのGDMTを見直し、可能な範囲で導入・増量する"],
+      pitfall:"「呼吸困難だからとりあえずラシックス」で終わらせず、<mark>塩分過多や服薬中断など今回の増悪因子を特定し、退院後の再発予防につなげる視点</mark>が抜けやすい。利尿薬は予後改善薬ではなく<mark>うっ血解除・症状改善が主目的</mark>であることも忘れない。",
+      pearl:["<mark>ループ利尿薬はうっ血症状を速やかに改善させ増悪を防ぐが、それ自体が生命予後を改善するというエビデンスはない</mark>(JCS/JHFS 2025でClass I・C-LD、根拠は症状改善・増悪予防)","治療反応の評価は尿量だけでなく<mark>体重・症状・身体所見(頸静脈怒張、浮腫、ラ音)</mark>を組み合わせる","うっ血が解除された後こそ、<mark>4本柱のGDMT導入・増量の好機</mark>である","塩分制限や内服アドヒアランスなど生活面の増悪因子への介入をセットで行う"],
+      refs:[ {author:"Kitai T, Kohsaka S, et al.", title:"JCS/JHFS 2025 Guideline on Diagnosis and Treatment of Heart Failure（うっ血管理・利尿薬に関する推奨）", source:"Circulation Journal (J-STAGE)", year:"2025", url:"https://www.jstage.jst.go.jp/article/circj/advpub/0/advpub_CJ-25-0002/_html/-char/en"} ]
+    },
+    {
+      id:"diuretic_resistance", num:4, cat:"adjust", tag:"利尿薬抵抗性",
+      title:"利尿薬抵抗性心不全", hint:"82歳女性・CKD合併・ループ利尿薬増量でも尿量が増えない",
+      vignette:"82歳女性。慢性心不全とCKD(eGFR 28)を合併。今回の非代償化に対しフロセミド静注40mg×2/日で治療中だが、3日経過しても尿量が増えず体重も減少しない。血圧110/64mmHg、頸静脈怒張・両側下腿浮腫が持続。",
+      labs:[ {k:"BNP",v:"1250",u:"pg/mL",abn:"high"}, {k:"Cr",v:"2.1",u:"mg/dL",abn:"high"}, {k:"Na",v:"133",u:"mEq/L",abn:"low"}, {k:"eGFR",v:"28",u:"mL/分/1.73m²",abn:"low"} ],
+      finding:"尿量800mL/日前後で増加なし。フロセミド静注量を増量しても反応不良(利尿薬抵抗性)。",
+      answer:{
+        urgent:["血圧は保たれており緊急のショック対応は不要だが、<mark>体液貯留が持続し呼吸状態悪化のリスク</mark>があるため放置しない"],
+        treat:["<mark>ループ利尿薬の単純な増量だけでなく、作用機序の異なる利尿薬の併用(ネフロン遠位のブロック)</mark>を検討する","<mark>サイアザイド系利尿薬の併用</mark>(sequential nephron blockade)や<mark>トルバプタン</mark>の追加を検討する"],
+        stop:["過度な塩分・水分制限の確認と、NSAIDs等<mark>利尿薬の効果を妨げる薬剤</mark>がないか点検する","腎血流を下げうる過度な降圧・脱水を避け、利尿薬の作用に必要な腎灌流を保つ"],
+        rate:["<mark>Na・K・Crを必ず追う</mark>。利尿薬抵抗性への対応では電解質異常・急性腎障害のリスクが高まる","尿量・体重の反応を毎日評価し、改善が乏しければ限外濾過(除水療法)も選択肢に入れる"]
+      },
+      rx:["フロセミド持続静注(例:5〜10mg/時)への切り替え、または投与間隔短縮によるピーク濃度の維持を検討する","サイアザイド系(トリクロルメチアジド等)をループ利尿薬と併用し、遠位尿細管でのNa再吸収も同時にブロックする(sequential nephron blockade。JCS/JHFS 2025でIIa・B-R、CLOROTIC試験)。低K血症・脱水に厳重注意","<mark>トルバプタン(サムスカ)</mark>7.5mg/日からの追加を検討する(JCS/JHFS 2025でIIa・B-R、国内AQUAMARINE/K-STAR試験等)。ただし<mark>長期使用による予後改善の根拠は確立しておらず、慎重に位置づける薬剤</mark>であることを踏まえる。入院下でのNaモニタリングが前提","内科的治療に抵抗性の高度体液過剰では<mark>限外濾過(ECUM等)</mark>を腎臓内科と相談する"],
+      pitfall:"「尿が出ないからループ利尿薬をとにかく増量する」だけを繰り返すと、<mark>単一のネフロン部位をブロックし続けても他部位での代償性Na再吸収が起こり効果が頭打ちになる</mark>。増量一辺倒ではなく、作用点の異なる利尿薬の併用に発想を切り替える。トルバプタンも「追加すれば安心」ではなく位置づけを正しく理解して使う。",
+      pearl:["利尿薬抵抗性は<mark>腎血流低下・低アルブミン血症・腸管浮腫による吸収不良・慢性利尿薬使用によるネフロン肥大</mark>など複数の機序が関与する","ループ利尿薬+サイアザイド系の併用は<mark>sequential nephron blockade</mark>と呼ばれ、単剤増量より有効なことがある(CLOROTIC試験)","トルバプタンは<mark>電解質を伴わない水利尿</mark>のため低Na血症合併例にも使いやすいが、<mark>長期予後改善のエビデンスは確立していない</mark>(JCS/JHFS 2025)ため位置づけを理解して使う","改善が乏しい高度体液過剰では<mark>限外濾過</mark>も治療選択肢に入る"],
+      refs:[ {author:"Kitai T, Kohsaka S, et al.", title:"JCS/JHFS 2025 Guideline on Diagnosis and Treatment of Heart Failure（利尿薬抵抗性への対応）", source:"Circulation Journal (J-STAGE)", year:"2025", url:"https://www.jstage.jst.go.jp/article/circj/advpub/0/advpub_CJ-25-0002/_html/-char/en"}, {author:"Trullàs JC, et al.", title:"Combining loop with thiazide diuretics for decompensated heart failure: the CLOROTIC trial", source:"European Heart Journal", year:"2023", url:"https://doi.org/10.1093/eurheartj/ehac689"} ]
+    },
+    {
+      id:"precipitating_afib", num:5, cat:"adjust", tag:"増悪因子・緊急",
+      title:"心房細動の急性増悪による心不全の非代償化", hint:"75歳男性・安定していたHFrEF・動悸を契機に急速に進行する呼吸困難",
+      vignette:"75歳男性。安定していた慢性心不全(LVEF 35%)で通院中。2日前からの動悸を自覚し、その後急速に呼吸困難が進行して受診した。血圧104/68mmHg、脈拍156/分不整。",
+      labs:[ {k:"心拍数",v:"156",u:"/分",abn:"high"}, {k:"SpO2",v:"92",u:"%",abn:"low"}, {k:"BNP",v:"1100",u:"pg/mL",abn:"high"}, {k:"Hb",v:"13.2",u:"g/dL",abn:"normal"} ],
+      finding:"心電図：心房細動、心拍数156/分。両側肺うっ血像あり。TSH正常、WBC/CRP正常(感染所見なし)。",
+      answer:{
+        urgent:["<mark>頻脈性心房細動による急性増悪</mark>であり、血行動態が不安定であれば緊急除細動も考慮する","本症例は血圧が保たれているため、まず薬物によるレートコントロールから開始できる"],
+        treat:["<mark>心不全の治療(利尿薬など)だけでなく、増悪因子そのもの(頻脈性心房細動)への対応を同時に行う</mark>ことが本質的な治療になる","うっ血に対する利尿薬に加え、<mark>レートコントロール(ジゴキシン、少量のβ遮断薬など)</mark>を心機能を見ながら開始する"],
+        stop:["<mark>血行動態が不安定な急性期に非ジヒドロピリジン系Ca拮抗薬(ベラパミル等)は陰性変力作用のため避ける</mark>","脱水を助長する要因があれば是正しつつ、抗凝固療法の適応(CHADS2/CHA2DS2-VAScスコア)を評価する"],
+        rate:["心拍数・血圧・うっ血所見の推移を追い、<mark>洞調律化(除細動・抗不整脈薬)かレートコントロール継続か</mark>を再評価する","<mark>他の増悪因子(感染、貧血、腎機能悪化、NSAIDs、服薬中断)も網羅的に確認</mark>し、心房細動だけを原因と決めつけない"]
+      },
+      rx:["血行動態が保たれていればジゴキシン0.25mg静注、または少量のβ遮断薬(ビソプロロール等)からレートコントロールを開始する。急性期の高用量β遮断薬導入は陰性変力作用に注意","血行動態不安定(ショック・高度肺水腫)なら同期電気的除細動を優先する","抗凝固療法はCHADS2スコア等でリスク評価し、適応があればDOACを導入する","背景の心不全治療(利尿薬によるうっ血解除)は並行して継続する"],
+      pitfall:"「心不全の治療だけ頑張って、心房細動はレートが落ち着くまで様子を見る」では、<mark>増悪因子そのものが是正されず心不全治療の効果も乏しい</mark>ままになりやすい。心不全治療と増悪因子治療は必ずセットで行う。",
+      pearl:["急性非代償性心不全を見たら<mark>ACS、頻脈・徐脈性不整脈、感染、高血圧、弁膜症、肺塞栓、腎機能悪化、貧血、服薬中断・塩分過多、NSAIDsなど</mark>の増悪因子を必ず探す(OPTIMIZE-HFやWET-HF2などのレジストリ研究でも繰り返し重視される視点)","増悪因子の治療を怠ると<mark>心不全治療だけを繰り返しても再増悪</mark>を招く","心房細動は心不全の増悪因子であると同時に心不全自体が心房細動を誘発することもあり、<mark>双方向の関係</mark>にある"],
+      refs:[ {author:"日本循環器学会.", title:"心不全の増悪因子と管理（Best Teacher Series）", source:"日本循環器学会 j-kyoken", url:"https://www.j-circ.or.jp/committees/j-kyoken/best-teacher-series/"}, {author:"Kitai T, Kohsaka S, et al.", title:"JCS/JHFS 2025 Guideline on Diagnosis and Treatment of Heart Failure", source:"Circulation Journal (J-STAGE)", year:"2025", url:"https://www.jstage.jst.go.jp/article/circj/advpub/0/advpub_CJ-25-0002/_html/-char/en"} ]
+    },
+    {
+      id:"cardiorenal", num:6, cat:"adjust", tag:"心腎連関",
+      title:"利尿薬治療中の血清クレアチニン上昇（心腎連関）", hint:"80歳男性・利尿薬治療でうっ血改善中にCr上昇・RAAS阻害薬を中止すべきか",
+      vignette:"80歳男性。急性非代償性心不全に対しフロセミド静注とRAAS阻害薬(エナラプリル)継続で治療中。うっ血所見(浮腫・頸静脈怒張)は改善傾向で体重も2.5kg減少したが、入院3日目にCrが1.2から1.6mg/dLへ上昇した。血圧118/70mmHg、尿量は保たれている。",
+      labs:[ {k:"Cr",v:"1.6",u:"mg/dL",abn:"high"}, {k:"K",v:"4.8",u:"mEq/L",abn:"normal"}, {k:"BNP",v:"520",u:"pg/mL",abn:"high"} ],
+      finding:"浮腫軽減、頸静脈怒張改善、体重-2.5kg(うっ血改善所見)。血圧・尿量は保たれている。BNPは入院時890から改善傾向。",
+      answer:{
+        urgent:["Cr上昇のみでは緊急対応は不要だが、<mark>高K血症(目安K5.5mEq/L以上)や乏尿を伴っていないか</mark>を確認する"],
+        treat:["<mark>Crが上がったからといって直ちに利尿薬・RAAS阻害薬を中止しない</mark>。うっ血所見・体重・血圧・尿量が改善傾向であれば<mark>治療は奏効中と判断し継続を検討</mark>する","<mark>静脈うっ血そのものが腎機能を悪化させうる</mark>ことを踏まえ、脱水と決めつけず、うっ血の程度を総合的に再評価する"],
+        stop:["<mark>K 5.5mEq/L以上や急激な腎機能悪化、乏尿を伴う場合はRAAS阻害薬の減量・休止</mark>を検討するが、本症例のように軽度上昇かつうっ血改善中であれば継続を優先することが多い","脱水を示唆する所見(血圧低下、頻脈、皮膚ツルゴール低下)があれば利尿薬の減量を検討する"],
+        rate:["<mark>うっ血・血圧・尿量・K・腎機能をセットで判断</mark>し、Crだけを切り離して評価しない","数日以内に<mark>Crの再検・トレンド</mark>を確認し、改善傾向か進行性かを見極める"]
+      },
+      rx:["利尿薬に伴うCr上昇が<mark>0.3mg/dL程度まで</mark>で、うっ血改善・尿量保持・血圧安定を伴う場合は、予後を悪化させるものではないとされ<mark>利尿薬・RAAS阻害薬は継続しつつ数日以内に再検</mark>する方針が基本となる(JCS/JHFS 2025)。本症例のように+0.4mg/dLとやや上回る場合でも、うっ血・K・尿量・血圧が良好ならCrの数字だけで治療全体を中止する根拠にはしない","<mark>Kの至適範囲は概ね4〜5mEq/L</mark>とされ、高K血症を理由にRAAS阻害薬を安易に減量・中止すると心血管イベントリスクがかえって上昇しうる(JCS/JHFS 2025)。K上昇時はまず<mark>K吸着薬(ジルコニウムシクロケイ酸ナトリウム等)の併用でRAAS阻害薬継続を図る</mark>(IIa・B-R)ことを優先的に検討する","進行性の腎機能悪化・乏尿、K 5.5mEq/L以上など明確な悪化があればRAAS阻害薬の減量・休止、利尿薬速度の調整を検討する"],
+      pitfall:"「Crが上がったから脱水、利尿薬もRAAS阻害薬もすぐ中止」という短絡的な対応は、<mark>うっ血がまだ十分取れていないのに治療を止めてしまい、うっ血の再増悪とそれに伴うさらなる腎機能悪化を招く</mark>ことがある。心不全治療中のCr上昇は脱水だけが原因ではない。",
+      pearl:["心不全における腎機能悪化(worsening renal function)は<mark>脱水(前方腎灌流低下)だけでなく、静脈うっ血による腎うっ血(後方機序)</mark>でも生じる","うっ血所見・体重・血圧・尿量が改善傾向にある軽度のCr上昇は<mark>治療反応の一部として許容できることが多い</mark>","RAAS阻害薬中止の判断は<mark>Cr単独ではなくK値・尿量・血圧とセット</mark>で行う","高K血症を理由にRAAS阻害薬を安易に中止せず、<mark>K吸着薬併用などの選択肢</mark>も検討する"],
+      refs:[ {author:"Kitai T, Kohsaka S, et al.", title:"JCS/JHFS 2025 Guideline on Diagnosis and Treatment of Heart Failure（腎機能・電解質モニタリングに関する推奨）", source:"Circulation Journal (J-STAGE)", year:"2025", url:"https://www.jstage.jst.go.jp/article/circj/advpub/0/advpub_CJ-25-0002/_html/-char/en"}, {author:"Mullens W, Damman K, Testani JM, et al.", title:"Evaluation of kidney function throughout the heart failure trajectory — a position statement from the HFA of the ESC", source:"European Journal of Heart Failure", year:"2020", url:"https://doi.org/10.1002/ejhf.1697"} ]
+    },
+    {
+      id:"hfpef_ef60", num:7, cat:"chronic", tag:"診断・分類",
+      title:"EF60%でも心不全は否定できない", hint:"74歳女性・高血圧とAfの既往・労作時息切れ、LVEF 60%",
+      vignette:"74歳女性。高血圧、2型糖尿病、発作性心房細動の既往。半年前から階段昇降時の息切れと下腿浮腫が進行し受診した。心エコーでLVEF 60%、左房拡大とE/e'高値を認める。",
+      labs:[ {k:"NT-proBNP",v:"850",u:"pg/mL",abn:"high"}, {k:"LVEF",v:"60",u:"%",abn:"normal"}, {k:"Cr",v:"1.0",u:"mg/dL",abn:"normal"} ],
+      finding:"心エコー：LVEF 60%、左房容積係数拡大、E/e' 16(拡張能低下を示唆)。年齢・腎機能を考慮してもNT-proBNPは高値。",
+      answer:{
+        urgent:["緊急対応は不要だが、<mark>「EFが正常だから心不全ではない」という誤った判断をしないこと自体が本症例のポイント</mark>"],
+        treat:["<mark>症状・身体所見(呼吸困難・浮腫)＋NT-proBNP高値＋心エコーの拡張能指標(E/e'高値、左房拡大)を組み合わせてHFpEFと診断</mark>する(H2FPEFスコア等の活用も有用)","高血圧・心房細動・糖尿病など<mark>併存疾患のコントロール</mark>を治療の柱に据える"],
+        stop:["「EF60%だから心不全は否定的」として<mark>症状の原因検索や治療導入を止めてしまう誤りを避ける</mark>","過度な利尿薬投与による脱水は避ける"],
+        rate:["体重・浮腫などのうっ血所見と血圧・心房細動の管理状況を継続してフォローする","<mark>SGLT2阻害薬などのHFpEFに対するGDMT導入</mark>を進め、症状・入院回数の推移を追う"]
+      },
+      rx:["うっ血症状があればループ利尿薬で症状緩和を図る(HFrEFと同様、症状改善が主目的)","<mark>SGLT2阻害薬(ダパグリフロジンまたはエンパグリフロジン、いずれも1日1回)を導入</mark>する。HFpEFに対しJCS/JHFS 2025でClass I・レベルA(根拠となる大規模試験:EMPEROR-Preserved、DELIVER)","血圧・心房細動・糖尿病・肥満など併存疾患を積極的に治療する。特に高血圧のコントロールはHFpEFの主要な治療標的"],
+      pitfall:"「EFが60%で保たれているから心不全ではない、様子を見よう」という判断は<mark>典型的な誤り</mark>。心不全はEFで定義される疾患ではなく<mark>臨床症候群</mark>であり、拡張能障害主体のHFpEFはEFが保たれたまま生じる。",
+      pearl:["心不全は<mark>EFが低い病気ではなく、症状・身体所見・バイオマーカー・画像所見を総合して診断する臨床症候群</mark>である(2021年の心不全の普遍的定義にも基づく)","HFrEF(LVEF≤40%)・HFmrEF(41〜49%)・HFpEF(≥50%)・HFimpEF(以前LVEF≤40%から10ポイント以上改善し40%超)という分類は、<mark>あくまで治療方針を決めるための分類であり、診断そのものを否定する根拠にはならない</mark>","高齢女性・高血圧・心房細動・肥満・糖尿病はHFpEFの典型的な背景","JCS/JHFS 2025年版でもHFpEFに対するSGLT2阻害薬はClass I・レベルAとされている"],
+      refs:[ {author:"Bozkurt B, Coats AJ, Tsutsui H, et al.", title:"Universal Definition and Classification of Heart Failure", source:"Journal of Cardiac Failure", year:"2021", url:"https://doi.org/10.1016/j.cardfail.2021.01.022"}, {author:"Kitai T, Kohsaka S, et al.", title:"JCS/JHFS 2025 Guideline on Diagnosis and Treatment of Heart Failure（HFpEFの定義・診断）", source:"Circulation Journal (J-STAGE)", year:"2025", url:"https://www.jstage.jst.go.jp/article/circj/advpub/0/advpub_CJ-25-0002/_html/-char/en"}, {author:"Anker SD, Butler J, Filippatos G, et al.", title:"Empagliflozin in Heart Failure with a Preserved Ejection Fraction (EMPEROR-Preserved)", source:"New England Journal of Medicine", year:"2021", url:"https://doi.org/10.1056/NEJMoa2107038"} ]
+    },
+    {
+      id:"hfref_four_pillars", num:8, cat:"chronic", tag:"慢性期HFrEF",
+      title:"HFrEF慢性期管理：4本柱を自己判断で止めない", hint:"66歳男性・拡張型心筋症によるHFrEF・症状改善後にβ遮断薬中止を希望",
+      vignette:"66歳男性。拡張型心筋症によるHFrEF(LVEF 28%→治療後38%)で通院中。ARNI・β遮断薬・MRA・SGLT2阻害薬の4剤を内服し症状は安定、浮腫もない。血圧が108/62mmHgとやや低めなのを気にして、患者本人から「調子がいいのでβ遮断薬をやめたい」と相談された。",
+      labs:[ {k:"LVEF",v:"38",u:"%",abn:"low"}, {k:"BNP",v:"180",u:"pg/mL",abn:"normal"}, {k:"K",v:"4.9",u:"mEq/L",abn:"normal"}, {k:"Cr",v:"1.2",u:"mg/dL",abn:"normal"} ],
+      finding:"身体所見に浮腫・頸静脈怒張なし。症状はNYHA I〜II相当まで改善。LVEFは10ポイント以上改善したが40%を超えていないため、分類上はまだHFrEF(HFimpEFの定義は「改善して40%超」)。",
+      answer:{
+        urgent:["緊急性はないが、<mark>症状が改善したことと、予後改善薬を中止してよいことは別問題</mark>である点を説明する必要がある"],
+        treat:["<mark>ARNI/ACE阻害薬・β遮断薬・MRA・SGLT2阻害薬の4本柱は、いずれも症状の有無に関わらず生命予後を改善するために継続する薬剤</mark>(JCS/JHFS 2025でいずれもClass I・レベルA)であることを説明する","血圧がやや低めでも<mark>症状(めまい・失神)がなければ、忍容性ありと判断しGDMTは継続・可能なら増量</mark>を目指す"],
+        stop:["<mark>「調子がいいから」を理由に自己判断でβ遮断薬・GDMTを中断させない</mark>","むしろ目標用量に達していなければ、忍容性を見ながら<mark>増量(up-titration)</mark>を検討する時期と捉える"],
+        rate:["血圧・脈拍・腎機能・Kを定期的にフォローしつつ、症状のない血圧低下だけでは減量根拠にしない","<mark>浮腫・体重増加などのうっ血再燃の兆候</mark>があれば利尿薬側で調整し、4本柱自体は基本的に維持する"]
+      },
+      rx:["ARNI(サクビトリルバルサルタン)は忍容性があれば目標用量まで漸増する。<mark>ACE阻害薬/ARBからARNIへの切替はClass I・B-R</mark>である一方、<mark>入院中に未治療から新規導入するのはClass IIa・B-R</mark>と状況により推奨度が異なる点も押さえておく","β遮断薬はカルベジロールまたはビソプロロールを、<mark>忍容性を見ながら数週間〜数か月かけて目標用量まで漸増</mark>する。国内試験(J-CHF等)では欧米より低めの目標用量設定が用いられることが多く、少量でも効果が期待できる(MUCHA試験)。急に中止すると反跳性の頻脈・虚血のリスクがある","MRA(スピロノラクトンまたはエプレレノン)は<mark>K・腎機能をモニタリングしながら継続</mark>する(eGFR<30またはK≥5.0導入時は特に慎重、K5.5程度までは有効性が保たれるとの報告もある)","SGLT2阻害薬(ダパグリフロジンまたはエンパグリフロジン)はHFrEFに対してもClass Iで継続する"],
+      pitfall:"「症状が良くなった」「血圧が下がってきた」を理由に<mark>予後改善薬(4本柱)を自己判断や安易な指示で中止・減量する</mark>のはよくある誤り。利尿薬(症状改善薬)と4本柱(予後改善薬)は<mark>役割が異なる</mark>ことを理解していないと起こりやすい。",
+      pearl:["HFrEFの4本柱(ARNI/ACEi/ARB・β遮断薬・MRA・SGLT2阻害薬)は<mark>症状の有無によらず生命予後を改善するために、目標用量まで導入・維持する</mark>のが原則(いずれもClass I・レベルA)","利尿薬は<mark>症状・うっ血の改善が主目的</mark>であり4本柱とは役割が異なる","無症状の軽度血圧低下だけを理由にGDMTを中止・減量しない。<mark>症状(めまい・失神)の有無</mark>で忍容性を判断する","LVEFが改善しても<mark>40%を超えるまではHFimpEFとは呼ばず、GDMTを継続する</mark>のが原則"],
+      refs:[ {author:"Kitai T, Kohsaka S, et al.", title:"JCS/JHFS 2025 Guideline on Diagnosis and Treatment of Heart Failure（HFrEFの薬物治療）", source:"Circulation Journal (J-STAGE)", year:"2025", url:"https://www.jstage.jst.go.jp/article/circj/advpub/0/advpub_CJ-25-0002/_html/-char/en"} ]
+    },
+    {
+      id:"hfpef_comorbidity", num:9, cat:"chronic", tag:"慢性期HFpEF",
+      title:"HFmrEF/HFpEFの慢性期治療と併存疾患管理", hint:"70歳女性・HFmrEF・CKD合併・利尿薬のみで管理され息切れ持続",
+      vignette:"70歳女性。高血圧・2型糖尿病・CKD(eGFR 42)を背景にLVEF 45%の心不全と診断され通院中。ループ利尿薬のみで管理されていたが、労作時息切れが続いている。血圧136/82mmHg。",
+      labs:[ {k:"NT-proBNP",v:"620",u:"pg/mL",abn:"high"}, {k:"eGFR",v:"42",u:"mL/分/1.73m²",abn:"low"}, {k:"K",v:"4.3",u:"mEq/L",abn:"normal"}, {k:"HbA1c",v:"7.6",u:"%",abn:"high"} ],
+      finding:"浮腫は軽度残存。心エコー:LVEF 45%、軽度左室肥大。",
+      answer:{
+        urgent:["緊急性はないが、<mark>「HFmrEF/HFpEFには利尿薬しかできることがない」という誤解を正す</mark>ことが本症例のポイント"],
+        treat:["<mark>SGLT2阻害薬を導入</mark>する(HFmrEF/HFpEFに対しJCS/JHFS 2025でClass I・レベルA)。血糖・腎保護効果も期待できる","うっ血に対しては<mark>利尿薬を継続</mark>しつつ、<mark>高血圧・糖尿病・CKDなど併存疾患の積極的治療</mark>を並行する。<mark>フィネレノン</mark>の追加も選択肢になる"],
+        stop:["「利尿薬だけで経過観察」という<mark>治療の手詰まり感で終わらせない</mark>","過度な血圧・血糖の是正で症状(めまい、低血糖)を招かないよう個別に調整する"],
+        rate:["K・腎機能(特にMRA/フィネレノン併用時)を定期的にフォローする","症状・体重・NT-proBNPの推移で治療効果を評価し、入院を要するような再増悪がないか継続的に確認する"]
+      },
+      rx:["SGLT2阻害薬(ダパグリフロジンまたはエンパグリフロジン、1日1回)を導入する。HFmrEF/HFpEFに対しJCS/JHFS 2025でClass I・レベルAで推奨(根拠試験:DELIVER)","<mark>フィネレノン</mark>はJCS/JHFS 2025年版でHFmrEF/HFpEFに対し<mark>新たにClass IIa・B-R</mark>に位置づけられた選択肢(根拠試験:FINEARTS-HF)。腎機能・K値を確認しながら導入を検討する(eGFRに応じて用量調整)","高血圧はガイドラインに基づき降圧目標を達成する。糖尿病治療薬はSGLT2阻害薬を軸に血糖管理を行う","うっ血症状に対してはループ利尿薬を必要最小限で継続する"],
+      pitfall:"「HFmrEF/HFpEFはHFrEFと違って有効な薬がないから、利尿薬で症状を抑えるだけ」という考えは<mark>2025年版ガイドラインの内容と合わない誤解</mark>。SGLT2阻害薬(Class I)やフィネレノン(Class IIa)、併存疾患治療という積極的な治療選択肢がある。",
+      pearl:["HFmrEF/HFpEFは<mark>「治療法がない」病態ではない</mark>。SGLT2阻害薬はEFによらずClass I・レベルAで推奨される","JCS/JHFS 2025年版では<mark>フィネレノンがHFmrEF/HFpEFに対しClass IIaで新規収載</mark>された","高血圧・心房細動・CKD・糖尿病・肥満などの<mark>併存疾患治療そのものがHFmrEF/HFpEFの治療の柱</mark>である","<mark>2026年8月公表のESCガイドラインでは、本症例のLVEF 45%が示すHFmrEFという区分自体が撤廃され、LVEF 50%未満をまとめてHFrEFとして扱う方向に改訂された</mark>。EF分類は国際的にも議論が続いているが、SGLT2阻害薬などの主要な治療の位置づけは大きく変わっていない"],
+      refs:[ {author:"Kitai T, Kohsaka S, et al.", title:"JCS/JHFS 2025 Guideline on Diagnosis and Treatment of Heart Failure（HFmrEF/HFpEFの薬物治療）", source:"Circulation Journal (J-STAGE)", year:"2025", url:"https://www.jstage.jst.go.jp/article/circj/advpub/0/advpub_CJ-25-0002/_html/-char/en"}, {author:"Solomon SD, Vaduganathan M, Claggett BL, et al.", title:"Finerenone in Heart Failure with Mildly Reduced or Preserved Ejection Fraction (FINEARTS-HF)", source:"New England Journal of Medicine", year:"2024", url:"https://doi.org/10.1056/NEJMoa2407107"}, {author:"European Society of Cardiology.", title:"2026 ESC Guidelines for the management of heart failure", source:"ESC Congress News", year:"2026", url:"https://www.escardio.org/news/news-room/congress-news/2026-esc-guidelines-for-the-management-of-heart-failure/"} ]
+    }
+  ];
+
+  var PROMPTS = [
+    {key:"urgent", num:"①", label:"病態評価：うっ血/低灌流、緊急度は", ph:"血行動態・意識・尿量・末梢冷感・乳酸などから…"},
+    {key:"treat", num:"②", label:"今すぐ行うべき治療は", ph:"酸素/NPPV・血管拡張薬・利尿薬・強心薬など…"},
+    {key:"stop", num:"③", label:"見直す薬剤・検索すべき増悪因子は", ph:"中止・減量すべき薬剤、探すべき増悪因子…"},
+    {key:"rate", num:"④", label:"何をモニタリングし、次に何をすべきか", ph:"再検すべき検査値、GDMT導入・退院に向けて…"}
+  ];
+  var ICO = { urgent:"!", treat:"▶", stop:"✕", rate:"⏱" };
+
+  var FLOW = [
+    {t:"心不全は臨床症候群と心得る", d:"EFが保たれていても心不全は否定できない。症状・身体所見・BNP/NT-proBNP・心エコーを総合して判断する。"},
+    {t:"最初の5分でABCと重症度を評価する", d:"SpO2・血圧・意識・尿量・末梢冷感・乳酸から、まず呼吸不全と心原性ショック(収縮期血圧<90mmHg・乳酸>2mmol/L・尿量<30mL/時などが目安)の有無を確認する。"},
+    {t:"うっ血/低灌流と血圧で治療を選ぶ", d:"wet/dry・warm/coldの2軸と血圧の高低を組み合わせ、利尿薬・血管拡張薬・強心薬のどれを選ぶかを決める。"},
+    {t:"増悪因子を探し、心不全治療とセットで対応する", d:"ACS・不整脈・感染・高血圧・弁膜症・肺塞栓・腎機能悪化・貧血・服薬中断や塩分過多・NSAIDsなどを必ず検索する。"}
+  ];
+
+  var AXES = [
+    {
+      cat:"acute", label:"急性心不全：病態評価と治療選択の軸",
+      intro:"急性心不全は「うっ血の有無」「低灌流の有無」「血圧」の3つを組み合わせると治療方針を間違えにくい。",
+      steps:[
+        {t:"①うっ血(wet/dry)と低灌流(warm/cold)を評価する", d:"頸静脈怒張・肺ラ音・浮腫の有無でうっ血を、四肢冷感・意識・尿量・乳酸で低灌流を判定する。両者は独立した軸であり、<mark>うっ血があっても低灌流がなければ強心薬は不要</mark>。"},
+        {t:"②酸素化を確認する", d:"<mark>酸素はルーチンではなくSpO2<90%またはPaO2<60mmHgが目安</mark>(Class I)。呼吸数>25/分・SpO2<90%が続く呼吸不全ではNPPVを早期に導入する(Class I・レベルA)。"},
+        {t:"③血圧で治療の骨格を決める", d:"血圧が保たれ低灌流がなければ利尿薬(±血管拡張薬)、著明な高血圧を伴うwet & warmでは血管拡張薬+NPPV、低灌流・ショック(収縮期血圧<90mmHgなど)では強心薬・昇圧薬という骨格に沿って考える。"}
+      ],
+      note:"血圧の低い患者にうっ血だけを見て血管拡張薬を使うと灌流を悪化させる。逆にショックのない患者へのルーチンの強心薬投与も避ける。",
+      refs:["Nohria A, et al. J Am Coll Cardiol 2003","JCS/JHFS 2025 Guideline (Circ J)"]
+    },
+    {
+      cat:"chronic", label:"心不全の診断とEFによる分類の軸",
+      intro:"心不全はEFで診断する病気ではない。症状・身体所見・バイオマーカー・画像を組み合わせて診断し、確定後にEFで分類する。",
+      steps:[
+        {t:"①症状・身体所見で疑う", d:"労作時呼吸困難、下腿浮腫、頸静脈怒張、ラ音などから疑う。"},
+        {t:"②BNP/NT-proBNPで裏付ける", d:"年齢・腎機能・肥満の影響を考慮しつつ、上昇があれば心不全の可能性を高める。"},
+        {t:"③心エコーでEFと拡張能を評価し分類する", d:"HFrEF(LVEF≤40%)・HFmrEF(41〜49%)・HFpEF(≥50%)・HFimpEF(以前≤40%から10ポイント以上改善し40%超)に分類する(2021年の心不全の普遍的定義に基づく)。<mark>EFが保たれていても心不全は否定できない</mark>。"}
+      ],
+      note:"「EF60%だから心不全ではない」は誤り。拡張能障害主体のHFpEFはEFが保たれたまま生じる。",
+      refs:["JCS/JHFS 2025 Guideline (Circ J)","Bozkurt B, et al. J Card Fail 2021"]
+    },
+    {
+      cat:"adjust", label:"慢性期治療と退院準備の軸",
+      intro:"慢性期は「予後改善薬(4本柱)」と「症状改善薬(利尿薬)」を区別し、退院前にうっ血解除とGDMT導入の両方を確認する。",
+      steps:[
+        {t:"①HFrEFは4本柱を目標用量まで", d:"ARNI/ACE阻害薬・β遮断薬・MRA・SGLT2阻害薬は症状の有無によらず継続・増量する(いずれもClass I・レベルA)。"},
+        {t:"②HFmrEF/HFpEFも治療対象と心得る", d:"SGLT2阻害薬(Class I)、フィネレノン(Class IIa、2025年版で新規収載)、併存疾患治療(高血圧・Af・CKD・糖尿病・肥満)を行う。"},
+        {t:"③心腎連関を理解する", d:"Crの上昇だけでRAAS阻害薬・利尿薬を中止せず、うっ血・血圧・尿量・K(至適4〜5mEq/L)とセットで判断する。高K血症はK吸着薬併用でRAAS阻害薬継続を図る選択肢もある。"},
+        {t:"④退院基準を確認する", d:"退院前のうっ血評価・最適化(Class I)、GDMTの早期導入・退院後も継続(Class I)、退院後14日以内の外来フォロー(Class IIa)を確認する。<mark>退院後3〜6か月はvulnerable phase(脆弱期)</mark>であり再増悪しやすく、心臓リハビリを含めた慎重な経過観察を要する(入院関連心不全患者の約25%に院内関連機能障害が生じるとの報告もある)。"}
+      ],
+      note:"利尿薬をやめて終わりではなく、4本柱の導入とうっ血解除の両方が揃って初めて「退院できる心不全」になる。",
+      refs:["JCS/JHFS 2025 Guideline (Circ J)","Solomon SD, et al. NEJM 2024 (FINEARTS-HF)"]
+    }
+  ];
+
+  var STORE_KEY = "shinfuzen_progress_v1";
+  var DRAFT_KEY = "shinfuzen_drafts_v1";
+
+  function loadProgress(){
+    try{
+      var p = JSON.parse(localStorage.getItem(STORE_KEY));
+      return (p && typeof p === "object" && !Array.isArray(p)) ? p : {};
+    }catch(e){ return {}; }
+  }
+  function saveProgress(p){
+    try{ localStorage.setItem(STORE_KEY, JSON.stringify(p)); return true; }catch(e){ return false; }
+  }
+  function loadDrafts(){
+    try{
+      var d = JSON.parse(localStorage.getItem(DRAFT_KEY));
+      return (d && typeof d === "object" && !Array.isArray(d)) ? d : {};
+    }catch(e){ return {}; }
+  }
+  function saveDrafts(d){
+    try{ localStorage.setItem(DRAFT_KEY, JSON.stringify(d)); return true; }catch(e){ return false; }
+  }
+
+  (function validateCasesData(){
+    var seenIds = Object.create(null), seenNums = Object.create(null), ok = true;
+    var REQUIRED_ANSWER_KEYS = ["urgent","treat","stop","rate"];
+    var VALID_CATS_CHECK = ["acute","adjust","chronic"];
+    CASES.forEach(function(c, i){
+      if(seenIds[c.id]) ok = false;
+      seenIds[c.id] = true;
+      if(seenNums[c.num]) ok = false;
+      seenNums[c.num] = true;
+      if(c.num !== i+1) ok = false;
+      if(VALID_CATS_CHECK.indexOf(c.cat) === -1) ok = false;
+      if(!c.labs || !c.labs.length) ok = false;
+      if(!c.answer) { ok = false; }
+      else {
+        REQUIRED_ANSWER_KEYS.forEach(function(k){
+          if(!c.answer[k] || !c.answer[k].length) ok = false;
+        });
+      }
+    });
+    if(!ok && typeof console !== "undefined" && console.warn){
+      console.warn("[shinfuzen] CASES data integrity check failed: ids/nums/cat/labs/answer are not all valid.");
+    }
+  })();
+
+  var state = {
+    view:"home",
+    caseId:null,
+    reviewOnly:false,
+    progress: loadProgress()
+  };
+
+  var lastSaveFailed = false;
+  var app = document.getElementById("app");
+
+  function escapeHtml(s){
+    return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;");
+  }
+
+  var VALID_STATUSES = ["good","partial","poor"];
+  function safeStatus(s){
+    return VALID_STATUSES.indexOf(s) !== -1 ? s : "none";
+  }
+  function statusLabel(s){
+    if(s==="good") return "自力で言えた";
+    if(s==="partial") return "一部抜けた";
+    if(s==="poor") return "ほぼ言えなかった";
+    return "未挑戦";
+  }
+  var VALID_CATS = ["acute","adjust","chronic"];
+  function safeCat(c){ return VALID_CATS.indexOf(c) !== -1 ? c : "acute"; }
+
+  function caseById(id){
+    for(var i=0;i<CASES.length;i++){ if(CASES[i].id===id) return CASES[i]; }
+    return null;
+  }
+  function completedCount(){
+    var n=0;
+    for(var i=0;i<CASES.length;i++){ if(safeStatus(state.progress[CASES[i].id]) !== "none") n++; }
+    return n;
+  }
+  function masteredCount(){
+    var n=0;
+    for(var i=0;i<CASES.length;i++){ if(state.progress[CASES[i].id]==="good") n++; }
+    return n;
+  }
+  function reviewCases(){
+    return CASES.filter(function(c){
+      var s = state.progress[c.id];
+      return s === "partial" || s === "poor";
+    });
+  }
+
+  function go(view, caseId){
+    state.view = view;
+    state.caseId = caseId || null;
+    render();
+    window.scrollTo(0,0);
+  }
+
+  /* ---------------- RENDER: HOME ---------------- */
+  function renderHome(){
+    var done = completedCount();
+    var mastered = masteredCount();
+    var total = CASES.length;
+    var pct = Math.round(mastered/total*100);
+    var rev = reviewCases();
+
+    var circumference = 2*Math.PI*24;
+    var offset = circumference * (1 - pct/100);
+
+    var subLine;
+    if(done < total){
+      subLine = (total-done)+"症例が未挑戦";
+    } else if(rev.length){
+      subLine = "復習対象が "+rev.length+" 症例あります";
+    } else {
+      subLine = "全症例クリアです";
+    }
+
+    var html = "";
+    html += '<div class="hero">';
+    html += '  <div class="eyebrow">心不全 初動トレーニング</div>';
+    html += '  <h1>急性・慢性心不全<br>初動トレーニング</h1>';
+    html += '  <p>研修医が出会う心不全9症例。答えを見る前に、自分の言葉で4つの問いに答えてみましょう。</p>';
+    html += '  <div class="thesis">ゴールは診断名当てではなく、うっ血と低灌流を見分け、初動を間違えないことです。</div>';
+    html += '</div>';
+
+    html += '<div class="progress-card">';
+    html += '  <div class="progress-ring"><svg width="56" height="56"><circle cx="28" cy="28" r="24" stroke="var(--surface-2)" stroke-width="5" fill="none"/><circle cx="28" cy="28" r="24" stroke="var(--primary)" stroke-width="5" fill="none" stroke-linecap="round" stroke-dasharray="'+circumference+'" stroke-dashoffset="'+offset+'"/></svg><div class="pct">'+pct+'%</div></div>';
+    html += '  <div class="progress-text"><div class="num">'+mastered+' / '+total+' 症例 自力で言えた</div><div class="sub">'+subLine+'</div></div>';
+    if(rev.length){
+      html += '  <button class="review-pill-btn" data-action="toggle-review">復習</button>';
+    }
+    html += '</div>';
+
+    html += '<button class="summary-cta" data-action="goto-approach"><span><span class="t">心不全の初動まとめ</span><span class="s">病態評価→治療選択→増悪因子→慢性期・退院</span></span><span class="arrow">›</span></button>';
+
+    if(state.reviewOnly){
+      html += '<div class="section-head"><span class="dot" style="background:var(--warn)"></span><h2>復習対象の症例</h2><span class="count">'+rev.length+'件</span></div>';
+      if(rev.length===0){
+        html += '<div class="empty-review">復習対象の症例はありません。<br>「一覧」から症例を確認できます。</div>';
+      } else {
+        html += '<div class="case-grid">'+rev.map(caseCardHtml).join("")+'</div>';
+      }
+    } else {
+      ["acute","adjust","chronic"].forEach(function(cat){
+        var list = CASES.filter(function(c){ return c.cat===cat; });
+        html += '<div class="section-head '+cat+'"><span class="dot"></span><h2>'+CAT_LABEL[cat]+'</h2><span class="count">'+list.length+'症例</span></div>';
+        html += '<div class="case-grid">'+list.map(caseCardHtml).join("")+'</div>';
+      });
+    }
+
+    return html;
+  }
+
+  function caseCardHtml(c){
+    var status = safeStatus(state.progress[c.id]);
+    var cat = safeCat(c.cat);
+    var numStr = (c.num<10?"0":"")+c.num;
+    return '<button class="case-card" data-action="open-case" data-id="'+c.id+'">'+
+      '<span class="ion-badge '+cat+'">'+CAT_BADGE[cat]+'</span>'+
+      '<span class="case-body"><span class="hint">'+numStr+'　'+c.hint+'</span></span>'+
+      '<span class="status-chip '+status+'">'+statusLabel(status)+'</span>'+
+    '</button>';
+  }
+
+  /* ---------------- RENDER: CASE ---------------- */
+  var revealCache = {};
+  var draftCache = loadDrafts();
+  var pendingStatus = {};
+
+  function labChipHtml(l){
+    var abn = (l.abn==="high"||l.abn==="low") ? l.abn : "normal";
+    var symbol = abn==="high" ? "▲" : (abn==="low" ? "▼" : "");
+    return '<span class="lab-chip '+abn+'"><span class="k">'+escapeHtml(l.k)+'</span><span class="v mono">'+(symbol?symbol+" ":"")+escapeHtml(l.v)+'</span>'+(l.u?'<span class="u">'+escapeHtml(l.u)+'</span>':'')+'</span>';
+  }
+
+  function renderCase(c){
+    var cat = safeCat(c.cat);
+    var html = "";
+    html += '<div class="case-hero"><div class="tag '+cat+'">症例 '+(c.num<10?"0":"")+c.num+'・'+c.tag+'</div><h1>'+c.hint+'</h1></div>';
+    html += '<div class="vignette">'+c.vignette;
+    html += '<div class="lab-strip">'+c.labs.map(labChipHtml).join("")+'</div>';
+    if(c.finding){ html += '<div class="finding-line"><b>所見　</b>'+escapeHtml(c.finding)+'</div>'; }
+    html += '</div>';
+
+    var revealed = !!revealCache[c.id];
+    var drafts = draftCache[c.id] || {};
+
+    html += '<div class="selfcheck-card" id="prompts">';
+    PROMPTS.forEach(function(p){
+      html += '<div class="sc-row">';
+      html += '<label><span class="n">'+p.num+'</span>'+p.label+'</label>';
+      html += '<textarea data-field="'+p.key+'" placeholder="'+p.ph+'">'+ (drafts[p.key] ? escapeHtml(drafts[p.key]) : "") +'</textarea>';
+      html += '</div>';
+    });
+    html += '</div>';
+    html += '<div class="save-warning" id="draftSaveWarning" hidden>⚠ この端末に下書きを保存できませんでした。プライベートブラウズ中か、ストレージが無効になっている可能性があります。この画面を離れると記述内容が失われます。</div>';
+
+    if(!revealed){
+      html += '<button class="reveal-btn" data-action="reveal">模範解答を見る</button>';
+    } else {
+      html += renderAnswer(c);
+    }
+
+    return html;
+  }
+
+  function renderAnswer(c){
+    var catLabel = CAT_LABEL[safeCat(c.cat)];
+    var html = '<div class="answer-wrap">';
+    html += '<div class="diagnosis-reveal"><div class="dr-eyebrow">病態</div><div class="dr-title">'+c.title+'</div><div class="dr-sub">'+catLabel+'</div></div>';
+
+    html += '<div class="pitfall-block"><div class="pf-label"><span class="pf-mark">!</span>ありがちな誤対応</div><p>'+c.pitfall+'</p></div>';
+
+    html += '<div class="divider"><div class="line"></div><span>模範解答</span><div class="line"></div></div>';
+
+    html += '<div class="answer-report">';
+    PROMPTS.forEach(function(p){
+      html += answerRowHtml(p.key, p.label, c.answer[p.key]);
+    });
+    html += '</div>';
+
+    html += renderRx(c);
+    html += renderPearl(c);
+    html += renderRefs(c);
+
+    html += '</div>';
+
+    html += '<div class="assess-block">';
+    html += '<div class="q">自分の答えと照らし合わせて、自己評価しましょう</div>';
+    var curRaw = pendingStatus[c.id] || state.progress[c.id] || "";
+    var cur = VALID_STATUSES.indexOf(curRaw) !== -1 ? curRaw : "";
+    html += '<div class="assess-row">';
+    html += assessBtn("good","自力で言えた", cur);
+    html += assessBtn("partial","一部抜けた", cur);
+    html += assessBtn("poor","ほぼ言えなかった", cur);
+    html += '</div>';
+    if(cur && lastSaveFailed){
+      html += '<div class="save-warning">⚠ この端末には保存できませんでした。プライベートブラウズ中か、ストレージが無効になっている可能性があります。この記録はこの画面を離れると失われます。</div>';
+    }
+    html += '</div>';
+
+    if(cur){
+      html += '<div class="after-assess">';
+      html += '<button class="nav-btn primary" data-action="next-case">次の症例へ</button>';
+      html += '<button class="nav-btn ghost" data-action="goto-home">一覧に戻る</button>';
+      html += '</div>';
+    }
+
+    return html;
+  }
+
+  function answerRowHtml(key, label, items){
+    return '<div class="ar-row"><h3><span class="ico '+key+'">'+ICO[key]+'</span>'+label+'</h3>'+
+      '<ul>'+items.map(function(t){return '<li>'+t+'</li>';}).join("")+'</ul></div>';
+  }
+
+  function renderRx(c){
+    if(!c.rx || !c.rx.length) return "";
+    var items = c.rx.map(function(t){ return '<li>'+t+'</li>'; }).join("");
+    return '<div class="rx-block"><div class="rx-label"><span class="rx-mark">℞</span>具体的な処方例</div>'+
+      '<p class="rx-caveat">年齢・腎機能・心機能・体重により個別調整が必要な目安です。実際の投与量・速度は必ず添付文書・自施設のプロトコル・指導医で確認してください。</p>'+
+      '<ul>'+items+'</ul></div>';
+  }
+
+  function renderPearl(c){
+    if(!c.pearl || !c.pearl.length) return "";
+    var items = c.pearl.map(function(t){ return '<li>'+t+'</li>'; }).join("");
+    return '<div class="pearl-block"><div class="pb-label">まとめ</div><ul>'+items+'</ul></div>';
+  }
+
+  function renderRefs(c){
+    if(!c.refs || !c.refs.length) return "";
+    var items = c.refs.map(refEntryHtml).join("");
+    return '<div class="refs-block"><h4>参考</h4><ol>'+items+'</ol></div>';
+  }
+
+  function refEntryHtml(r){
+    var citationParts = [];
+    if(r.author) citationParts.push(escapeHtml(r.author));
+    if(r.title) citationParts.push(escapeHtml(r.title));
+    var pub = [];
+    if(r.source) pub.push(escapeHtml(r.source));
+    if(r.year) pub.push(escapeHtml(String(r.year)));
+    if(pub.length) citationParts.push(pub.join(" "));
+    var text = citationParts.join("．");
+    var linkHtml = "";
+    if(r.url){
+      linkHtml = '<br><a href="'+escapeHtml(r.url)+'" target="_blank" rel="noopener noreferrer">'+escapeHtml(r.url)+'</a>';
+    }
+    return '<li>'+text+linkHtml+'</li>';
+  }
+
+  function assessBtn(kind, label, cur){
+    return '<button class="assess-btn '+kind+(cur===kind?' active':'')+'" data-action="assess" data-kind="'+kind+'">'+label+'</button>';
+  }
+
+  /* ---------------- RENDER: APPROACH (初動まとめ) ---------------- */
+  function renderApproach(){
+    var html = "";
+    html += '<div class="approach-hero"><div class="eyebrow">心不全の初動まとめ</div><h1>初動を守る2つの武器</h1><p>心不全はEFも背景疾患も多様で、丸暗記では対応しきれない。<mark>①症例によらず必ず自問する4つの問い</mark>と、<mark>②病態を整理する3つの型(急性期・診断分類・慢性期)</mark>、この2つを持っておくと、初めて見る症例でも初動を組み立てられる。</p></div>';
+    html += '<div class="goal-note"><div class="gn-label">⚡ このアプリのゴール</div><div class="gn-body">「診断名を当てる」ことではありません。<mark>うっ血と低灌流を見分け、心不全治療と増悪因子治療の両方をセットで行い、初動(病態評価・治療選択・薬剤の見直し・モニタリング)を間違えない</mark>ことがゴールです。</div></div>';
+
+    html += '<h2 class="axis-section-title">①症例によらず、まず自問する4つ</h2>';
+    html += '<div class="flow">';
+    FLOW.forEach(function(f,i){
+      html += '<div class="flow-step">';
+      html += '<div class="rail"><div class="node">'+(i+1)+'</div>'+(i<FLOW.length-1?'<div class="stem"></div>':'')+'</div>';
+      html += '<div class="content"><h3>'+f.t+'</h3><p>'+f.d+'</p></div>';
+      html += '</div>';
+    });
+    html += '</div>';
+
+    html += '<h2 class="axis-section-title">②心不全を整理する3つの型</h2>';
+    html += '<p class="axis-section-note">個別症例で学んだ知識を、初めて見る症例にも応用できる「型」に変換しておく。</p>';
+    html += AXES.map(renderAxisCard).join('');
+
+    html += '<div class="global-note"><div class="gl-label">海外ガイドラインとの違いに少しだけ触れると</div><p>2026年8月に公表されたESC(欧州心臓病学会)の心不全ガイドラインでは、HFmrEFという区分自体が撤廃され、LVEF 50%未満をHFrEFとして一括する2分類に戻る改訂が行われた。「急性心不全」という呼称も「非代償性心不全」に変更されるなど用語の整理も進んでいる。JCS/JHFS 2025年版は従来どおりHFrEF/HFmrEF/HFpEF/HFimpEFの4分類を維持しており、EFによる分類自体は国際的にもまだ議論の途上にある。ただし、うっ血を軸に初期対応を組み立てる考え方や、SGLT2阻害薬・MRA系薬剤をHFpEF/HFmrEFにも早期から用いる方向性など、大きな治療の方向性は共通している。</p></div>';
+
+    html += '<div class="approach-foot">迷ったら、うっ血・低灌流・増悪因子・4本柱の4つに立ち返る。</div>';
+    return html;
+  }
+
+  function renderAxisCard(ax){
+    var html = '<div class="axis-card '+ax.cat+'">';
+    html += '<div class="axis-head"><span class="axis-dot"></span><h3>'+ax.label+'</h3></div>';
+    html += '<p class="axis-intro">'+ax.intro+'</p>';
+    html += '<ol class="axis-steps">';
+    ax.steps.forEach(function(s){
+      html += '<li><b>'+s.t+'</b><span>'+s.d+'</span></li>';
+    });
+    html += '</ol>';
+    html += '<div class="axis-note">'+ax.note+'</div>';
+    html += '<div class="axis-refs">'+ax.refs.map(escapeHtml).join(' / ')+'</div>';
+    html += '</div>';
+    return html;
+  }
+
+  /* ---------------- MASTER RENDER ---------------- */
+  function render(){
+    var topbarHtml, mainHtml;
+
+    if(state.view==="home"){
+      topbarHtml = state.reviewOnly
+        ? '<button class="back" data-action="goto-home-full">‹ 一覧</button><div class="title">復習リスト</div>'
+        : '<div class="title">心不全 初動トレーニング</div>';
+      mainHtml = renderHome();
+      if(!state.reviewOnly){
+        mainHtml += '<div class="disclaimer">内容は教育目的の一般的な整理です。実際の治療方針は必ず各施設のプロトコルや指導医の判断、日本循環器学会(JCS)/日本心不全学会(JHFS)の最新ガイドラインに従ってください。</div>';
+      }
+    } else if(state.view==="case"){
+      var c = caseById(state.caseId);
+      if(!c){
+        state.view = "home";
+        state.caseId = null;
+        return render();
+      }
+      var numStr = (c.num<10?"0":"")+c.num;
+      topbarHtml = '<button class="back" data-action="goto-home">‹ 一覧</button><div class="title">症例 '+numStr+'</div>';
+      mainHtml = renderCase(c);
+    } else if(state.view==="approach"){
+      topbarHtml = '<button class="back" data-action="goto-home">‹ 一覧</button><div class="title">初動まとめ</div>';
+      mainHtml = renderApproach();
+    }
+
+    app.innerHTML = '<div class="topbar">'+topbarHtml+'</div><main>'+mainHtml+'</main>';
+    bindEvents();
+  }
+
+  /* ---------------- EVENTS ---------------- */
+  function nextInPool(pool, current){
+    var idx = -1;
+    for(var i=0;i<pool.length;i++){ if(pool[i].id===current.id){ idx = i; break; } }
+    return idx === -1 ? pool[0] : pool[(idx+1) % pool.length];
+  }
+
+  function bindEvents(){
+    app.querySelectorAll("[data-action]").forEach(function(el){
+      el.addEventListener("click", function(){
+        var action = el.getAttribute("data-action");
+        if(action==="open-case"){
+          revealCache[el.getAttribute("data-id")] = false;
+          delete pendingStatus[el.getAttribute("data-id")];
+          lastSaveFailed = false;
+          go("case", el.getAttribute("data-id"));
+        } else if(action==="goto-home"){
+          go("home");
+        } else if(action==="goto-home-full"){
+          state.reviewOnly = false;
+          render();
+        } else if(action==="toggle-review"){
+          state.reviewOnly = true;
+          render();
+        } else if(action==="goto-approach"){
+          go("approach");
+        } else if(action==="reveal"){
+          lastSaveFailed = false;
+          collectDraft(state.caseId, true);
+          revealCache[state.caseId] = true;
+          render();
+          var wrap = app.querySelector(".answer-wrap");
+          if(wrap) wrap.scrollIntoView({behavior:"smooth", block:"start"});
+        } else if(action==="assess"){
+          var kind = el.getAttribute("data-kind");
+          var c0 = caseById(state.caseId);
+          if(!c0) return;
+          pendingStatus[state.caseId] = kind;
+          state.progress[state.caseId] = kind;
+          lastSaveFailed = !saveProgress(state.progress);
+          render();
+        } else if(action==="next-case"){
+          var c = caseById(state.caseId);
+          if(!c) return;
+          var pool = state.reviewOnly ? reviewCases() : CASES;
+          if(state.reviewOnly && pool.length === 0){
+            state.reviewOnly = false;
+            pool = CASES;
+          }
+          var next = nextInPool(pool, c);
+          revealCache[next.id] = false;
+          delete pendingStatus[next.id];
+          lastSaveFailed = false;
+          go("case", next.id);
+        }
+      });
+    });
+
+    app.querySelectorAll("textarea[data-field]").forEach(function(ta){
+      ta.addEventListener("input", function(){
+        collectDraft(state.caseId, false);
+      });
+    });
+  }
+
+  var draftSaveTimer = null;
+  function flushDraftSave(){
+    var ok = saveDrafts(draftCache);
+    var warnEl = document.getElementById("draftSaveWarning");
+    if(warnEl){ warnEl.hidden = ok; }
+  }
+  function collectDraft(caseId, flushNow){
+    var d = {};
+    app.querySelectorAll("textarea[data-field]").forEach(function(ta){
+      d[ta.getAttribute("data-field")] = ta.value;
+    });
+    draftCache[caseId] = d;
+    if(draftSaveTimer){ clearTimeout(draftSaveTimer); draftSaveTimer = null; }
+    if(flushNow){
+      flushDraftSave();
+    } else {
+      draftSaveTimer = setTimeout(flushDraftSave, 400);
+    }
+  }
+  window.addEventListener("pagehide", function(){ saveDrafts(draftCache); });
+  document.addEventListener("visibilitychange", function(){
+    if(document.visibilityState === "hidden") saveDrafts(draftCache);
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>
