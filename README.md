@@ -10,8 +10,6 @@ https://namazu1995-coder.github.io/heart-failure-training/
 
 スマホでスキャンすればそのまま開けます（当直中の隙間時間用）。
 
-> 上記URLはGitHub Pagesを有効化するまで404になります。手順は本READMEの末尾「GitHub Pagesの有効化」を参照してください。
-
 ## 内容
 
 急性期対応・利尿薬/増悪因子/心腎連関・診断分類/慢性期治療の3カテゴリ、計9症例を収載。各症例で①病態評価・緊急度、②初動の治療、③見直す薬剤・増悪因子、④モニタリングと次の一手、という4つの軸の問いに自分の言葉で答えてから模範解答を確認する形式です。4つの軸そのものはどの症例にも共通しますが、問いの文面は症例ごとにその症例で問われている臨床判断（ショックの認識、利尿薬抵抗性への対応、EFが保たれた心不全の診断など）に即して個別に作られており、汎用的な問いを機械的に当てはめるのではなく症例ごとの思考プロセスを促す構成にしています。
@@ -37,15 +35,3 @@ https://namazu1995-coder.github.io/heart-failure-training/
 ## 免責事項
 
 内容は教育目的の一般的な整理です。実際の治療方針は必ず各施設のプロトコルや指導医の判断、最新のガイドラインに従ってください。
-
-## GitHub Pagesの有効化
-
-このリポジトリをGitHubに公開（Publish）した後、以下の手順で `index.html` をWeb公開できます。
-
-1. GitHub上でこのリポジトリを開く
-2. **Settings → Pages** を開く
-3. 「Build and deployment」の **Source** を `Deploy from a branch` にする
-4. **Branch** を `main` / `/ (root)` にして **Save**
-5. 数分待つと、ページ上部に公開URL（`https://namazu1995-coder.github.io/heart-failure-training/`）が表示されます
-
-有効化すると、上記のQRコード・URLがそのまま使えるようになります。

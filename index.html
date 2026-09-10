@@ -39,6 +39,7 @@
     --lab-low:#2A5599;
     --lab-low-tint:#E3EBF9;
     --shadow: 0 1px 2px rgba(19,26,52,.06), 0 6px 20px rgba(19,26,52,.06);
+    --on-primary:#FFFFFF; --on-primary-strong:#FFFFFF; --on-good:#FFFFFF; --on-warn:#FFFFFF; --on-bad:#FFFFFF; --on-cat-adjust:#FFFFFF;
   }
   @media (prefers-color-scheme: dark){
     :root:not([data-theme="light"]){
@@ -73,6 +74,7 @@
       --lab-low:#8FB4E8;
       --lab-low-tint:#1D2C48;
       --shadow: 0 1px 2px rgba(0,0,0,.35), 0 8px 24px rgba(0,0,0,.4);
+      --on-primary:#10142A; --on-primary-strong:#10142A; --on-good:#10142A; --on-warn:#10142A; --on-bad:#10142A; --on-cat-adjust:#10142A;
     }
   }
   :root[data-theme="dark"]{
@@ -107,6 +109,7 @@
     --lab-low:#8FB4E8;
     --lab-low-tint:#1D2C48;
     --shadow: 0 1px 2px rgba(0,0,0,.35), 0 8px 24px rgba(0,0,0,.4);
+    --on-primary:#10142A; --on-primary-strong:#10142A; --on-good:#10142A; --on-warn:#10142A; --on-bad:#10142A; --on-cat-adjust:#10142A;
   }
 
   *{box-sizing:border-box;}
@@ -283,24 +286,25 @@
   .ar-row h3{ display:flex; align-items:center; gap:9px; font-size:13.5px; font-weight:700; margin-bottom:9px; }
   .ar-row .ico{
     width:23px;height:23px;border-radius:7px;flex:none; display:flex;align-items:center;justify-content:center;
-    font-size:12px; font-weight:900; color:#fff;
+    font-size:12px; font-weight:900;
   }
-  .ico.urgent{ background:var(--bad); }
-  .ico.treat{ background:var(--primary-strong); }
-  .ico.stop{ background:var(--warn); }
-  .ico.rate{ background:var(--cat-adjust); }
+  .ico.urgent{ background:var(--bad); color:var(--on-bad); }
+  .ico.treat{ background:var(--primary-strong); color:var(--on-primary-strong); }
+  .ico.stop{ background:var(--warn); color:var(--on-warn); }
+  .ico.rate{ background:var(--cat-adjust); color:var(--on-cat-adjust); }
   .ar-row ul{ margin:0; padding-left:19px; font-size:15.5px; color:var(--ink); }
   .ar-row li{ margin-bottom:6px; } .ar-row li:last-child{ margin-bottom:0; }
 
   .reveal-btn{
     width:100%; margin-top:22px; appearance:none; border:none; cursor:pointer;
-    background:var(--primary); color:#fff; font-weight:700; font-size:15px;
+    background:var(--primary); color:var(--on-primary); font-weight:700; font-size:15px;
     padding:15px; border-radius:14px; font-family:inherit;
     box-shadow:0 4px 14px rgba(59,78,168,.28);
   }
   .reveal-btn:active{ transform:scale(.99); }
 
   .answer-wrap{ margin-top:26px; }
+  .answer-wrap:focus{ outline:none; }
   .diagnosis-reveal{
     background:var(--primary-tint); border:1.5px solid var(--primary); border-radius:16px;
     padding:18px 20px; margin-bottom:16px; text-align:center;
@@ -322,7 +326,7 @@
     margin-bottom:10px;
   }
   .pitfall-block .pf-mark{
-    width:26px;height:26px;border-radius:50%;background:var(--warn);color:#fff;
+    width:26px;height:26px;border-radius:50%;background:var(--warn);color:var(--on-warn);
     display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:900;flex:none;
   }
   .pitfall-block p{ margin:0; font-size:15px; color:var(--ink); line-height:1.75; }
@@ -345,7 +349,7 @@
     font-size:13px; font-weight:700; color:var(--primary-strong); margin-bottom:8px;
   }
   .rx-mark{
-    width:22px;height:22px;border-radius:7px;background:var(--primary);color:#fff;
+    width:22px;height:22px;border-radius:7px;background:var(--primary);color:var(--on-primary);
     display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;flex:none;
     font-family:"Zen Kaku Gothic New",sans-serif;
   }
@@ -374,15 +378,16 @@
   .assess-row{ display:flex; gap:8px; }
   .assess-btn{
     flex:1; appearance:none; cursor:pointer; border-radius:12px; padding:13px 6px;
+    min-height:44px; display:flex; align-items:center; justify-content:center;
     font-family:inherit; font-size:12.5px; font-weight:700; line-height:1.4;
     border:1.5px solid var(--line); background:var(--surface); color:var(--ink-soft);
   }
   .assess-btn.good{ border-color:var(--good); }
   .assess-btn.partial{ border-color:var(--warn); }
   .assess-btn.poor{ border-color:var(--bad); }
-  .assess-btn.good.active{ background:var(--good); color:#fff; }
-  .assess-btn.partial.active{ background:var(--warn); color:#fff; }
-  .assess-btn.poor.active{ background:var(--bad); color:#fff; }
+  .assess-btn.good.active{ background:var(--good); color:var(--on-good); box-shadow:inset 0 0 0 2px var(--surface); }
+  .assess-btn.partial.active{ background:var(--warn); color:var(--on-warn); box-shadow:inset 0 0 0 2px var(--surface); }
+  .assess-btn.poor.active{ background:var(--bad); color:var(--on-bad); box-shadow:inset 0 0 0 2px var(--surface); }
   .save-warning{
     margin-top:12px; padding:10px 14px; border-radius:10px;
     background:var(--bad-tint); color:var(--bad); font-size:12.5px; font-weight:600; line-height:1.5;
@@ -391,7 +396,7 @@
   .after-assess{ margin-top:22px; display:flex; flex-direction:column; gap:10px; animation:fadein .3s ease; }
   @keyframes fadein{ from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);} }
   .nav-btn{ appearance:none; border:none; cursor:pointer; border-radius:12px; padding:14px; font-family:inherit; font-size:14.5px; font-weight:700; text-align:center; }
-  .nav-btn.primary{ background:var(--primary); color:#fff; }
+  .nav-btn.primary{ background:var(--primary); color:var(--on-primary); }
   .nav-btn.ghost{ background:var(--surface-2); color:var(--ink-soft); border:1px solid var(--line); }
 
   /* ---------- APPROACH (初動まとめ) VIEW ---------- */
@@ -412,7 +417,7 @@
   .flow-step:last-child{ padding-bottom:0; }
   .flow-step .rail{ display:flex; flex-direction:column; align-items:center; flex:none; }
   .flow-step .node{
-    width:32px; height:32px; border-radius:50%; background:var(--primary); color:#fff;
+    width:32px; height:32px; border-radius:50%; background:var(--primary); color:var(--on-primary);
     display:flex; align-items:center; justify-content:center; font-weight:900; font-size:13px;
     font-family:"Zen Kaku Gothic New",sans-serif; flex:none; z-index:1;
   }
@@ -469,6 +474,13 @@
     .assess-btn{ font-size:11px; padding:12px 3px; }
   }
 
+  @media (prefers-reduced-motion: reduce){
+    *, *::before, *::after{
+      animation-duration:.01ms !important; animation-iteration-count:1 !important;
+      transition-duration:.01ms !important; scroll-behavior:auto !important;
+    }
+  }
+
   @media (hover:hover){
     .case-card:hover{ border-color:var(--primary); }
     .summary-cta:hover{ background:var(--primary-tint); filter:brightness(0.97); }
@@ -493,7 +505,7 @@
 
   var CASES = [
     {
-      id:"cardiogenic_shock", num:1, cat:"acute", tag:"急性期・緊急",
+      id:"cardiogenic_shock", num:1, cat:"acute", tag:"急性期",
       title:"心原性ショック（うっ血＋低灌流）", hint:"68歳男性・広範囲前壁中隔梗塞後・急速に進行する呼吸困難と四肢冷感",
       vignette:"68歳男性。3日前に広範囲前壁中隔梗塞に対し緊急PCIを受けた。本日から呼吸困難が急速に進行し、四肢冷感・冷汗が出現、応答が鈍くなり搬送された。頸静脈怒張と両側の湿性ラ音を聴取し、四肢は湿潤冷感、尿量はこの3時間でごく少量。",
       labs:[ {k:"収縮期血圧",v:"78",u:"mmHg",abn:"low"}, {k:"乳酸",v:"4.2",u:"mmol/L",abn:"high"}, {k:"BNP",v:"980",u:"pg/mL",abn:"high"}, {k:"Cr",v:"1.8",u:"mg/dL",abn:"high"} ],
@@ -507,16 +519,16 @@
       answer:{
         urgent:["<mark>収縮期血圧90mmHg未満（または平均動脈圧60mmHg未満、基礎値からの30mmHg以上の低下）に乏尿(尿量30mL/時未満)や乳酸2mmol/L超などの低灌流所見が伴えば心原性ショック</mark>と判断する","うっ血(頸静脈怒張・ラ音)と低灌流(冷感・乳酸上昇・乏尿)が<mark>同時に存在するwet & coldは最重症パターン</mark>と認識し、直ちにCCU/ICUレベルの対応につなげる"],
         treat:["<mark>再梗塞・機械的合併症の検索と並行して、まず循環をどう支えるかを決める</mark>","<mark>低灌流が主体のため血管拡張薬や利尿薬単独ではなく、まず強心薬・昇圧薬</mark>で灌流を確保する。反応不良ならIABP/Impella等の機械的補助循環も早期に検討する"],
-        stop:["<mark>血圧の低い患者への硝酸薬や、後負荷・前負荷を下げる薬剤の新規投与・増量は中止</mark>する(後負荷軽減薬は血圧が保たれてから)","再梗塞・機械的合併症(乳頭筋断裂、心室中隔穿孔など)の検索を並行して行う"],
+        stop:["<mark>血圧の低い患者への硝酸薬や、後負荷・前負荷を下げる薬剤の新規投与・増量は中止</mark>する(後負荷軽減薬は血圧が保たれてから)","<mark>内服中のβ遮断薬・ARNI/ACE阻害薬・SGLT2阻害薬はショック離脱まで中止し、血行動態が安定してから再開する</mark>(β遮断薬は急な中止で反跳性頻脈・虚血のリスクもあるため漸減・再開のタイミングは上級医と相談する)","再梗塞・機械的合併症(乳頭筋断裂、心室中隔穿孔など)の検索を並行して行う"],
         rate:["<mark>乳酸値・尿量・意識レベルで灌流の改善を追う</mark>","循環が安定したら早期にうっ血の評価に切り替え、利尿薬導入のタイミングを計る"]
       },
-      rx:["<mark>ノルアドレナリン</mark>を0.05〜0.1γ(μg/kg/分)程度から開始し、平均動脈圧65mmHg以上を目標に漸増する。<mark>体液量を確保してもなお血圧が低い/ショックが続く場合の第一選択</mark>(JCS/JHFS 2025でIIa・B-R)","肺うっ血があり低心拍出・低灌流所見はあるが血圧の低下が著明でない場合は<mark>ドブタミン</mark>2〜5γから開始し、収縮力と心拍出量の改善を見ながら調整する(JCS/JHFS 2025でIIa・C-LD。頻脈・不整脈に注意)","薬物治療への反応が乏しい場合はIABP、Impella、V-A ECMOなど機械的循環補助を早期に循環器専門医・心臓外科と相談する","心筋梗塞後の心原性ショックでは緊急冠動脈造影・再血行再建の適応を並行して評価する"],
+      rx:["<mark>この時点で循環器当直・上級医へ同時にコールする</mark>——強心薬・機械的補助循環の選択は一人で決め切らない。<mark>ノルアドレナリン</mark>を0.05〜0.1γ(μg/kg/分)程度から開始し、平均動脈圧65mmHg以上を目標に漸増する(JCS/JHFS 2025でIIa・B-R)。<mark>本症例のようにうっ血が明らかなwet & coldでは輸液負荷は行わず、直ちに昇圧薬を開始する</mark>(「体液量を確保してもなお血圧が低い場合の第一選択」という一般的な位置づけは、うっ血のない敗血症性ショック等を想定した表現で、本症例にそのまま当てはめて先に輸液をしない)","肺うっ血があり低心拍出・低灌流所見はあるが血圧の低下が著明でない場合は<mark>ドブタミン</mark>2〜5γから開始し、収縮力と心拍出量の改善を見ながら調整する(JCS/JHFS 2025でIIa・C-LD。頻脈・不整脈に注意)","薬物治療への反応が乏しい場合はIABP、Impella、V-A ECMOなど機械的循環補助を早期に循環器専門医・心臓外科と相談する","心筋梗塞後の心原性ショックでは緊急冠動脈造影・再血行再建の適応を並行して評価する"],
       pitfall:"「肺にラ音があるから硝酸薬・利尿薬でうっ血を取る」という発想を血圧の低い本症例に適用すると、<mark>前負荷・血圧をさらに下げて灌流を悪化させ、ショックを増悪させる</mark>。うっ血があっても血圧が保たれていなければ血管拡張薬は使わない。",
       pearl:["心不全の初期評価は<mark>うっ血(wet/dry)</mark>と<mark>低灌流(warm/cold)</mark>を分けて考える2軸が基本で、心不全は「EFが低い病気」ではなく症状・所見から評価する臨床症候群である","wet & coldは<mark>うっ血+低灌流が同時に存在する最重症パターン</mark>で、強心薬・昇圧薬とうっ血治療の両方が必要になりうるが、血圧が保たれるまでは前負荷を下げる治療を急がない","心原性ショックでは<mark>ノルアドレナリン</mark>、うっ血+低心拍出・低灌流(血圧はある程度保たれる場合)では<mark>ドブタミン</mark>など、病態に応じて薬剤を選択する","ショックのない患者へのルーチンの強心薬投与は避ける"],
       refs:[ {author:"Kitai T, Kohsaka S, et al. (日本循環器学会/日本心不全学会 合同ガイドライン).", title:"2025年改訂版 心不全診療ガイドライン", source:"Circulation Journal 89(8):1278-1444 / j-circ.or.jp", year:"2025", url:"https://www.j-circ.or.jp/cms/wp-content/uploads/2025/03/JCS2025_Kato.pdf"}, {author:"Kitai T, Kohsaka S, et al.", title:"JCS/JHFS 2025 Guideline on Diagnosis and Treatment of Heart Failure", source:"Circulation Journal (J-STAGE)", year:"2025", url:"https://www.jstage.jst.go.jp/article/circj/advpub/0/advpub_CJ-25-0002/_html/-char/en"}, {author:"Nohria A, Tsang SW, Fang JC, et al.", title:"Clinical assessment identifies hemodynamic profiles that predict outcomes in patients admitted with heart failure", source:"Journal of the American College of Cardiology", year:"2003", url:"https://doi.org/10.1016/S0735-1097(03)00309-7"} ]
     },
     {
-      id:"hypertensive_pulmonary_edema", num:2, cat:"acute", tag:"急性期・緊急",
+      id:"hypertensive_pulmonary_edema", num:2, cat:"acute", tag:"急性期",
       title:"高血圧性急性肺水腫（うっ血＋高血圧、低灌流なし）", hint:"72歳女性・降圧薬の自己中断・突然発症の起座呼吸とSpO2低下",
       vignette:"72歳女性。高血圧の治療を自己中断していた。夕食後に突然の呼吸困難が出現し、座らないと息ができない状態(起座呼吸)で救急搬送された。呼吸数34/分。四肢は温かく、末梢冷感はない。",
       labs:[ {k:"収縮期血圧",v:"218",u:"mmHg",abn:"high"}, {k:"SpO2",v:"84",u:"%",abn:"low"}, {k:"BNP",v:"620",u:"pg/mL",abn:"high"}, {k:"Cr",v:"1.0",u:"mg/dL",abn:"normal"} ],
@@ -528,14 +540,14 @@
         rate:{ label:"呼吸状態・血圧の改善をどの間隔で追い、退院後の再発予防に何をつなげるか", ph:"NPPV離脱・酸素漸減のタイミング、服薬アドヒアランスなど…" }
       },
       answer:{
-        urgent:["<mark>SpO2 84%（<90%が酸素投与の目安）</mark>であり、まず酸素化を確保する","呼吸数25/分超・SpO2 90%未満の呼吸不全では<mark>酸素だけで不十分ならNPPVを速やかに導入する</mark>(挿管を要する呼吸不全への進行を防ぐ)"],
-        treat:["<mark>血圧が高く保たれ四肢が温かい(warm)、低灌流所見のないwet & warmでは、原因精査より先に後負荷軽減が治療の中心</mark>となる","硝酸薬などの<mark>血管拡張薬を静注</mark>し、NPPVを早期に併用する。本態は血管内容量の著増というより血圧上昇による急激な体液再分布であることが多く、利尿薬は補助的位置づけになる"],
-        stop:["<mark>血圧が高い患者にβ遮断薬を新規に急速増量しない</mark>(急性期は後負荷軽減を優先)","高血圧治療の自己中断が誘因であるため、内服アドヒアランスの再確認・簡素化を検討する"],
+        urgent:["血圧218mmHg・四肢温感・末梢冷感なしから<mark>低灌流はなく、うっ血のみのwet & warm</mark>と評価する","<mark>SpO2 84%（<90%が酸素投与の目安）</mark>であり、まず酸素化を確保する。呼吸数25/分超・SpO2 90%未満の呼吸不全では<mark>酸素だけで不十分ならNPPVを速やかに導入する</mark>(挿管を要する呼吸不全への進行を防ぐ)"],
+        treat:["<mark>まずNPPVを最優先で導入する(Class I・A)</mark>。そのうえで、血圧が高く保たれ四肢が温かい(warm)、低灌流所見のないwet & warmでは<mark>後負荷軽減(血管拡張薬)も治療の中心の一つ</mark>となる","うっ血があればループ利尿薬も併せて投与し(Class I・C-LD)、血圧が著明に高ければ硝酸薬などの<mark>血管拡張薬を静注</mark>で上乗せする(症状緩和目的、Class IIb・B-NR)。本態は血管内容量の著増というより血圧上昇による急激な体液再分布であることが多く、<mark>利尿薬だけで終わらせない</mark>視点が重要"],
+        stop:["<mark>血圧が高い患者にβ遮断薬を新規に急速増量しない</mark>(急性期は後負荷軽減を優先)","高血圧治療の自己中断が誘因であるため、内服アドヒアランスの再確認・簡素化を検討する","<mark>12誘導心電図とトロポニンでACSを除外する</mark>。降圧薬自己中断が誘因らしくても、虚血の併存(乳頭筋機能不全による急性僧帽弁逆流など)を否定してから確定させる"],
         rate:["血圧・呼吸数・SpO2を<mark>数分〜十数分単位</mark>で追い、NPPVからの離脱・酸素漸減のタイミングを判断する","血圧が安定したら経口降圧薬への切り替えと退院後の服薬継続支援を計画する"]
       },
-      rx:["硝酸イソソルビドまたはニトログリセリンを0.5〜1γ(μg/kg/分)程度から開始し、収縮期血圧を20〜30%程度低下、または症状改善を指標に漸増する。過度な血圧低下に注意","NPPV(CPAP 5〜10cmH2O、またはBiPAP)を、呼吸数>25/分・SpO2<90%が持続する時点で速やかに開始する(JCS/JHFS 2025でClass I・レベルA)","著明な体液過剰所見があれば少量のループ利尿薬(フロセミド静注)を併用するが、本症例のような急激な血圧上昇主体の肺水腫では血管拡張薬が治療の中心になる"],
-      pitfall:"「肺水腫だからまず利尿薬」を反射的に行うと、<mark>本態が血管内容量過多ではなく血圧上昇による急激な体液再分布</mark>である場合には効果が乏しく、後負荷軽減という本質的な治療が遅れる。酸素も漫然と高流量で行うのではなく、SpO2を見ながらNPPVへの切り替えを検討する。",
-      pearl:["高血圧性急性肺水腫は<mark>体液量そのものは大きく増えていないことが多く、血圧上昇による前負荷・後負荷の急激な変化</mark>が本態であることが多い","治療の中心は<mark>血管拡張薬+NPPV</mark>であり、利尿薬は補助的位置づけになることが多い","酸素はルーチンではなく<mark>SpO2<90%またはPaO2<60mmHgが目安</mark>(Class I)で開始し、呼吸数>25/分・SpO2<90%が続くならNPPVを早期に検討する(Class I・レベルA)","高血圧治療のアドヒアランス不良は急性心不全の代表的な増悪因子である"],
+      rx:["<mark>ニトログリセリンは0.05〜0.1γ(μg/kg/分)で開始</mark>し、血圧・症状改善を見ながら5〜15分ごとに0.1〜0.2γずつ増量する。<mark>硝酸イソソルビドを使う場合は1.5〜8mg/時(上限10mg/時)</mark>。過度な血圧低下に注意。<mark>投与前に重症大動脈弁狭窄・左室流出路狭窄・右室梗塞・PDE5阻害薬の併用がないことを確認する</mark>(いずれも硝酸薬で急激な血圧低下を来しうる。本症例のような著明な左室肥大はASや心アミロイドーシスも鑑別に挙げる)","NPPV(CPAP 5〜10cmH2O、またはBiPAP)を、呼吸数>25/分・SpO2<90%が持続する時点で速やかに開始する(JCS/JHFS 2025でClass I・レベルA)","著明な体液過剰所見があれば少量のループ利尿薬(フロセミド静注)を併用するが、本症例のような急激な血圧上昇主体の肺水腫では血管拡張薬が治療の中心になる"],
+      pitfall:"「肺水腫だから利尿薬だけで様子を見る」で終わらせると、<mark>本態が血管内容量過多だけではなく血圧上昇による急激な体液再分布</mark>である場合には効果が乏しく、NPPVと後負荷軽減という治療が遅れる。酸素も漫然と高流量で行うのではなく、SpO2を見ながらNPPVへの切り替えを検討する。",
+      pearl:["高血圧性急性肺水腫は<mark>体液量そのものは大きく増えていないことが多く、血圧上昇による前負荷・後負荷の急激な変化</mark>が本態であることが多い","治療の優先順位は<mark>NPPV(Class I・A)→うっ血があればループ利尿薬(Class I)→血圧が著明高値なら血管拡張薬を上乗せ(Class IIb、症状緩和目的で予後改善のエビデンスはない)</mark>","酸素はルーチンではなく<mark>SpO2<90%またはPaO2<60mmHgが目安</mark>(Class I)で開始し、呼吸数>25/分・SpO2<90%が続くならNPPVを早期に検討する(Class I・レベルA)","高血圧治療のアドヒアランス不良は急性心不全の代表的な増悪因子である"],
       refs:[ {author:"Kitai T, Kohsaka S, et al.", title:"JCS/JHFS 2025 Guideline on Diagnosis and Treatment of Heart Failure（酸素療法・NPPVに関する推奨）", source:"Circulation Journal (J-STAGE)", year:"2025", url:"https://www.jstage.jst.go.jp/article/circj/advpub/0/advpub_CJ-25-0002/_html/-char/en"}, {author:"日本循環器学会/日本心不全学会.", title:"2025年改訂版 心不全診療ガイドライン", source:"j-circ.or.jp", year:"2025", url:"https://www.j-circ.or.jp/cms/wp-content/uploads/2025/03/JCS2025_Kato.pdf"} ]
     },
     {
@@ -543,17 +555,17 @@
       title:"血圧の保たれた典型的な急性非代償性心不全", hint:"78歳男性・慢性HFrEF通院中・塩分過多と体重増加後の労作時呼吸困難",
       vignette:"78歳男性。慢性心不全(LVEF 32%)で通院中。1週間前から親族の集まりで塩分の多い食事が続き、体重が4kg増加。労作時の呼吸困難と下腿浮腫が進行し外来受診した。血圧128/74mmHg、脈拍88/分、四肢は温かい。",
       labs:[ {k:"BNP",v:"890",u:"pg/mL",abn:"high"}, {k:"Cr",v:"1.3",u:"mg/dL",abn:"high"}, {k:"Na",v:"138",u:"mEq/L",abn:"normal"}, {k:"K",v:"4.2",u:"mEq/L",abn:"normal"} ],
-      finding:"身体所見：頸静脈怒張、両側下腿浮腫++、軽度の肺ラ音、四肢温感。体重は普段のドライウェイトより+4kg。",
+      finding:"身体所見：頸静脈怒張、両側下腿浮腫++、軽度の肺ラ音、四肢温感。体重は普段の安定時体重より+4kg。",
       prompts:{
         urgent:{ label:"体重増加・浮腫・頸静脈怒張の程度から、うっ血の重症度と緊急性をどう評価するか", ph:"体重変化・浮腫・頸静脈怒張・血圧など…" },
         treat:{ label:"血圧が保たれたこのタイプのうっ血で、治療の基本となる手段は何か", ph:"利尿薬の開始量、反応の見方など…" },
-        stop:{ label:"今回の増悪の背景に何があるかを確認し、利尿薬について理解しておくべきことは何か", ph:"塩分摂取・服薬アドヒアランス、利尿薬の位置づけなど…" },
+        stop:{ label:"今回の増悪の背景に何があるかを確認し、利尿薬について理解しておくべきことは何か", ph:"生活面の増悪因子、利尿薬の治療上の位置づけなど…" },
         rate:{ label:"反応をどう追い、GDMT導入や退院に向けてどのタイミングで動くか", ph:"体重・尿量・電解質のフォロー、GDMT導入のタイミングなど…" }
       },
       answer:{
         urgent:["血圧は保たれ四肢も温かい<mark>wet & warm</mark>で、緊急のショック対応は不要だが、<mark>うっ血の重症度(体重増加・浮腫・頸静脈怒張)</mark>を評価する"],
         treat:["<mark>体液貯留の明らかなwet & warmでは、ループ利尿薬の静注が治療の基本</mark>となる","入院の上でフロセミド静注を開始し、<mark>尿量・体重・症状・うっ血所見で反応を見ながら</mark>用量を調整する"],
-        stop:["<mark>塩分制限の徹底</mark>と、増悪因子(NSAIDs使用、内服アドヒアランス)を確認する","腎機能を見ながら、利尿薬以外のGDMT(β遮断薬など)は急性増悪期でも自己判断で中断させない"],
+        stop:["<mark>塩分制限の徹底</mark>と、増悪因子(NSAIDs使用、内服アドヒアランス)を確認する","<mark>ループ利尿薬はうっ血解除・症状改善が目的で、それ自体に生命予後を改善するエビデンスは確立していない</mark>ことを理解しておく","腎機能を見ながら、利尿薬以外のGDMT(β遮断薬など)は<mark>低灌流・症候性低血圧・ショックを伴う場合を除き</mark>急性増悪期でも自己判断で中断させない"],
         rate:["<mark>利尿薬の用量を調整している間はNa・K・Crをほぼ毎日、反応が安定してきたら間隔を延ばして</mark>フォローし、尿量と体重減少(1日0.5〜1kg程度を目安)で反応性を評価する","うっ血が十分解除された後にGDMT(4本柱)の導入・増量を進め、退院に備える"]
       },
       rx:["フロセミド静注20〜40mgから開始(普段の内服ループ利尿薬の1〜2.5倍量が目安)、反応(尿量・体重)を見て増量・持続静注への切り替えを検討する","目標は数日でドライウェイトに近い体重まで除水すること。過度な急速除水は腎機能悪化・電解質異常を招くため、日々の反応を見ながら調整する","<mark>ループ利尿薬はうっ血の解除・症状改善・増悪予防が目的であり、生命予後を改善するというエビデンスは確立していない</mark>(JCS/JHFS 2025)。うっ血が改善したらできるだけ早期にβ遮断薬・ARNI/ACE阻害薬・MRA・SGLT2阻害薬などのGDMTを見直し、可能な範囲で導入・増量する"],
@@ -566,12 +578,12 @@
       title:"利尿薬抵抗性心不全", hint:"82歳女性・CKD合併・ループ利尿薬増量でも尿量が増えない",
       vignette:"82歳女性。慢性心不全とCKD(eGFR 28)を合併。今回の非代償化に対しフロセミド静注40mg×2/日で治療中だが、3日経過しても尿量が増えず体重も減少しない。血圧110/64mmHg、頸静脈怒張・両側下腿浮腫が持続。",
       labs:[ {k:"BNP",v:"1250",u:"pg/mL",abn:"high"}, {k:"Cr",v:"2.1",u:"mg/dL",abn:"high"}, {k:"Na",v:"133",u:"mEq/L",abn:"low"}, {k:"eGFR",v:"28",u:"mL/分/1.73m²",abn:"low"} ],
-      finding:"尿量800mL/日前後で増加なし。フロセミド静注量を増量しても反応不良(利尿薬抵抗性)。四肢は温かく、低灌流所見はない(wet & warmが持続)。",
+      finding:"尿量800mL/日前後で増加なし。フロセミド静注量を増量しても尿量の増加なし。四肢は温かい。",
       prompts:{
         urgent:{ label:"利尿薬を増量しても尿量・体重が反応しない状態を、どう評価するか", ph:"腎機能、投与量と反応の関係、体液量など…" },
-        treat:{ label:"単純な増量以外に、どのような治療アプローチが考えられるか", ph:"作用点の異なる利尿薬の併用、水利尿薬など…" },
+        treat:{ label:"単純な増量以外に、どのような治療アプローチが考えられるか", ph:"利尿薬の作用点、他の発想の広げ方など…" },
         stop:{ label:"見直すべき薬剤や生活因子には何があるか", ph:"利尿薬の効果を妨げる要因、塩分・水分制限の程度など…" },
-        rate:{ label:"治療強化中に注意深く追うべき指標と、改善が乏しい場合の次の一手は何か", ph:"電解質・腎機能のフォロー、体外的な除水手段など…" }
+        rate:{ label:"治療強化中に注意深く追うべき指標と、改善が乏しい場合の次の一手は何か", ph:"電解質・腎機能のフォロー、内科的治療で反応が乏しい場合の選択肢など…" }
       },
       answer:{
         urgent:["血圧は保たれており緊急のショック対応は不要だが、<mark>体液貯留が持続し呼吸状態悪化のリスク</mark>があるため放置しない"],
@@ -579,30 +591,30 @@
         stop:["過度な塩分・水分制限の確認と、NSAIDs等<mark>利尿薬の効果を妨げる薬剤</mark>がないか点検する","腎血流を下げうる過度な降圧・脱水を避け、利尿薬の作用に必要な腎灌流を保つ"],
         rate:["<mark>Na・K・Crを必ず追う</mark>。利尿薬抵抗性への対応では電解質異常・急性腎障害のリスクが高まる","尿量・体重の反応を毎日評価し、改善が乏しければ限外濾過(除水療法)も選択肢に入れる"]
       },
-      rx:["フロセミド持続静注(例:5〜10mg/時)への切り替え、または投与間隔短縮によるピーク濃度の維持を検討する","サイアザイド系(トリクロルメチアジド等)をループ利尿薬と併用し、遠位尿細管でのNa再吸収も同時にブロックする(sequential nephron blockade。JCS/JHFS 2025でIIa・B-R、CLOROTIC試験)。低K血症・脱水に厳重注意","<mark>トルバプタン(サムスカ)</mark>7.5mg/日からの追加を検討する(JCS/JHFS 2025でIIa・B-R、国内AQUAMARINE/K-STAR試験等)。ただし<mark>長期使用による予後改善の根拠は確立しておらず、慎重に位置づける薬剤</mark>であることを踏まえる。入院下でのNaモニタリングが前提","内科的治療に抵抗性の高度体液過剰では<mark>限外濾過(ECUM等)</mark>を腎臓内科と相談する"],
+      rx:["フロセミド持続静注(例:5〜10mg/時)への切り替え、または投与間隔短縮によるピーク濃度の維持を検討する","サイアザイド系(トリクロルメチアジド等)をループ利尿薬と併用し、遠位尿細管でのNa再吸収も同時にブロックする(sequential nephron blockade。JCS/JHFS 2025でIIa・B-R、CLOROTIC試験)。低K血症・脱水に厳重注意","<mark>トルバプタン(サムスカ)</mark>は通常15mg/日から開始するが、<mark>本症例のような高齢・腎機能低下例では7.5mg/日からの低用量開始</mark>を検討する(JCS/JHFS 2025でIIa・B-R、国内AQUAMARINE/K-STAR試験等)。ただし<mark>長期使用による予後改善の根拠は確立しておらず、慎重に位置づける薬剤</mark>であることを踏まえる。入院下でのNaモニタリングが前提","内科的治療に抵抗性の高度体液過剰では<mark>限外濾過(ECUM等)</mark>を腎臓内科と相談する"],
       pitfall:"「尿が出ないからループ利尿薬をとにかく増量する」だけを繰り返すと、<mark>単一のネフロン部位をブロックし続けても他部位での代償性Na再吸収が起こり効果が頭打ちになる</mark>。増量一辺倒ではなく、作用点の異なる利尿薬の併用に発想を切り替える。トルバプタンも「追加すれば安心」ではなく位置づけを正しく理解して使う。",
       pearl:["利尿薬抵抗性は<mark>腎血流低下・低アルブミン血症・腸管浮腫による吸収不良・慢性利尿薬使用によるネフロン肥大</mark>など複数の機序が関与する","ループ利尿薬+サイアザイド系の併用は<mark>sequential nephron blockade</mark>と呼ばれ、単剤増量より有効なことがある(CLOROTIC試験)","トルバプタンは<mark>電解質を伴わない水利尿</mark>のため低Na血症合併例にも使いやすいが、<mark>長期予後改善のエビデンスは確立していない</mark>(JCS/JHFS 2025)ため位置づけを理解して使う","改善が乏しい高度体液過剰では<mark>限外濾過</mark>も治療選択肢に入る"],
       refs:[ {author:"Kitai T, Kohsaka S, et al.", title:"JCS/JHFS 2025 Guideline on Diagnosis and Treatment of Heart Failure（利尿薬抵抗性への対応）", source:"Circulation Journal (J-STAGE)", year:"2025", url:"https://www.jstage.jst.go.jp/article/circj/advpub/0/advpub_CJ-25-0002/_html/-char/en"}, {author:"Trullàs JC, et al.", title:"Combining loop with thiazide diuretics for decompensated heart failure: the CLOROTIC trial", source:"European Heart Journal", year:"2023", url:"https://doi.org/10.1093/eurheartj/ehac689"} ]
     },
     {
-      id:"precipitating_afib", num:5, cat:"adjust", tag:"増悪因子・緊急",
+      id:"precipitating_afib", num:5, cat:"adjust", tag:"増悪因子",
       title:"心房細動の急性増悪による心不全の非代償化", hint:"75歳男性・安定していたHFrEF・動悸を契機に急速に進行する呼吸困難",
       vignette:"75歳男性。安定していた慢性心不全(LVEF 35%)で通院中。2日前からの動悸を自覚し、その後急速に呼吸困難が進行して受診した。血圧104/68mmHg、脈拍156/分不整。",
       labs:[ {k:"心拍数",v:"156",u:"/分",abn:"high"}, {k:"SpO2",v:"92",u:"%",abn:"low"}, {k:"BNP",v:"1100",u:"pg/mL",abn:"high"}, {k:"Hb",v:"13.2",u:"g/dL",abn:"normal"} ],
-      finding:"心電図：心房細動、心拍数156/分。両側肺うっ血像あり。四肢は温かく、末梢冷感や意識障害はない(低灌流所見なし)。TSH正常、WBC/CRP正常(感染所見なし)。",
+      finding:"心電図：心房細動、心拍数156/分。両側肺うっ血像あり。四肢は温かく、末梢冷感や意識障害はない。TSH 1.8μIU/mL、WBC 6800/μL、CRP 0.2mg/dL。",
       prompts:{
         urgent:{ label:"頻脈と呼吸困難が急速に進行したこの患者で、まず確認すべき血行動態の所見は何か", ph:"血圧・意識・尿量・末梢の温度など…" },
         treat:{ label:"うっ血への対応に加え、同時に行うべき治療は何か", ph:"レートコントロール、除細動の適応など…" },
-        stop:{ label:"急性期に避けるべき薬剤や、併せて評価すべきリスクは何か", ph:"陰性変力作用のある薬剤、抗凝固療法の適応など…" },
+        stop:{ label:"急性期に避けるべき薬剤や、併せて評価すべきリスクは何か", ph:"薬理作用の観点から避けたい薬剤、塞栓症リスクの評価など…" },
         rate:{ label:"この不整脈以外に確認すべき増悪因子には何があり、今後どう経過を追うか", ph:"感染・貧血・腎機能・服薬アドヒアランスなど…" }
       },
       answer:{
-        urgent:["<mark>頻脈性心房細動による急性増悪</mark>であり、血行動態が不安定であれば緊急除細動も考慮する","<mark>心拍数156/分という頻脈だけでショックと短絡的に判断せず、四肢冷感・意識・尿量で低灌流の有無を確認</mark>する。本症例は四肢温感があり低灌流所見を伴わないwet & warmで、血圧も保たれているため、まず薬物によるレートコントロールから開始できる"],
-        treat:["<mark>心不全の治療(利尿薬など)だけでなく、増悪因子そのもの(頻脈性心房細動)への対応を同時に行う</mark>ことが本質的な治療になる","うっ血に対する利尿薬に加え、<mark>レートコントロール(ジゴキシン、少量のβ遮断薬など)</mark>を心機能を見ながら開始する"],
-        stop:["<mark>血行動態が不安定な急性期に非ジヒドロピリジン系Ca拮抗薬(ベラパミル等)は陰性変力作用のため避ける</mark>","脱水を助長する要因があれば是正しつつ、抗凝固療法の適応(CHADS2/CHA2DS2-VAScスコア)を評価する"],
+        urgent:["<mark>心拍数156/分という頻脈だけでショックと短絡的に判断せず、四肢冷感・意識・尿量で低灌流の有無を確認</mark>する。本症例は四肢温感があり低灌流所見を伴わないwet & warmで、血圧も保たれているため、まず薬物によるレートコントロールから開始できる","<mark>頻脈性心房細動による急性増悪</mark>であり、血行動態が不安定(ショック・高度肺水腫)であれば緊急除細動も考慮する。<mark>この判断は循環器当直へ共有する</mark>"],
+        treat:["<mark>心不全の治療(利尿薬など)だけでなく、増悪因子そのもの(頻脈性心房細動)への対応を同時に行う</mark>ことが本質的な治療になる","うっ血に対する利尿薬に加え、<mark>レートコントロール(ランジオロール持続静注を軸に、ジゴキシンを併用・代替)</mark>を心機能を見ながら開始する。<mark>左室収縮能低下例の非代償期に経口β遮断薬を新規導入することは、ベラパミル同様に推奨されない</mark>(いずれもJCS/JHFS 2025でClass III Harm)"],
+        stop:["<mark>血行動態が不安定な急性期に非ジヒドロピリジン系Ca拮抗薬(ベラパミル等)や経口β遮断薬の新規レートコントロール目的投与は、いずれも陰性変力作用のため避ける</mark>(Class III Harm)。うっ血が解除され安定してから慢性期のGDMTとして導入する","脱水を助長する要因があれば是正しつつ、<mark>本症例は心不全があるだけでCHADS2 1点以上に相当し抗凝固の適応となる</mark>ことを踏まえ評価する","<mark>発症48時間を超える、または発症時刻不明のAfでは、緊急時を除き除細動前に経食道エコーによる左房内血栓評価か3週間の抗凝固を要する。血行動態不安定で緊急除細動を行う場合もヘパリンを直ちに開始し、除細動後最低4週間は抗凝固を継続する</mark>"],
         rate:["心拍数・血圧・うっ血所見の推移を追い、<mark>洞調律化(除細動・抗不整脈薬)かレートコントロール継続か</mark>を再評価する","<mark>他の増悪因子(感染、貧血、腎機能悪化、NSAIDs、服薬中断)も網羅的に確認</mark>し、心房細動だけを原因と決めつけない"]
       },
-      rx:["血行動態が保たれていればジゴキシン0.25mg静注、または少量のβ遮断薬(ビソプロロール等)からレートコントロールを開始する。急性期の高用量β遮断薬導入は陰性変力作用に注意","血行動態不安定(ショック・高度肺水腫)なら同期電気的除細動を優先する","抗凝固療法はCHADS2スコア等でリスク評価し、適応があればDOACを導入する","背景の心不全治療(利尿薬によるうっ血解除)は並行して継続する"],
+      rx:["血行動態が保たれていれば<mark>ランジオロール(オノアクト)1〜数γの持続静注から開始</mark>する(JCS/JHFS 2025でIIa・B-R、J-Land試験)。効果不十分ならジゴキシン0.25mg静注を追加する(IIa)。<mark>左室収縮能低下例での経口β遮断薬の新規レートコントロール目的投与はClass III Harm</mark>であり行わない","血行動態不安定(ショック・高度肺水腫)なら<mark>循環器当直へ報告のうえ同期電気的除細動を優先する。発症48時間超/時刻不明では緊急時を除き経食道エコーでの血栓評価か3週間の抗凝固が前提で、緊急除細動時もヘパリンを直ちに開始し除細動後4週間は抗凝固を継続する</mark>","<mark>抗凝固療法は本症例では心不全の存在だけでCHADS2 1点以上に相当し適応となる</mark>。CHA2DS2-VAScスコア等でリスクを再評価し、DOACを導入する","背景の心不全治療(利尿薬によるうっ血解除)は並行して継続する"],
       pitfall:"「心不全の治療だけ頑張って、心房細動はレートが落ち着くまで様子を見る」では、<mark>増悪因子そのものが是正されず心不全治療の効果も乏しい</mark>ままになりやすい。心不全治療と増悪因子治療は必ずセットで行う。",
       pearl:["急性非代償性心不全を見たら<mark>ACS、頻脈・徐脈性不整脈、感染、高血圧、弁膜症、肺塞栓、腎機能悪化、貧血、服薬中断・塩分過多、NSAIDsなど</mark>の増悪因子を必ず探す(OPTIMIZE-HFやWET-HF2などのレジストリ研究でも繰り返し重視される視点)","増悪因子の治療を怠ると<mark>心不全治療だけを繰り返しても再増悪</mark>を招く","心房細動は心不全の増悪因子であると同時に心不全自体が心房細動を誘発することもあり、<mark>双方向の関係</mark>にある","<mark>頻脈=低灌流とは限らない</mark>。心拍数だけでなく四肢冷感・意識・尿量・乳酸を見て初めてwarm/coldを判定できる(症例1の心原性ショックのようなwet & coldとの違いに注目)"],
       refs:[ {author:"日本循環器学会.", title:"心不全の増悪因子と管理（Best Teacher Series）", source:"日本循環器学会 j-kyoken", url:"https://www.j-circ.or.jp/committees/j-kyoken/best-teacher-series/"}, {author:"Kitai T, Kohsaka S, et al.", title:"JCS/JHFS 2025 Guideline on Diagnosis and Treatment of Heart Failure", source:"Circulation Journal (J-STAGE)", year:"2025", url:"https://www.jstage.jst.go.jp/article/circj/advpub/0/advpub_CJ-25-0002/_html/-char/en"} ]
@@ -616,11 +628,11 @@
       prompts:{
         urgent:{ label:"利尿薬治療中にCrが上昇したとき、この数値だけで判断せず併せて確認すべきことは何か", ph:"うっ血所見・血圧・尿量・K値など…" },
         treat:{ label:"うっ血が改善傾向にある場合、治療方針の基本はどうあるべきか", ph:"利尿薬・RAAS阻害薬の継続可否など…" },
-        stop:{ label:"CrやK値の変化を理由に安易に中止・減量してはいけない治療は何か。代わりに検討できる選択肢は", ph:"RAAS阻害薬、K吸着薬の併用など…" },
+        stop:{ label:"CrやK値の変化を理由に安易に中止・減量してはいけない治療は何か。代わりに検討できる選択肢は", ph:"予後改善薬の継続可否、代替となる併用薬など…" },
         rate:{ label:"腎機能の変化が一時的か進行性かをどう見極め、今後どうフォローするか", ph:"Crの再検タイミング、うっ血・血圧・尿量とのセット評価など…" }
       },
       answer:{
-        urgent:["Cr上昇のみでは緊急対応は不要だが、<mark>高K血症(目安K5.5mEq/L以上)や乏尿を伴っていないか</mark>を確認する"],
+        urgent:["Cr上昇のみでは緊急対応は不要だが、<mark>高K血症(目安K5.5mEq/L以上)や乏尿を伴っていないか</mark>を確認する。<mark>うっ血・脱水の他に、NSAIDs等の腎毒性薬剤・造影剤・尿路閉塞(残尿測定)</mark>も並行して確認する"],
         treat:["<mark>Crが上がったからといって直ちに利尿薬・RAAS阻害薬を中止しない</mark>。うっ血所見・体重・血圧・尿量が改善傾向であれば<mark>治療は奏効中と判断し継続を検討</mark>する","<mark>静脈うっ血そのものが腎機能を悪化させうる</mark>ことを踏まえ、脱水と決めつけず、うっ血の程度を総合的に再評価する"],
         stop:["<mark>K 5.5mEq/L以上や急激な腎機能悪化、乏尿を伴う場合はRAAS阻害薬の減量・休止</mark>を検討するが、本症例のように軽度上昇かつうっ血改善中であれば継続を優先することが多い","脱水を示唆する所見(血圧低下、頻脈、皮膚ツルゴール低下)があれば利尿薬の減量を検討する"],
         rate:["<mark>うっ血・血圧・尿量・K・腎機能をセットで判断</mark>し、Crだけを切り離して評価しない","数日以内に<mark>Crの再検・トレンド</mark>を確認し、改善傾向か進行性かを見極める"]
@@ -635,7 +647,7 @@
       title:"EF60%でも心不全は否定できない", hint:"74歳女性・高血圧とAfの既往・労作時息切れ、LVEF 60%",
       vignette:"74歳女性。高血圧、2型糖尿病、発作性心房細動の既往。半年前から階段昇降時の息切れと下腿浮腫が進行し受診した。心エコーでLVEF 60%、左房拡大とE/e'高値を認める。",
       labs:[ {k:"NT-proBNP",v:"1650",u:"pg/mL",abn:"high"}, {k:"LVEF",v:"60",u:"%",abn:"normal"}, {k:"Cr",v:"1.0",u:"mg/dL",abn:"normal"} ],
-      finding:"心エコー：LVEF 60%、左房容積係数拡大、E/e' 16(拡張能低下を示唆)。年齢・腎機能を考慮してもNT-proBNPは高値。",
+      finding:"心エコー：LVEF 60%、左房容積係数拡大、E/e' 16。",
       prompts:{
         urgent:{ label:"LVEFが保たれているという所見だけで、心不全の可能性をどう判断すべきか", ph:"症状・NT-proBNP・心エコーの拡張能指標など…" },
         treat:{ label:"診断に至った場合、治療の柱として何を据えるべきか", ph:"併存疾患治療、心房細動への対応など…" },
@@ -648,7 +660,7 @@
         stop:["「EF60%だから心不全は否定的」として<mark>症状の原因検索や治療導入を止めてしまう誤りを避ける</mark>","過度な利尿薬投与による脱水は避ける","抗凝固療法が未導入なら<mark>CHA2DS2-VAScスコアで再評価</mark>し、放置しない"],
         rate:["体重・浮腫などのうっ血所見と血圧・心房細動の管理状況を継続してフォローする","<mark>SGLT2阻害薬などのHFpEFに対するGDMT導入</mark>を進め、症状・入院回数の推移を追う"]
       },
-      rx:["うっ血症状があればループ利尿薬で症状緩和を図る(HFrEFと同様、症状改善が主目的)","<mark>SGLT2阻害薬(ダパグリフロジンまたはエンパグリフロジン、いずれも1日1回)を導入</mark>する。HFpEFに対しJCS/JHFS 2025でClass I・レベルA(根拠となる大規模試験:EMPEROR-Preserved、DELIVER)","血圧・心房細動・糖尿病・肥満など併存疾患を積極的に治療する。特に高血圧のコントロールはHFpEFの主要な治療標的","<mark>心拍数コントロールは第一選択としてβ遮断薬(ビソプロロール等)</mark>を用いる。本症例はLVEFが保たれているため、HFrEFの症例と異なり<mark>非ジヒドロピリジン系Ca拮抗薬(ベラパミル・ジルチアゼム)も選択肢になりうる</mark>が、高血圧合併もありβ遮断薬を優先することが多い","<mark>抗凝固療法の要否をCHA2DS2-VAScスコアで確認</mark>する。本症例は心不全(該当)・高血圧・糖尿病・年齢65〜74歳・女性で少なくとも5点相当となり、未導入であれば<mark>DOAC導入が強く推奨される</mark>","<mark>症候性の発作性Afが持続しHFpEFの症状改善が乏しい場合はカテーテルアブレーションによるリズムコントロール</mark>を検討する。心房収縮(atrial kick)の温存は拡張能に有利に働きうる。EAST-AFNET4試験では心不全合併例(大半がHFpEF相当)を含め早期リズムコントロールの有用性が示されている"],
+      rx:["うっ血症状があればループ利尿薬で症状緩和を図る(HFrEFと同様、症状改善が主目的)","<mark>SGLT2阻害薬(ダパグリフロジンまたはエンパグリフロジン、いずれも1日1回)を導入</mark>する。HFpEFに対しJCS/JHFS 2025でClass I・レベルA(根拠となる大規模試験:EMPEROR-Preserved、DELIVER)","血圧・心房細動・糖尿病・肥満など併存疾患を積極的に治療する。特に高血圧のコントロールはHFpEFの主要な治療標的","<mark>発作性Afの発作時に頻脈を認める場合はレートコントロールを検討する</mark>。本症例はLVEFが保たれているため、HFrEFの症例と異なり<mark>非ジヒドロピリジン系Ca拮抗薬(ベラパミル・ジルチアゼム)もβ遮断薬と並ぶ選択肢になる</mark>(HFrEFでのClass III Harmはあくまで収縮能低下例が対象)。高血圧合併例ではいずれも選択肢となる","<mark>抗凝固療法の要否をCHA2DS2-VAScスコアで確認</mark>する。本症例は心不全(該当)・高血圧・糖尿病・年齢65〜74歳・女性で少なくとも5点相当となり、未導入であれば<mark>DOAC導入が強く推奨される</mark>","<mark>症候性の発作性Afが持続しHFpEFの症状改善が乏しい場合はカテーテルアブレーションによるリズムコントロール</mark>を検討する。心房収縮(atrial kick)の温存は拡張能に有利に働きうる。EAST-AFNET4試験では心不全合併例(大半がHFpEF相当)を含め早期リズムコントロールの有用性が示されている"],
       pitfall:"「EFが60%で保たれているから心不全ではない、様子を見よう」という判断は<mark>典型的な誤り</mark>。心不全はEFで定義される疾患ではなく<mark>臨床症候群</mark>であり、拡張能障害主体のHFpEFはEFが保たれたまま生じる。",
       pearl:["心不全は<mark>EFが低い病気ではなく、症状・身体所見・バイオマーカー・画像所見を総合して診断する臨床症候群</mark>である(2021年の心不全の普遍的定義にも基づく)","HFrEF(LVEF≤40%)・HFmrEF(41〜49%)・HFpEF(≥50%)・HFimpEF(以前LVEF≤40%から10ポイント以上改善し40%超)という分類は、<mark>あくまで治療方針を決めるための分類であり、診断そのものを否定する根拠にはならない</mark>","高齢女性・高血圧・心房細動・肥満・糖尿病はHFpEFの典型的な背景","JCS/JHFS 2025年版でもHFpEFに対するSGLT2阻害薬はClass I・レベルAとされている","<mark>心房細動を合併するHFpEFでは、心拍数コントロール・抗凝固療法・(適応があれば)リズムコントロールまでを心不全治療とセットで評価する</mark>。Afを「併存疾患」として名前だけ挙げて終わらせない"],
       refs:[ {author:"Bozkurt B, Coats AJ, Tsutsui H, et al.", title:"Universal Definition and Classification of Heart Failure", source:"Journal of Cardiac Failure", year:"2021", url:"https://doi.org/10.1016/j.cardfail.2021.01.022"}, {author:"Kitai T, Kohsaka S, et al.", title:"JCS/JHFS 2025 Guideline on Diagnosis and Treatment of Heart Failure（HFpEFの定義・診断）", source:"Circulation Journal (J-STAGE)", year:"2025", url:"https://www.jstage.jst.go.jp/article/circj/advpub/0/advpub_CJ-25-0002/_html/-char/en"}, {author:"Anker SD, Butler J, Filippatos G, et al.", title:"Empagliflozin in Heart Failure with a Preserved Ejection Fraction (EMPEROR-Preserved)", source:"New England Journal of Medicine", year:"2021", url:"https://doi.org/10.1056/NEJMoa2107038"}, {author:"Kirchhof P, Camm AJ, Goette A, et al.", title:"Early Rhythm-Control Therapy in Patients with Atrial Fibrillation (EAST-AFNET 4)", source:"New England Journal of Medicine", year:"2020", url:"https://doi.org/10.1056/NEJMoa2019422"} ]
@@ -658,7 +670,7 @@
       title:"HFrEF慢性期管理：4本柱を自己判断で止めない", hint:"66歳男性・拡張型心筋症によるHFrEF・症状改善後にβ遮断薬中止を希望",
       vignette:"66歳男性。拡張型心筋症によるHFrEF(LVEF 28%→治療後38%)で通院中。ARNI・β遮断薬・MRA・SGLT2阻害薬の4剤を内服し症状は安定、浮腫もない。血圧が108/62mmHgとやや低めなのを気にして、患者本人から「調子がいいのでβ遮断薬をやめたい」と相談された。",
       labs:[ {k:"LVEF",v:"38",u:"%",abn:"low"}, {k:"NT-proBNP",v:"210",u:"pg/mL",abn:"normal"}, {k:"K",v:"4.9",u:"mEq/L",abn:"normal"}, {k:"Cr",v:"1.2",u:"mg/dL",abn:"normal"} ],
-      finding:"身体所見に浮腫・頸静脈怒張なし。症状はNYHA I〜II相当まで改善。LVEFは10ポイント以上改善したが40%を超えていないため、分類上はまだHFrEF(HFimpEFの定義は「改善して40%超」)。",
+      finding:"身体所見に浮腫・頸静脈怒張なし。症状はNYHA I〜II相当まで改善。LVEFは28%から38%に改善。",
       prompts:{
         urgent:{ label:"症状が改善し血圧がやや低めであることは、治療方針にどう影響するか、あるいは影響しないか", ph:"血行動態の安定性、症状(めまい・失神)の有無など…" },
         treat:{ label:"「調子がいいから薬をやめたい」という希望に対し、内服中の薬剤についてどう説明すべきか", ph:"症状改善薬と予後改善薬の違いなど…" },
@@ -671,15 +683,15 @@
         stop:["<mark>「調子がいいから」を理由に自己判断でβ遮断薬・GDMTを中断させない</mark>","むしろ目標用量に達していなければ、忍容性を見ながら<mark>増量(up-titration)</mark>を検討する時期と捉える"],
         rate:["血圧・脈拍・腎機能・Kを定期的にフォローしつつ、症状のない血圧低下だけでは減量根拠にしない","<mark>浮腫・体重増加などのうっ血再燃の兆候</mark>があれば利尿薬側で調整し、4本柱自体は基本的に維持する"]
       },
-      rx:["ARNI(サクビトリルバルサルタン)は忍容性があれば目標用量まで漸増する。<mark>ACE阻害薬/ARBからARNIへの切替はClass I・B-R</mark>である一方、<mark>入院中に未治療から新規導入するのはClass IIa・B-R</mark>と状況により推奨度が異なる点も押さえておく","β遮断薬はカルベジロールまたはビソプロロールを、<mark>忍容性を見ながら数週間〜数か月かけて目標用量まで漸増</mark>する。国内試験(J-CHF等)では欧米より低めの目標用量設定が用いられることが多く、少量でも効果が期待できる(MUCHA試験)。急に中止すると反跳性の頻脈・虚血のリスクがある","MRA(スピロノラクトンまたはエプレレノン)は<mark>K・腎機能をモニタリングしながら継続</mark>する(eGFR<30またはK≥5.0導入時は特に慎重、K5.5程度までは有効性が保たれるとの報告もある)","SGLT2阻害薬(ダパグリフロジンまたはエンパグリフロジン)はHFrEFに対してもClass Iで継続する"],
+      rx:["ARNI(サクビトリルバルサルタン)は忍容性があれば目標用量まで漸増する。<mark>ACE阻害薬/ARBからARNIへの切替はClass I・B-R</mark>である一方、<mark>入院中に未治療から新規導入するのはClass IIa・B-R</mark>と状況により推奨度が異なる点も押さえておく。<mark>ACE阻害薬からARNIへ切り替える際は、最終内服から36時間の休薬期間を置く(血管浮腫のリスク)。ARBからの切替は休薬不要。血管浮腫の既往がある患者にはARNI・ACE阻害薬とも禁忌</mark>","β遮断薬はカルベジロールまたはビソプロロールを、<mark>忍容性を見ながら数週間〜数か月かけて目標用量まで漸増</mark>する。国内試験(J-CHF等)では欧米より低めの目標用量設定が用いられることが多く、少量でも効果が期待できる(MUCHA試験)。急に中止すると反跳性の頻脈・虚血のリスクがある","MRA(スピロノラクトンまたはエプレレノン)は<mark>K・腎機能をモニタリングしながら継続</mark>する(eGFR<30またはK≥5.0導入時は特に慎重)。<mark>K≥5.5では休止を検討する。導入・増量後は1〜2週間以内にK・腎機能を再検</mark>し、K 5.0〜5.5では減量またはK吸着薬併用を検討する","SGLT2阻害薬(ダパグリフロジンまたはエンパグリフロジン)はHFrEFに対してもClass Iで継続する。<mark>導入時はシックデイルール(発熱・嘔吐下痢・食事摂取不良・手術前は休薬)を必ず説明する。血糖が正常でもケトアシドーシスを起こしうる</mark>"],
       pitfall:"「症状が良くなった」「血圧が下がってきた」を理由に<mark>予後改善薬(4本柱)を自己判断や安易な指示で中止・減量する</mark>のはよくある誤り。利尿薬(症状改善薬)と4本柱(予後改善薬)は<mark>役割が異なる</mark>ことを理解していないと起こりやすい。",
       pearl:["HFrEFの4本柱(ARNI/ACEi/ARB・β遮断薬・MRA・SGLT2阻害薬)は<mark>症状の有無によらず生命予後を改善するために、目標用量まで導入・維持する</mark>のが原則(いずれもClass I・レベルA)","利尿薬は<mark>症状・うっ血の改善が主目的</mark>であり4本柱とは役割が異なる","無症状の軽度血圧低下だけを理由にGDMTを中止・減量しない。<mark>症状(めまい・失神)の有無</mark>で忍容性を判断する","LVEFが改善しても<mark>40%を超えるまではHFimpEFとは呼ばず、GDMTを継続する</mark>のが原則","<mark>ARNI投与中はBNPがネプリライシン阻害により実際より高く出うるため経過観察にはNT-proBNPを用いる</mark>。本症例のように改善を評価する際、BNPで「下がらない」と誤解しないよう注意する"],
       refs:[ {author:"Kitai T, Kohsaka S, et al.", title:"JCS/JHFS 2025 Guideline on Diagnosis and Treatment of Heart Failure（HFrEFの薬物治療）", source:"Circulation Journal (J-STAGE)", year:"2025", url:"https://www.jstage.jst.go.jp/article/circj/advpub/0/advpub_CJ-25-0002/_html/-char/en"} ]
     },
     {
-      id:"hfpef_comorbidity", num:9, cat:"chronic", tag:"慢性期HFpEF",
+      id:"hfpef_comorbidity", num:9, cat:"chronic", tag:"慢性期",
       title:"HFmrEF/HFpEFの慢性期治療と併存疾患管理", hint:"70歳女性・HFmrEF・CKD合併・利尿薬のみで管理され息切れ持続",
-      vignette:"70歳女性。高血圧・2型糖尿病・CKD(eGFR 42)を背景にLVEF 45%の心不全と診断され通院中。ループ利尿薬のみで管理されていたが、労作時息切れが続いている。血圧136/82mmHg。",
+      vignette:"70歳女性(身長155cm・体重52kg)。高血圧・2型糖尿病・CKD(eGFR 42)を背景にLVEF 45%の心不全と診断され通院中。ループ利尿薬のみで管理されていたが、労作時息切れが続いている。血圧136/82mmHg。",
       labs:[ {k:"NT-proBNP",v:"1850",u:"pg/mL",abn:"high"}, {k:"eGFR",v:"42",u:"mL/分/1.73m²",abn:"low"}, {k:"K",v:"4.3",u:"mEq/L",abn:"normal"}, {k:"HbA1c",v:"7.6",u:"%",abn:"high"} ],
       finding:"浮腫は軽度残存。心エコー:LVEF 45%、軽度左室肥大。",
       prompts:{
@@ -694,7 +706,7 @@
         stop:["「利尿薬だけで経過観察」という<mark>治療の手詰まり感で終わらせない</mark>","過度な血圧・血糖の是正で症状(めまい、低血糖)を招かないよう個別に調整する"],
         rate:["K・腎機能(特にMRA/フィネレノン併用時)を定期的にフォローする","症状・体重・NT-proBNPの推移で治療効果を評価し、入院を要するような再増悪がないか継続的に確認する"]
       },
-      rx:["SGLT2阻害薬(ダパグリフロジンまたはエンパグリフロジン、1日1回)を導入する。HFmrEF/HFpEFに対しJCS/JHFS 2025でClass I・レベルAで推奨(根拠試験:DELIVER)","<mark>フィネレノン</mark>はJCS/JHFS 2025年版でHFmrEF/HFpEFに対し<mark>新たにClass IIa・B-R</mark>に位置づけられた選択肢(根拠試験:FINEARTS-HF)。腎機能・K値を確認しながら導入を検討する(eGFRに応じて用量調整)","高血圧はガイドラインに基づき降圧目標を達成する。糖尿病治療薬はSGLT2阻害薬を軸に血糖管理を行う","うっ血症状に対してはループ利尿薬を必要最小限で継続する","肥満を合併するHFpEF/HFmrEF患者では、心血管死・心不全増悪の抑制を目的に<mark>セマグルチドなどのGLP-1受容体作動薬の追加もJCS/JHFS 2025年版で新たにClass IIa</mark>に位置づけられた(根拠試験:STEP-HFpEF等)。本症例のように肥満を伴わない場合は適応とならない点に注意する"],
+      rx:["SGLT2阻害薬(ダパグリフロジンまたはエンパグリフロジン、1日1回)を導入する。HFmrEF/HFpEFに対しJCS/JHFS 2025でClass I・レベルAで推奨(根拠試験:DELIVER)。<mark>導入時はシックデイルール(発熱・嘔吐下痢・食事摂取不良・手術前は休薬)を説明し、血糖が正常でもケトアシドーシスを起こしうることに注意する</mark>","<mark>フィネレノン</mark>はJCS/JHFS 2025年版でHFmrEF/HFpEFに対し<mark>新たにClass IIa・B-R</mark>に位置づけられた選択肢(根拠試験:FINEARTS-HF)。<mark>K>5.0では導入しない。eGFR 25〜60では10mg→20mgを目安に開始し(eGFR≥60では20mg→40mg)、導入4週後にK・eGFRを再検してK>5.5なら減量・休止を検討する</mark>","高血圧はガイドラインに基づき降圧目標を達成する。糖尿病治療薬はSGLT2阻害薬を軸に血糖管理を行う","うっ血症状に対してはループ利尿薬を必要最小限で継続する","肥満を合併するHFpEF/HFmrEF患者では、心血管死・心不全増悪の抑制を目的に<mark>セマグルチドなどのGLP-1受容体作動薬の追加もJCS/JHFS 2025年版で新たにClass IIa</mark>に位置づけられた(根拠試験:STEP-HFpEF等)。本症例のように肥満を伴わない場合は適応とならない点に注意する"],
       pitfall:"「HFmrEF/HFpEFはHFrEFと違って有効な薬がないから、利尿薬で症状を抑えるだけ」という考えは<mark>2025年版ガイドラインの内容と合わない誤解</mark>。SGLT2阻害薬(Class I)やフィネレノン(Class IIa)、併存疾患治療という積極的な治療選択肢がある。",
       pearl:["HFmrEF/HFpEFは<mark>「治療法がない」病態ではない</mark>。SGLT2阻害薬はEFによらずClass I・レベルAで推奨される","JCS/JHFS 2025年版では<mark>フィネレノンがHFmrEF/HFpEFに対しClass IIaで新規収載</mark>された","高血圧・心房細動・CKD・糖尿病・肥満などの<mark>併存疾患治療そのものがHFmrEF/HFpEFの治療の柱</mark>である","2026年8月公表のESCガイドラインでは、本症例のLVEF 45%が示す<mark>HFmrEFという区分自体が撤廃</mark>され、LVEF 50%未満をまとめてHFrEFとして扱う方向に改訂された。EF分類は国際的にも議論が続いているが、SGLT2阻害薬などの主要な治療の位置づけは大きく変わっていない"],
       refs:[ {author:"Kitai T, Kohsaka S, et al.", title:"JCS/JHFS 2025 Guideline on Diagnosis and Treatment of Heart Failure（HFmrEF/HFpEFの薬物治療）", source:"Circulation Journal (J-STAGE)", year:"2025", url:"https://www.jstage.jst.go.jp/article/circj/advpub/0/advpub_CJ-25-0002/_html/-char/en"}, {author:"Solomon SD, Vaduganathan M, Claggett BL, et al.", title:"Finerenone in Heart Failure with Mildly Reduced or Preserved Ejection Fraction (FINEARTS-HF)", source:"New England Journal of Medicine", year:"2024", url:"https://doi.org/10.1056/NEJMoa2407107"}, {author:"European Society of Cardiology.", title:"2026 ESC Guidelines for the management of heart failure", source:"ESC Congress News", year:"2026", url:"https://www.escardio.org/news/news-room/congress-news/2026-esc-guidelines-for-the-management-of-heart-failure/"} ]
@@ -724,10 +736,10 @@
   }
 
   var FLOW = [
-    {t:"心不全は臨床症候群と心得る", d:"EFが保たれていても心不全は否定できない。症状・身体所見・BNP/NT-proBNP・心エコーを総合して判断する。"},
-    {t:"最初の5分でABCと重症度を評価する", d:"SpO2・血圧・意識・尿量・末梢冷感・乳酸から、まず呼吸不全と心原性ショック(収縮期血圧<90mmHg・乳酸>2mmol/L・尿量<30mL/時などが目安)の有無を確認する。"},
-    {t:"うっ血/低灌流と血圧で治療を選ぶ", d:"wet/dry・warm/coldの2軸と血圧の高低を組み合わせ、利尿薬・血管拡張薬・強心薬のどれを選ぶかを決める。"},
-    {t:"増悪因子を探し、心不全治療とセットで対応する", d:"ACS・不整脈・感染・高血圧・弁膜症・肺塞栓・腎機能悪化・貧血・服薬中断や塩分過多・NSAIDsなどを必ず検索する。"}
+    {t:"①病態評価・緊急度：うっ血/低灌流をどう判断するか", d:"SpO2・血圧・意識・尿量・末梢冷感・乳酸から、wet/dry(うっ血)とwarm/cold(低灌流)を分けて評価する。まず呼吸不全と心原性ショック(収縮期血圧<90mmHg・乳酸>2mmol/L・尿量<30mL/時などが目安)の有無を確認する。EFが保たれていても心不全は否定できない。"},
+    {t:"②初動の治療：うっ血/低灌流と血圧で治療を選ぶ", d:"wet/dry・warm/coldの2軸と血圧の高低を組み合わせ、利尿薬・血管拡張薬・強心薬のどれを選ぶかを決める。"},
+    {t:"③見直す薬剤・増悪因子：何を止め、何を探すか", d:"ACS・不整脈・感染・高血圧・弁膜症・肺塞栓・腎機能悪化・貧血・服薬中断や塩分過多・NSAIDsなどの増悪因子を必ず検索し、うっ血下で避けるべき薬剤も点検する。"},
+    {t:"④モニタリングと次の一手：何を追い、次に何をするか", d:"反応の指標(尿量・体重・電解質・腎機能など)を決め、改善したら評価軸を切り替え、GDMT導入や退院準備につなげる。"}
   ];
 
   var AXES = [
@@ -743,19 +755,19 @@
       refs:["Nohria A, et al. J Am Coll Cardiol 2003","JCS/JHFS 2025 Guideline (Circ J)"]
     },
     {
-      cat:"chronic", label:"心不全の診断とEFによる分類の軸",
+      cat:"adjust", label:"心不全の診断とEFによる分類の軸",
       intro:"心不全はEFで診断する病気ではない。症状・身体所見・バイオマーカー・画像を組み合わせて診断し、確定後にEFで分類する。",
       steps:[
         {t:"①症状・身体所見で疑う", d:"労作時呼吸困難、下腿浮腫、頸静脈怒張、ラ音などから疑う。"},
         {t:"②心電図・胸部X線を確認する", d:"心電図の異常(虚血性変化、不整脈、左室肥大等)や胸部X線の心拡大・肺うっ血像は診断の補助になる。いずれも異常がなければ心不全の可能性は下がるが、否定はできない。"},
-        {t:"③BNP/NT-proBNPで裏付ける", d:"<mark>BNP<100pg/mLまたはNT-proBNP<300pg/mLは心不全らしくない(ルールアウト)</mark>の目安。診断的なカットオフはBNPで概ね100〜400pg/mL(100未満は否定的、400超は肯定的、間はグレーゾーン)。NT-proBNPは腎排泄のため<mark>年齢層別のカットオフ(50歳未満>450、50〜75歳>900、75歳以上>1800pg/mL)</mark>を用いるのが標準的。腎機能低下はNT-proBNPをより高値に、肥満はBNP/NT-proBNPいずれも低値に見せる方向に働くため、値の解釈には年齢・腎機能・肥満を考慮する。<mark>ARNI(サクビトリルバルサルタン)投与中はネプリライシン阻害によりBNPの分解が妨げられ実際の病態以上に高値になりうるため測定に適さず、ネプリライシンで分解されないNT-proBNPを測定する</mark>(ARNI導入前にBNPで経過を追っていた場合は、導入を機にNT-proBNPへの切替を検討する)。"},
+        {t:"③BNP/NT-proBNPで裏付ける", d:"日本心不全学会のステートメント(2023年改訂版)では<mark>BNP≥35pg/mLまたはNT-proBNP≥125pg/mLを精査・専門医紹介の目安</mark>とし、これを下回れば心不全らしくない。<mark>BNP 35〜100(NT-proBNP 125〜300)はグレーゾーン</mark>で、特にHFpEFはBNPが低めに出ることがあるため症状・心エコー所見と合わせて判断する。年齢層別カットオフ(450/900/1800pg/mL)は欧米で急性呼吸困難のrule-inに用いられる指標で、国内の紹介基準とは異なる点に注意。腎機能低下はNT-proBNPをより高値に、肥満はBNP/NT-proBNPいずれも低値に見せる方向に働く。<mark>ARNI(サクビトリルバルサルタン)投与中はネプリライシン阻害によりBNPの分解が妨げられ実際の病態以上に高値になりうるため測定に適さず、ネプリライシンで分解されないNT-proBNPを測定する</mark>(ARNI導入前にBNPで経過を追っていた場合は、導入を機にNT-proBNPへの切替を検討する)。"},
         {t:"④心エコーでEFと拡張能を評価し分類する", d:"HFrEF(LVEF≤40%)・HFmrEF(41〜49%)・HFpEF(≥50%)・HFimpEF(以前≤40%から10ポイント以上改善し40%超)に分類する(2021年の心不全の普遍的定義に基づく)。<mark>EFが保たれていても心不全は否定できない</mark>。"}
       ],
       note:"「EF60%だから心不全ではない」は誤り。拡張能障害主体のHFpEFはEFが保たれたまま生じる。",
-      refs:["JCS/JHFS 2025 Guideline (Circ J)","Bozkurt B, et al. J Card Fail 2021","Maisel A, et al. N Engl J Med 2002(BNPカットオフ)","Januzzi JL Jr, et al. J Am Coll Cardiol 2018(NT-proBNP年齢層別カットオフ、ICON-RELOADED)","Myhre PL, et al. J Am Coll Cardiol 2019(ARNI下でのBNP測定の限界、PARADIGM-HF)"]
+      refs:["JCS/JHFS 2025 Guideline (Circ J)","日本心不全学会 血中BNPやNT-proBNPを用いた心不全診療に関するステートメント(2023年改訂版)","Bozkurt B, et al. J Card Fail 2021","Januzzi JL Jr, et al. J Am Coll Cardiol 2018(NT-proBNP年齢層別カットオフ、ICON-RELOADED、欧米rule-in基準)","Myhre PL, et al. J Am Coll Cardiol 2019(ARNI下でのBNP測定の限界、PARADIGM-HF)"]
     },
     {
-      cat:"adjust", label:"慢性期治療と退院準備の軸",
+      cat:"chronic", label:"慢性期治療と退院準備の軸",
       intro:"慢性期は「予後改善薬(4本柱)」と「症状改善薬(利尿薬)」を区別し、退院前にうっ血解除とGDMT導入の両方を確認する。",
       steps:[
         {t:"①HFrEFは4本柱を目標用量まで", d:"ARNI/ACE阻害薬・β遮断薬・MRA・SGLT2阻害薬は症状の有無によらず継続・増量する(いずれもClass I・レベルA)。"},
@@ -778,21 +790,53 @@
     }catch(e){ return {}; }
   }
   function saveProgress(p){
-    try{ localStorage.setItem(STORE_KEY, JSON.stringify(p)); return true; }catch(e){ return false; }
+    try{
+      // Read-merge-write: another tab may have saved newer progress since this tab's
+      // in-memory state was last loaded. Overwriting wholesale would silently drop it.
+      var stored = loadProgress();
+      Object.keys(p).forEach(function(k){ stored[k] = p[k]; });
+      localStorage.setItem(STORE_KEY, JSON.stringify(stored));
+      state.progress = stored;
+      return true;
+    }catch(e){ return false; }
   }
   function loadDrafts(){
     try{
-      var d = JSON.parse(localStorage.getItem(DRAFT_KEY));
-      return (d && typeof d === "object" && !Array.isArray(d)) ? d : {};
+      var raw = JSON.parse(localStorage.getItem(DRAFT_KEY));
+      if(!raw || typeof raw !== "object" || Array.isArray(raw)) return {};
+      var keys = PROMPT_META.map(function(p){ return p.key; });
+      var known = {}; CASES.forEach(function(c){ known[c.id] = true; });
+      var out = {};
+      Object.keys(raw).forEach(function(caseId){
+        if(!known[caseId]) return; // drop entries for unknown/removed case ids
+        var entry = raw[caseId];
+        if(!entry || typeof entry !== "object" || Array.isArray(entry)) return;
+        var clean = {};
+        keys.forEach(function(k){
+          if(typeof entry[k] === "string") clean[k] = entry[k]; // only accept string values
+        });
+        out[caseId] = clean;
+      });
+      return out;
     }catch(e){ return {}; }
   }
-  function saveDrafts(d){
-    try{ localStorage.setItem(DRAFT_KEY, JSON.stringify(d)); return true; }catch(e){ return false; }
+  function saveDrafts(d, dirtyIds){
+    try{
+      // Same read-merge-write concern as saveProgress, but scoped to only the case(s) this
+      // tab actually edited (dirtyIds) — an untouched case in `d` is just this tab's stale
+      // load-time snapshot and must not clobber a newer draft another tab wrote for it.
+      var stored = loadDrafts();
+      (dirtyIds || Object.keys(d)).forEach(function(k){
+        if(d[k]) stored[k] = d[k];
+      });
+      localStorage.setItem(DRAFT_KEY, JSON.stringify(stored));
+      return true;
+    }catch(e){ return false; }
   }
 
   (function validateCasesData(){
     var seenIds = Object.create(null), seenNums = Object.create(null), ok = true;
-    var REQUIRED_ANSWER_KEYS = ["urgent","treat","stop","rate"];
+    var REQUIRED_ANSWER_KEYS = PROMPT_META.map(function(p){ return p.key; });
     var VALID_CATS_CHECK = ["acute","adjust","chronic"];
     CASES.forEach(function(c, i){
       if(seenIds[c.id]) ok = false;
@@ -801,16 +845,24 @@
       seenNums[c.num] = true;
       if(c.num !== i+1) ok = false;
       if(VALID_CATS_CHECK.indexOf(c.cat) === -1) ok = false;
-      if(!c.labs || !c.labs.length) ok = false;
+      if(!c.title || !c.hint || !c.vignette || !c.tag || !c.pitfall) ok = false;
+      if(!c.labs || !Array.isArray(c.labs) || !c.labs.length) ok = false;
       if(!c.answer) { ok = false; }
       else {
         REQUIRED_ANSWER_KEYS.forEach(function(k){
-          if(!c.answer[k] || !c.answer[k].length) ok = false;
+          if(!Array.isArray(c.answer[k]) || !c.answer[k].length) ok = false;
+        });
+      }
+      if(c.prompts){
+        Object.keys(c.prompts).forEach(function(k){
+          if(REQUIRED_ANSWER_KEYS.indexOf(k) === -1) ok = false;
+          var p = c.prompts[k];
+          if(!p || typeof p.label !== "string" || !p.label) ok = false;
         });
       }
     });
     if(!ok && typeof console !== "undefined" && console.warn){
-      console.warn("[shinfuzen] CASES data integrity check failed: ids/nums/cat/labs/answer are not all valid.");
+      console.warn("[shinfuzen] CASES data integrity check failed: ids/nums/cat/labs/answer/本文/prompts are not all valid.");
     }
   })();
 
@@ -853,12 +905,12 @@
   }
   function masteredCount(){
     var n=0;
-    for(var i=0;i<CASES.length;i++){ if(state.progress[CASES[i].id]==="good") n++; }
+    for(var i=0;i<CASES.length;i++){ if(safeStatus(state.progress[CASES[i].id])==="good") n++; }
     return n;
   }
   function reviewCases(){
     return CASES.filter(function(c){
-      var s = state.progress[c.id];
+      var s = safeStatus(state.progress[c.id]);
       return s === "partial" || s === "poor";
     });
   }
@@ -899,7 +951,7 @@
     html += '</div>';
 
     html += '<div class="progress-card">';
-    html += '  <div class="progress-ring"><svg width="56" height="56"><circle cx="28" cy="28" r="24" stroke="var(--surface-2)" stroke-width="5" fill="none"/><circle cx="28" cy="28" r="24" stroke="var(--primary)" stroke-width="5" fill="none" stroke-linecap="round" stroke-dasharray="'+circumference+'" stroke-dashoffset="'+offset+'"/></svg><div class="pct">'+pct+'%</div></div>';
+    html += '  <div class="progress-ring"><svg width="56" height="56" aria-hidden="true" focusable="false"><circle cx="28" cy="28" r="24" stroke="var(--surface-2)" stroke-width="5" fill="none"/><circle cx="28" cy="28" r="24" stroke="var(--primary)" stroke-width="5" fill="none" stroke-linecap="round" stroke-dasharray="'+circumference+'" stroke-dashoffset="'+offset+'"/></svg><div class="pct">'+pct+'%</div></div>';
     html += '  <div class="progress-text"><div class="num">'+mastered+' / '+total+' 症例 自力で言えた</div><div class="sub">'+subLine+'</div></div>';
     if(rev.length){
       html += '  <button class="review-pill-btn" data-action="toggle-review">復習</button>';
@@ -941,11 +993,12 @@
   var revealCache = {};
   var draftCache = loadDrafts();
   var pendingStatus = {};
+  var draftSaveFailed = false;
 
   function labChipHtml(l){
     var abn = (l.abn==="high"||l.abn==="low") ? l.abn : "normal";
     var symbol = abn==="high" ? "▲" : (abn==="low" ? "▼" : "");
-    return '<span class="lab-chip '+abn+'"><span class="k">'+escapeHtml(l.k)+'</span><span class="v mono">'+(symbol?symbol+" ":"")+escapeHtml(l.v)+'</span>'+(l.u?'<span class="u">'+escapeHtml(l.u)+'</span>':'')+'</span>';
+    return '<span class="lab-chip '+abn+'"><span class="k">'+escapeHtml(l.k)+'</span><span class="v mono">'+(symbol?'<span aria-hidden="true">'+symbol+'</span> ':"")+escapeHtml(l.v)+'</span>'+(l.u?'<span class="u">'+escapeHtml(l.u)+'</span>':'')+'</span>';
   }
 
   function renderCase(c){
@@ -962,13 +1015,14 @@
 
     html += '<div class="selfcheck-card" id="prompts">';
     getPrompts(c).forEach(function(p){
+      var fid = 'field-'+p.key+'-'+c.id;
       html += '<div class="sc-row">';
-      html += '<label><span class="n">'+p.num+'</span>'+p.label+'</label>';
-      html += '<textarea data-field="'+p.key+'" placeholder="'+p.ph+'">'+ (drafts[p.key] ? escapeHtml(drafts[p.key]) : "") +'</textarea>';
+      html += '<label for="'+fid+'"><span class="n" aria-hidden="true">'+p.num+'</span>'+p.label+'</label>';
+      html += '<textarea id="'+fid+'" data-field="'+p.key+'" placeholder="'+escapeHtml(p.ph)+'">'+ (drafts[p.key] ? escapeHtml(drafts[p.key]) : "") +'</textarea>';
       html += '</div>';
     });
     html += '</div>';
-    html += '<div class="save-warning" id="draftSaveWarning" hidden>⚠ この端末に下書きを保存できませんでした。プライベートブラウズ中か、ストレージが無効になっている可能性があります。この画面を離れると記述内容が失われます。</div>';
+    html += '<div class="save-warning" id="draftSaveWarning"'+(draftSaveFailed?'':' hidden')+'>⚠ この端末に下書きを保存できませんでした。プライベートブラウズ中か、ストレージが無効になっている可能性があります。この画面を離れると記述内容が失われます。</div>';
 
     if(!revealed){
       html += '<button class="reveal-btn" data-action="reveal">模範解答を見る</button>';
@@ -981,10 +1035,10 @@
 
   function renderAnswer(c){
     var catLabel = CAT_LABEL[safeCat(c.cat)];
-    var html = '<div class="answer-wrap">';
+    var html = '<div class="answer-wrap" tabindex="-1">';
     html += '<div class="diagnosis-reveal"><div class="dr-eyebrow">病態</div><div class="dr-title">'+c.title+'</div><div class="dr-sub">'+catLabel+'</div></div>';
 
-    html += '<div class="pitfall-block"><div class="pf-label"><span class="pf-mark">!</span>ありがちな誤対応</div><p>'+c.pitfall+'</p></div>';
+    html += '<div class="pitfall-block"><div class="pf-label"><span class="pf-mark" aria-hidden="true">!</span>ありがちな誤対応</div><p>'+c.pitfall+'</p></div>';
 
     html += '<div class="divider"><div class="line"></div><span>模範解答</span><div class="line"></div></div>';
 
@@ -1002,8 +1056,8 @@
 
     html += '<div class="assess-block">';
     html += '<div class="q">自分の答えと照らし合わせて、自己評価しましょう</div>';
-    var curRaw = pendingStatus[c.id] || state.progress[c.id] || "";
-    var cur = VALID_STATUSES.indexOf(curRaw) !== -1 ? curRaw : "";
+    var cur = pendingStatus[c.id] || safeStatus(state.progress[c.id]);
+    if(cur === "none") cur = "";
     html += '<div class="assess-row">';
     html += assessBtn("good","自力で言えた", cur);
     html += assessBtn("partial","一部抜けた", cur);
@@ -1025,15 +1079,15 @@
   }
 
   function answerRowHtml(key, label, items){
-    return '<div class="ar-row"><h3><span class="ico '+key+'">'+ICO[key]+'</span>'+label+'</h3>'+
+    return '<div class="ar-row"><h3><span class="ico '+key+'" aria-hidden="true">'+ICO[key]+'</span>'+label+'</h3>'+
       '<ul>'+items.map(function(t){return '<li>'+t+'</li>';}).join("")+'</ul></div>';
   }
 
   function renderRx(c){
     if(!c.rx || !c.rx.length) return "";
     var items = c.rx.map(function(t){ return '<li>'+t+'</li>'; }).join("");
-    return '<div class="rx-block"><div class="rx-label"><span class="rx-mark">℞</span>具体的な処方例</div>'+
-      '<p class="rx-caveat">年齢・腎機能・心機能・体重により個別調整が必要な目安です。実際の投与量・速度は必ず添付文書・自施設のプロトコル・指導医で確認してください。</p>'+
+    return '<div class="rx-block"><div class="rx-label"><span class="rx-mark" aria-hidden="true">℞</span>具体的な処方例</div>'+
+      '<p class="rx-caveat">年齢・腎機能・心機能・体重により個別調整が必要な目安です。実際の投与量・速度は必ず添付文書・自施設のプロトコルを確認し、指導医に相談してください。</p>'+
       '<ul>'+items+'</ul></div>';
   }
 
@@ -1066,7 +1120,8 @@
   }
 
   function assessBtn(kind, label, cur){
-    return '<button class="assess-btn '+kind+(cur===kind?' active':'')+'" data-action="assess" data-kind="'+kind+'">'+label+'</button>';
+    var on = (cur===kind);
+    return '<button class="assess-btn '+kind+(on?' active':'')+'" aria-pressed="'+(on?'true':'false')+'" data-action="assess" data-kind="'+kind+'">'+label+'</button>';
   }
 
   /* ---------------- RENDER: APPROACH (初動まとめ) ---------------- */
@@ -1156,6 +1211,7 @@
           revealCache[el.getAttribute("data-id")] = false;
           delete pendingStatus[el.getAttribute("data-id")];
           lastSaveFailed = false;
+          draftSaveFailed = false;
           go("case", el.getAttribute("data-id"));
         } else if(action==="goto-home"){
           go("home");
@@ -1171,11 +1227,15 @@
           lastSaveFailed = false;
           collectDraft(state.caseId, false);
           if(draftSaveTimer){ clearTimeout(draftSaveTimer); draftSaveTimer = null; }
+          flushDraftSave();
           revealCache[state.caseId] = true;
           render();
-          flushDraftSave();
           var wrap = app.querySelector(".answer-wrap");
-          if(wrap) wrap.scrollIntoView({behavior:"smooth", block:"start"});
+          if(wrap){
+            var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+            wrap.scrollIntoView({behavior: reduceMotion ? "auto" : "smooth", block:"start"});
+            wrap.focus({preventScroll:true});
+          }
         } else if(action==="assess"){
           var kind = el.getAttribute("data-kind");
           var c0 = caseById(state.caseId);
@@ -1196,6 +1256,7 @@
           revealCache[next.id] = false;
           delete pendingStatus[next.id];
           lastSaveFailed = false;
+          draftSaveFailed = false;
           go("case", next.id);
         }
       });
@@ -1209,8 +1270,10 @@
   }
 
   var draftSaveTimer = null;
+  var dirtyDrafts = {}; // caseId -> true for cases this tab has actually edited
   function flushDraftSave(){
-    var ok = saveDrafts(draftCache);
+    var ok = saveDrafts(draftCache, Object.keys(dirtyDrafts));
+    draftSaveFailed = !ok;
     var warnEl = document.getElementById("draftSaveWarning");
     if(warnEl){ warnEl.hidden = ok; }
   }
@@ -1220,6 +1283,7 @@
       d[ta.getAttribute("data-field")] = ta.value;
     });
     draftCache[caseId] = d;
+    dirtyDrafts[caseId] = true;
     if(draftSaveTimer){ clearTimeout(draftSaveTimer); draftSaveTimer = null; }
     if(flushNow){
       flushDraftSave();
@@ -1227,9 +1291,9 @@
       draftSaveTimer = setTimeout(flushDraftSave, 400);
     }
   }
-  window.addEventListener("pagehide", function(){ saveDrafts(draftCache); });
+  window.addEventListener("pagehide", function(){ saveDrafts(draftCache, Object.keys(dirtyDrafts)); });
   document.addEventListener("visibilitychange", function(){
-    if(document.visibilityState === "hidden") saveDrafts(draftCache);
+    if(document.visibilityState === "hidden") saveDrafts(draftCache, Object.keys(dirtyDrafts));
   });
 
   render();
