@@ -540,7 +540,7 @@
         rate:{ label:"呼吸状態・血圧の改善をどの間隔で追い、退院後の再発予防に何をつなげるか", ph:"NPPV離脱・酸素漸減のタイミング、服薬アドヒアランスなど…" }
       },
       answer:{
-        urgent:["血圧218mmHg・四肢温感・末梢冷感なしから<mark>低灌流はなく、うっ血のみのwet & warm</mark>と評価する","<mark>SpO2 84%（<90%が酸素投与の目安）</mark>であり、まず酸素化を確保する。呼吸数25/分超・SpO2 90%未満の呼吸不全では<mark>酸素だけで不十分ならNPPVを速やかに導入する</mark>(挿管を要する呼吸不全への進行を防ぐ)"],
+        urgent:["血圧218mmHg・四肢温感・末梢冷感なしから<mark>低灌流はなく、うっ血のみのwet & warm</mark>と評価する","<mark>SpO2 84%（<90%が酸素投与の目安）</mark>であり、まず酸素化を確保する。呼吸数25/分超・SpO2 90%未満の呼吸不全では<mark>酸素だけで不十分ならNPPVを速やかに導入する</mark>(挿管を要する呼吸不全への進行を防ぐ)","<mark>NPPV導入が必要と判断した時点、またはNPPVでも改善が乏しく挿管を要しうる場合は循環器当直・上級医に速やかに報告</mark>する"],
         treat:["<mark>まずNPPVを最優先で導入する(Class I・A)</mark>。そのうえで、血圧が高く保たれ四肢が温かい(warm)、低灌流所見のないwet & warmでは<mark>後負荷軽減(血管拡張薬)も治療の中心の一つ</mark>となる","うっ血があればループ利尿薬も併せて投与し(Class I・C-LD)、血圧が著明に高ければ硝酸薬などの<mark>血管拡張薬を静注</mark>で上乗せする(症状緩和目的、Class IIb・B-NR)。本態は血管内容量の著増というより血圧上昇による急激な体液再分布であることが多く、<mark>利尿薬だけで終わらせない</mark>視点が重要"],
         stop:["<mark>血圧が高い患者にβ遮断薬を新規に急速増量しない</mark>(急性期は後負荷軽減を優先)","高血圧治療の自己中断が誘因であるため、内服アドヒアランスの再確認・簡素化を検討する","<mark>12誘導心電図とトロポニンでACSを除外する</mark>。降圧薬自己中断が誘因らしくても、虚血の併存(乳頭筋機能不全による急性僧帽弁逆流など)を否定してから確定させる"],
         rate:["血圧・呼吸数・SpO2を<mark>数分〜十数分単位</mark>で追い、NPPVからの離脱・酸素漸減のタイミングを判断する","血圧が安定したら経口降圧薬への切り替えと退院後の服薬継続支援を計画する"]
@@ -789,12 +789,14 @@
       return (p && typeof p === "object" && !Array.isArray(p)) ? p : {};
     }catch(e){ return {}; }
   }
-  function saveProgress(p){
+  // Read-merge-write, scoped to the single case that changed: replaying the whole
+  // in-memory state.progress here (as the old signature did) would re-overwrite every
+  // other case with this tab's possibly-stale snapshot, clobbering a concurrent tab's
+  // newer write to an unrelated case.
+  function saveProgress(caseId, status){
     try{
-      // Read-merge-write: another tab may have saved newer progress since this tab's
-      // in-memory state was last loaded. Overwriting wholesale would silently drop it.
       var stored = loadProgress();
-      Object.keys(p).forEach(function(k){ stored[k] = p[k]; });
+      stored[caseId] = status;
       localStorage.setItem(STORE_KEY, JSON.stringify(stored));
       state.progress = stored;
       return true;
@@ -1241,8 +1243,7 @@
           var c0 = caseById(state.caseId);
           if(!c0) return;
           pendingStatus[state.caseId] = kind;
-          state.progress[state.caseId] = kind;
-          lastSaveFailed = !saveProgress(state.progress);
+          lastSaveFailed = !saveProgress(state.caseId, kind);
           render();
         } else if(action==="next-case"){
           var c = caseById(state.caseId);
